@@ -1,0 +1,99 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'gallery'
+	- var pageName = 'Single project 3'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-46',
+		bgImage: 'bg-single-project'
+	})
+
+	// Single Project
+	section.section.section-sm.section-first.bg-default
+		.container
+			.embed-responsive.embed-responsive-16by9
+				iframe.embed-responsive-item(src='https://www.youtube.com/embed/DcZbIZIlt3I', width='100', height='100', allowfullscreen)
+			.row.row-xl.row-40.align-items-center
+				.col-lg-8
+					.single-project.single-project-3
+						h4 Weilround entertainment center
+						p.text-gray-500 This project was designed for one of the biggest Swiss entertainment centers that grew in popularity in 2009. One of their new buildings needed top quality interior designed and our studio offered the services of Will O’Brien. Everything was completed in less than a month. We combined some of the best interior design achievements in this project.
+						.row.row-4.gutters-4( data-lightgallery='group' )
+							.col-6.col-sm-4
+								+thumbnail-mary({
+									titleNone: true,
+									img: 'project-19-232x181',
+									imgOriginal: 'project-19-1200x800-original'
+								}).thumbnail-mary-2.thumbnail-mary-3
+							.col-6.col-sm-4
+								+thumbnail-mary({
+									titleNone: true,
+									img: 'project-20-232x181',
+									imgOriginal: 'navbar-1-1200x800-original'
+								}).thumbnail-mary-2.thumbnail-mary-3
+							.col-6.col-sm-4
+								+thumbnail-mary({
+									titleNone: true,
+									img: 'project-21-232x181',
+									imgOriginal: 'project-21-1200x800-original'
+								}).thumbnail-mary-2.thumbnail-mary-3
+
+				.col-md-6.col-lg-4: .single-project-aside
+					h5.single-project-aside-title Project Details
+					ul.list.list-description.d-inline-block.d-md-block
+						li
+							span Designer:
+							span Will O’Brien
+						li
+							span Year:
+							span May 17, 2009
+						li
+							span Location:
+							span Bern, Switzerland
+						li
+							span Categories:
+							span Custom Projects
+
+					.divider.divider-30
+					.group-md.group-middle.justify-content-sm-start
+						span.social-title Share
+						div: +widget-list([], '', 'list-inline-sm social-list' )
+
+					a.button.button-secondary.button-pipaluk( href='#' ) Contact us
+
+
+	// Project Links
+	section.section.section-sm.section-last.bg-default
+		.container
+			.project-navigation
+				.row.row-30
+					.col-sm-6
+						+project-minimal({
+							href: 'single-project-2.html',
+							unit: 'flex-column flex-lg-row text-lg-left',
+							img: 'project-minimal-3-168x139',
+							title: 'Bedroom serenity redefined',
+							text: '2017, Commercial Project, USA'
+						})
+					.col-sm-6
+						+project-minimal({
+							href: 'single-project-4.html',
+							unit: 'flex-column flex-lg-row-reverse text-lg-right',
+							img: 'project-minimal-1-168x139',
+							title: 'Bedroom furniture design',
+							text: '2017, Commercial Project, USA'
+						})
+
+				a.project-navigation-arrow-prev( href='single-project-2.html' )
+				a.project-navigation-arrow-next( href='single-project-4.html' )
+
+
+	// Page Footer
+	+footer-classic

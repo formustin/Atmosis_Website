@@ -1,0 +1,290 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-counters
+include ../components/_ui-box-icon
+include ../components/_ui-posts
+include ../components/_ui-box-team
+include ../components/_ui-quote
+
+block variables
+	-
+		var
+			activeCategory = 'home',
+			pageName = 'Interior Design',
+			style = '3';
+
+		logo = {
+			default: 'logo-default-interior-190x43',
+			inverse: 'logo-inverse-190x43',
+			name: 'Creator'
+		};
+
+block page
+	// Page Header
+	+header-classic.rd-navbar-classic-2
+
+	include ../sections/_swiper-slider-1
+
+	// Following the dream since 1999
+	section.section.section-sm.section-first.bg-default
+		.container: .row.row-30.justify-content-center
+			.col-md-8.col-lg-4.col-xl-6.wow.fadeInLeft: +jpg('about-2-570x449')
+			.col-sm-6.col-lg-4.col-xl-3: .row.row-30
+				.col-12.oh-desktop
+					.box-info.wow.slideInDown
+						h5.box-info-title Tasks of design
+						p.box-info-text Interior design makes interior spaces functional, safe, and beautiful by determining and updating its vital elements.
+				.col-12.oh-desktop
+					.box-info.wow.slideInUp
+						h5.box-info-title Personalized interiors
+						p.box-info-text Our designers create interiors that reflect your personality, complement your mood, and improve your life.
+			.col-sm-6.col-lg-4.col-xl-3.oh-desktop
+				.box-info.wow.slideInRight( data-wow-delay='.1s' )
+					h5.box-info-title Creative solutions
+					p.box-info-text We are all about creativity and it concerns everything we do to transform your house. Our approach includes:
+					ul.list-marked-3.box-info-list
+						li Focus on our clients
+						li Non-trivial ideas
+						li Full project support
+					a.button.button-lg.button-gray-32.button-pipaluk( href='#' ) Get in touch
+
+
+	// Section Masonry Gallery
+	section.section.section-sm.section-fluid.bg-default.text-center.isotope-wrap
+		.container
+			.isotope-top-panel.oh-desktop
+				h3.isotope-top-panel-title: span.d-inline-block.wow.slideInDown Latest Projects
+				.isotope-filters.isotope-filters-horizontal.oh-desktop
+					//- Isotope Filters
+					button.isotope-filters-toggle.button.button-md.button-icon.button-icon-right.button-default-outline.button-wapasha( data-custom-toggle='#isotope-5', data-custom-toggle-hide-on-blur='true', data-custom-toggle-disable-on-blur='true' )
+						span.icon.fa.fa-caret-down
+						| Filter
+					ul#isotope-5.isotope-filters-list-classic.wow.slideInUp
+						li: a.active( href='#', data-isotope-filter='*' ) All Works
+						li: a( href='#', data-isotope-filter='Type 1' ) Home design
+						li: a( href='#', data-isotope-filter='Type 2' ) Commercial design
+		.container-fluid.isotope-content
+			.row.row-30.row-isotope.isotope( data-lightgallery='group' )
+				.col-sm-6.col-md-4.col-xl-3.isotope-item( data-filter='Type 1' )
+					+thumbnail-mary({
+						img: 'fullwidth-masonry-gallery-7-420x330',
+						imgOriginal: 'fullwidth-masonry-gallery-7-1200x800-original',
+						title: '379 Harvey Rd'
+					}).thumbnail-md
+				.col-sm-6.col-md-4.col-xl-3.isotope-item( data-filter='Type 2' )
+					+thumbnail-mary({
+						img: 'fullwidth-masonry-gallery-8-420x330',
+						imgOriginal: 'masonry-gallery-4-1200x800-original',
+						title: '64 James Ave'
+					}).thumbnail-md
+				.col-sm-6.col-md-4.col-xl-3.isotope-item( data-filter='Type 1' )
+					+thumbnail-mary({
+						img: 'fullwidth-masonry-gallery-9-420x690',
+						imgOriginal: 'fullwidth-masonry-gallery-1-1200x800-original',
+						title: '861 E. Oklahoma Dr'
+					}).thumbnail-md
+				.col-sm-6.col-md-8.col-xl-6.isotope-item( data-filter='Type 2' )
+					+thumbnail-mary({
+						img: 'fullwidth-masonry-gallery-10-870x330',
+						imgOriginal: 'fullwidth-masonry-gallery-10-1200x800-original',
+						title: '14 Pulaski Str'
+					}).thumbnail-xl.thumbnail-custom-mobile-1
+				.col-sm-6.col-md-4.col-xl-3.isotope-item( data-filter='Type 2' )
+					+thumbnail-mary({
+						img: 'fullwidth-masonry-gallery-11-420x330',
+						imgOriginal: 'fullwidth-masonry-gallery-11-1200x800-original',
+						title: '8381 Peg Shop Str'
+					}).thumbnail-md
+
+				.col-sm-6.col-md-4.col-xl-3.isotope-item( data-filter='Type 1' )
+					+thumbnail-mary({
+						img: 'fullwidth-masonry-gallery-6-420x330',
+						imgOriginal: 'fullwidth-masonry-gallery-6-1200x800-original',
+						title: '830 Bridge Str'
+					}).thumbnail-md
+
+
+	// Following the dream since 1999
+	section.section.section-sm.bg-default
+		.container
+			h3.oh-desktop: span.d-inline-block.wow.slideInUp Following the dream since 1999
+			.row.row-30.justify-content-center
+				.col-8.col-sm-4.wow.fadeInUp
+					+counter-modern({
+						number: '12',
+						title: 'Design<br>awards'
+					})
+				.col-8.col-sm-4.wow.fadeInUp( data-wow-delay='.1s' )
+					+counter-modern({
+						number: '194',
+						title: 'Successful<br>projects'
+					})
+				.col-8.col-sm-4.wow.fadeInUp( data-wow-delay='.2s' )
+					+counter-modern({
+						number: '25',
+						title: 'Team<br>members'
+					})
+
+
+	// Different people  — one mission
+	section.section.section-sm.section-fluid.bg-default
+		.container-fluid.section-lg.bg-gray-4.oh
+			h3.oh-desktop: span.d-inline-block.wow.slideInDown Different people  — one mission
+			.section-relative: .container.container-custom-2
+				// Owl Carousel
+				.owl-carousel.owl-team( data-items='1', data-md-items='2', data-lg-items='3', data-margin='30', data-mouse-drag="false", data-nav='true', data-dots='true' )
+					+team-creative({
+						img: 'team-4-370x366',
+						name: 'Jill Peterson',
+						status: 'Designer'
+					})
+					+team-creative({
+						img: 'team-5-370x366',
+						name: 'Will O’brien',
+						status: 'Designer'
+					})
+					+team-creative({
+						img: 'team-6-370x366',
+						name: 'Ann Anderson',
+						status: 'Junior Designer'
+					})
+					+team-creative({
+						img: 'team-15-370x366',
+						name: 'Ryan Wilson',
+						status: 'Founder, senior designer'
+					})
+					+team-creative({
+						img: 'team-16-370x366',
+						name: 'Samuel Miller',
+						status: 'Senior Architect'
+					})
+
+
+	// Secrets of our success
+	section.section.section-sm.bg-default
+		.container
+			h3.oh-desktop: span.d-inline-block.wow.slideInUp Secrets of our success
+			.row.row-40.row-sm.align-items-lg-center.flex-lg-row-reverse
+				.col-lg-5.col-xl-6.wow.fadeInRight
+					.video-classic
+						+jpg('video-2-570x438')
+						a.video-classic-play.video-classic-play-2( data-lightgallery='item', href='https://www.youtube.com/embed/e_TCFkRDmls' ): span
+				.col-lg-7.col-xl-6: .row.row-40.justify-content-center.box-ordered
+					.col-sm-6.col-md-5.col-lg-6.wow.fadeInDown( data-wow-delay='.1s' )
+						+box-icon-creative({
+							icon: 'fl-bigmug-line-paintbrush9',
+							title: 'Intuitive and easy',
+							text: 'Our team focuses on designing exciting interiors that are intuitively organized.'
+						})
+					.col-sm-6.col-md-5.col-lg-6.wow.fadeInDown
+						+box-icon-creative({
+							icon: 'fl-bigmug-line-circular224',
+							title: 'Focus on our clients',
+							text: 'We create all our projects with client in mind and adhere to their preferences and needs.'
+						})
+					.col-sm-6.col-md-5.col-lg-6.wow.fadeInUp( data-wow-delay='.1s' )
+						+box-icon-creative({
+							icon: 'fl-bigmug-line-hot67',
+							title: 'Non-trivial ideas',
+							text: 'At Creator, we use the latest trends combined with innovations that give us great ideas.'
+						})
+					.col-sm-6.col-md-5.col-lg-6.wow.fadeInUp
+						+box-icon-creative({
+							icon: 'fl-bigmug-line-chat55',
+							title: 'Full project support',
+							text: 'From the beginning to project completion, our team provides full support on all levels.'
+						})
+
+
+	// What people say
+	section.section.section-sm.section-lg-bottom-10.bg-default
+		.container
+			h3.oh-desktop: span.d-inline-block.wow.slideInUp What people say
+			// Owl Carousel
+			.owl-carousel.owl-classic.owl-quote( data-items='1', data-md-items='2', data-lg-items='2', data-xl-items='3', data-margin='30', data-nav='true', data-dots='true' )
+				+quote-nancy({
+					img: 'testimonials-1-368x503',
+					quote: 'They have a very innovative vision',
+					text: 'This agency was highly recommended to me. The sensitivity, knowledge, vision and ultimate execution this firm brought to the table was tremendous. They have enormously talented designers in the team who consistently deliver the highest quality as well as aesthetically beautiful solutions for their clients.',
+					imgUser: 'user-13-87x87',
+					author: 'Rupert Wood',
+					status: 'House owner'
+				})
+				+quote-nancy({
+					img: 'testimonials-2-368x503',
+					quote: 'We quickly found a common language',
+					text: 'I chose Creator because of their knowledge, experience and attention to detail that has proven invaluable to me in creating a superior finished project, which attracts more clients to my shop. I can surely say that their team has a gift for truly interpreting a client’s ideas and transforming them into reality.',
+					imgUser: 'user-14-87x87',
+					author: 'Catherine Williams',
+					status: 'Local shop owner'
+				})
+				+quote-nancy({
+					img: 'testimonials-3-368x503',
+					quote: 'The greatest interior design experts',
+					text: 'Creator designed my home from top to bottom, and 5 years later I still appreciate their work. They found the most beautiful rug for my living room and designed built-in cabinetry that works perfectly. When I bought a second home, I hired them again. I recommend their team without reservation.',
+					imgUser: 'user-15-87x87',
+					author: 'Sam Peterson',
+					status: 'Sales manager'
+				})
+				+quote-nancy({
+					img: 'testimonials-3-368x503',
+					quote: 'You’ve done an amazing job!',
+					text: 'The team of Creator knew how to translate my desires into a unique architectural design, one that makes me feel at ease with the different characteristics that identify me and what I do, something all clients surely seek. They have an immense potential for creative ideas and I’m glad to recommend them.',
+					imgUser: 'user-21-87x87',
+					author: 'Samantha Brown',
+					status: 'Freelancer'
+				})
+
+
+	// Our clients
+	section.section.section-sm.section-fluid.bg-default
+		.container-fluid
+			h3.oh-desktop: span.d-inline-block.wow.slideInDown Our clients
+			.row.row-sm.no-gutters.border-creative
+				.col-sm-6.col-md-4.col-lg-3.wow.fadeInDown( data-wow-delay='.3s' ): a.clients-creative.clients-creative-3( href='#' ): +png('clients-2-270x145')
+				.col-sm-6.col-md-4.col-lg-3.wow.fadeInDown( data-wow-delay='.2s' ): a.clients-creative.clients-creative-3( href='#' ): +png('clients-1-270x145')
+				.col-sm-6.col-md-4.col-lg-3.wow.fadeInDown( data-wow-delay='.1s' ): a.clients-creative.clients-creative-3( href='#' ): +png('clients-3-270x145')
+				.col-sm-6.col-md-4.col-lg-3.wow.fadeInDown: a.clients-creative.clients-creative-3( href='#' ): +png('clients-4-270x145')
+				.col-sm-6.col-md-4.col-lg-3.wow.fadeInUp: a.clients-creative.clients-creative-3( href='#' ): +png('clients-6-270x145')
+				.col-sm-6.col-md-4.col-lg-3.wow.fadeInUp( data-wow-delay='.1s' ): a.clients-creative.clients-creative-3( href='#' ): +png('clients-7-270x145')
+				.col-sm-6.col-md-4.col-lg-3.wow.fadeInUp( data-wow-delay='.2s' ): a.clients-creative.clients-creative-3( href='#' ): +png('clients-5-270x145')
+				.col-sm-6.col-md-4.col-lg-3.wow.fadeInUp( data-wow-delay='.3s' ): a.clients-creative.clients-creative-3( href='#' ): +png('clients-8-270x145')
+
+
+	// Latest blog posts
+	section.section.section-sm.section-last.bg-default
+		.container
+			h3.oh-desktop: span.d-inline-block.wow.slideInUp Latest blog posts
+			// Owl Carousel
+			.owl-carousel.owl-posts.owl-posts-2( data-items='1', data-md-items='2', data-margin='30', data-dots='true', data-animation-in='fadeIn', data-animation-out='fadeOut' )
+				+post-aria({
+					mod: 'post-aria-2',
+					img: 'post-24-570x492',
+					title: 'Arched Book Shelves, Doorways, and Windows',
+					time: { datetime: '2019-05-17', dateText: 'May 17, 2019' }
+				})
+				+post-aria({
+					mod: 'post-aria-2',
+					img: 'post-25-570x492',
+					title: 'Top 5 affordable ideas for designing your office',
+					time: { datetime: '2019-05-12', dateText: 'May 12, 2019' }
+				})
+				+post-aria({
+					mod: 'post-aria-2',
+					img: 'post-22-570x492',
+					title: 'Here are the most stylish colors for next spring',
+					time: { datetime: '2019-05-17', dateText: 'May 17, 2019' }
+				})
+				+post-aria({
+					mod: 'post-aria-2',
+					img: 'post-23-570x492',
+					title: 'Popular Décor Trends you surely need to know about',
+					time: { datetime: '2019-05-12', dateText: 'May 12, 2019' }
+				})
+
+
+	// Page Footer
+	+footer-classic({
+		button: 'button-primary'
+	}).footer-classic-2

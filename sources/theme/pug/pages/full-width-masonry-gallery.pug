@@ -1,0 +1,37 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'gallery'
+	- var pageName = 'Full-width masonry gallery '
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-48',
+		bgImage: 'bg-gallery'
+	})
+
+	// Grid Gallery
+	section.section.section-xl.section-fluid.bg-default.text-center.isotope-wrap
+		.container-fluid
+			.isotope-filters.isotope-filters-horizontal
+				//- Isotope Filters
+				button.isotope-filters-toggle.button.button-md.button-icon.button-icon-right.button-default-outline.button-wapasha( data-custom-toggle='#isotope-6', data-custom-toggle-hide-on-blur='true', data-custom-toggle-disable-on-blur='true' )
+					span.icon.fa.fa-caret-down
+					| Filter
+				ul#isotope-6.isotope-filters-list
+					li: a.active( href='#', data-isotope-filter='*' ) All
+					li: a( href='#', data-isotope-filter='Type 1' ) Apartments
+					li: a( href='#', data-isotope-filter='Type 2' ) Offices
+					li: a( href='#', data-isotope-filter='Type 3' ) Corporate designs
+			include ../sections/_section-full-width-masonry-gallery
+
+			.button-wrap: button.button.button-md.button-default-outline.button-wapasha Load More
+
+
+	// Page Footer
+	+footer-classic

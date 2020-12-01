@@ -1,0 +1,107 @@
+/**
+*
+* RD Navbar Classic
+* =====================================================
+*/
+.rd-navbar-classic {
+	// Static
+	&.rd-navbar-static {
+		background: transparent;
+
+		.rd-navbar-aside-outer,
+		.rd-navbar-main-outer {
+			padding-left: $grid-gutter-width / 2;
+			padding-right: $grid-gutter-width / 2;
+
+			// Mega large ≥1600px
+			@include media-breakpoint-up(xxl) {
+				padding-left: 75px;
+				padding-right: 75px;
+			}
+		}
+
+		.rd-navbar-aside,
+		.rd-navbar-main {
+			max-width: 1770px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.rd-navbar-aside {
+			padding: 10px 0;
+		}
+
+		.rd-navbar-main {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 32px 0;
+		}
+
+		// RD Navbar Brand
+		.rd-navbar-brand {
+			img {
+				width: auto;
+				height: auto;
+				max-width: 140px;
+				max-height: 140px;
+
+				// Mega large ≥1400px
+				@media (min-width: 1400px) {
+					max-width: 190px;
+					max-height: 190px;
+				}
+			}
+		}
+
+		.rd-navbar-main-element {
+			display: flex;
+			align-items: center;
+			margin-left: 10px;
+			margin-right: 10px;
+
+			// Extra large ≥1200px
+			@include media-breakpoint-up(xl) {
+				margin-left: 20px;
+				margin-right: 20px;
+			}
+		}
+
+		&.rd-navbar--is-stuck,
+		&.rd-navbar--is-clone {
+			background: $rd-navbar-fixed-panel-background;
+
+			.rd-navbar-aside-outer {
+				display: none;
+			}
+
+			.rd-navbar-main {
+				padding: 14px 0;
+				
+				// Extra large ≥1200px
+				@include media-breakpoint-up(xl) {
+					padding-top: 12px;
+					padding-bottom: 12px;
+				}
+				
+				// Mega large ≥1600px
+				@include media-breakpoint-up(xxl) {
+					padding-top: 7px;
+					padding-bottom: 7px;
+				} 
+			}
+
+			.rd-navbar-nav-item {
+				> .rd-navbar-submenu {
+					margin-top: 17px;
+				}
+			}
+		}
+	}
+
+	// Fixed 
+	&.rd-navbar-fixed {
+
+	}
+}

@@ -1,0 +1,44 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+	- var activeCategory = 'shop'
+	- var pageName = 'Cart Page'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-40',
+		bgImage: 'bg-shop-2'
+	})
+
+	// Shopping Cart
+	section.section.section-xl.bg-default
+		.container
+			include ../sections/_shopping-cart
+			.group-xl.group-lg-justify
+				div
+					// RD Mailform
+					form.rd-form.rd-mailform.rd-form-inline.rd-form-coupon
+						.form-wrap
+							input.form-input.form-input-inverse( id="coupon-code", type='text', name='email' )
+							label.form-label( for='coupon-code' ) Coupon code
+						.form-button
+							button.button.button-primary.button-pipaluk( type='submit' ) Apply coupon
+
+				div: .group-xmd.group-middle
+					div: .group-xmd.group-middle
+						h6.text-gray-500 Total
+						h3.cart-product-price
+							sup $
+							| 800
+					a.button.button-secondary.button-pipaluk( href='checkout.html' ) Proceed to checkout
+
+
+	// Page Footer
+	+footer-classic

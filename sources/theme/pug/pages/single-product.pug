@@ -1,0 +1,132 @@
+extends  ../_skeleton
+
+include ../components/_ui-product
+include ../components/_ui-pagination
+include ../components/_ui-box-comment
+include ../components/_form-comments
+
+block variables
+	- var activeCategory = 'shop'
+	- var pageName = 'Single product'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-40',
+		bgImage: 'bg-shop-2'
+	})
+
+	// Single Product
+	section.section.section-sm.section-first.bg-default
+		.container
+			.row.row-50
+				.col-lg-6
+					.slick-product
+						// Slick Carousel
+						.slick-slider.carousel-parent( data-swipe="true", data-items="1" data-child="#child-carousel", data-for="#child-carousel")
+							.item: .slick-product-figure: +png('product-10-530x480' )
+							.item: .slick-product-figure: +png('product-11-530x480' )
+							.item: .slick-product-figure: +png('product-12-530x480' )
+						.slick-slider.child-carousel#child-carousel( data-for=".carousel-parent", data-arrows="true", data-items="3", data-sm-items="3", data-md-items="3", data-lg-items="3", data-xl-items="3", data-slide-to-scroll="1", data-md-vertical='true' )
+							.item: .slick-product-figure: +png('product-mini-4-169x152')
+							.item: .slick-product-figure: +png('product-mini-5-169x152')
+							.item: .slick-product-figure: +png('product-mini-6-169x152')
+
+				.col-lg-6
+					.single-product
+						h3 CB2 chamber desk
+						.group-md.group-middle
+							.single-product-price $520.00
+							.box-rating
+								span.icon.fa.fa-star
+								span.icon.fa.fa-star
+								span.icon.fa.fa-star
+								span.icon.fa.fa-star
+								span.icon.fa.fa-star-half-o
+						p Designed by an award-winning designer Manuel Saez, this immaculately clean white desktop is the sign of a highly organized, compulsive neatnik. It has space for all your supplies - folders, books, planners, and more!
+
+						.divider.divider-30
+
+						ul.list.list-description.d-inline-block.d-md-block
+							li
+								span Material:
+								span Birch Plywood
+							li
+								span Weight:
+								span 15 kg
+							li
+								span Dimensions:
+								span 60 x 60 x 90 cm
+
+						.group-sm.group-middle
+							div.product-stepper: input.form-input( type='number', data-zeros='true', value='1', min='1', max='1000' )
+							div: a.button.button-primary.button-pipaluk( href='#' ) Add to cart
+
+						.divider.divider-40
+						.group-md.group-middle
+							span.social-title Share
+							div: +widget-list([], '', 'list-inline-sm social-list' )
+
+			// Bootstrap tabs
+			#tabs-5.tabs-custom.tabs-horizontal.tabs-corporate
+				// Nav tabs
+				ul.nav.nav-tabs
+					li.nav-item( role='presentation' ): a.nav-link.active( href='#tabs-5-1', data-toggle='tab' ) Testimonials (1)
+					li.nav-item( role='presentation' ): a.nav-link( href='#tabs-5-2', data-toggle='tab' ) Additional information
+					li.nav-item( role='presentation' ): a.nav-link( href='#tabs-5-3', data-toggle='tab' ) Delivery and payment
+
+				// Tab panes
+				.tab-content
+					div#tabs-5-1.tab-pane.fade.show.active
+						+box-comment({
+							img: 'user-1-119x119',
+							author: 'John Doe',
+							text: 'The product you delivered me has surpassed all my expectations. The item is one of the best, all-purpose items ever crafted. I love everything about my purchase. Reliable, secure, quirky, easy to clean in and out.',
+							datetime: '2019-11-30',
+							time: 'Nov 30, 2019'
+						})
+
+						+form-comments({ customUnique: '4' })
+
+					div#tabs-5-2.tab-pane.fade
+						p Here you will find more useful information about the chosen product. It’s always good to have the choice we can offer. We try to cater to the needs of each and every whimsical buyer. This product is qualitative and affordable at the same time. Take advantage of this product’s benefits and you'll see that this is exactly the product you need. Besides you can save your money on account of the lowest prices.
+					div#tabs-5-3.tab-pane.fade
+						p Here you can read some details about a nifty little lifecycle of your order's journey from the time you place your order to your new treasures arriving at your doorstep. At first you choose the product you like. Then you put into your shopping cart and pass the checkout process in a few clicks. Our store offers several payment and delivery methods, so you have an opportunity to choose which one is the most convenient for you.
+
+
+	// Single Product
+	section.section.section-sm.section-last.bg-default
+		.container
+			h4 Related Products
+			.row.row-40.justify-content-center
+				.col-sm-6.col-md-5.col-lg-3
+					+product({
+						img: 'product-4-270x280',
+						title: 'CB2 Coup Grey Office Chair',
+						price: '550'
+					})
+				.col-sm-6.col-md-5.col-lg-3
+					+product({
+						img: 'product-5-270x280',
+						title: 'Grasshoppa floor lamp',
+						price: '650'
+					})
+				.col-sm-6.col-md-5.col-lg-3
+					+product({
+						img: 'product-6-270x280',
+						title: 'Lucinda orange Chair',
+						price: '350'
+					})
+				.col-sm-6.col-md-5.col-lg-3
+					+product({
+						img: 'product-13-270x280',
+						title: 'Ikea Frode Chair',
+						price: '99'
+					})
+
+	// Page Footer
+	+footer-classic

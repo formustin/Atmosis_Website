@@ -1,0 +1,51 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Buttons'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-55',
+		bgImage: 'bg-elements-2'
+	})
+
+	// Button Sizes
+	section.section.section-sm.section-first.bg-default.text-md-left
+		.container
+			h3 Button Sizes
+			.group-sm.group-middle
+				.button.button-lg.button-primary.button-pipaluk Large size
+				.button.button-primary.button-pipaluk Default size
+				.button.button-md.button-primary.button-pipaluk Medium size
+
+
+	// Button Shapes
+	section.section.section-sm.bg-default.text-md-left
+		.container
+			h3 Button Shapes
+			.group-sm.group-middle
+				.button.button-primary.button-pipaluk Square
+				.button.button-primary.button-pipaluk.button-circle Circle
+
+
+	// Buttons with Icons
+	section.section.section-sm.section-last.bg-default.text-md-left
+		.container
+			h3 Buttons with Icons
+			.group-sm.group-middle
+				.button.button-icon.button-icon-left.button-primary.button-pipaluk
+					span.icon.fa.fa-plus
+					| Add to cart
+				.button.button-icon.button-icon-left.button-default-outline.button-wapasha
+					span.icon.fa.fa-plus
+					| Add to cart
+
+
+	// Page Footer
+	+footer-classic

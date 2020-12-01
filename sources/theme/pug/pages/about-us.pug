@@ -1,0 +1,172 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-progress-bar-linear
+include ../components/_ui-quote
+include ../components/_ui-counters
+
+block variables
+	- var activeCategory = 'about'
+	- var pageName = 'About Us'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-60',
+		bgImage: 'bg-about'
+	})
+
+	// Why choose us
+	section.section.section-sm.section-first.bg-default.text-md-left
+		.container
+			.row.row-50.justify-content-center.align-items-xl-center
+				.col-md-10.col-lg-5.col-xl-6: +jpg('about-1-519x564')
+				.col-md-10.col-lg-7.col-xl-6
+					h1.text-spacing-25.font-weight-normal.title-opacity-9 Why choose us
+					// Bootstrap tabs
+					#tabs-4.tabs-custom.tabs-horizontal.tabs-line
+						// Nav tabs
+						ul.nav.nav-tabs
+							li.nav-item( role='presentation' ): a.nav-link.active( href='#tabs-4-1', data-toggle='tab' ) Experience
+							li.nav-item( role='presentation' ): a.nav-link( href='#tabs-4-2', data-toggle='tab' ) Skills
+							li.nav-item( role='presentation' ): a.nav-link( href='#tabs-4-3', data-toggle='tab' ) Mission
+
+						// Tab panes
+						.tab-content
+							div#tabs-4-1.tab-pane.fade.show.active
+								p Creator is an internationally recognized and award-winning interior design firm with expertise in residential, commercial, hospitality, retail, healthcare and beauty projects.
+								+progress-bar-linear({
+									mod: 'progress-secondary',
+									title: "Interior Design",
+									valueTo: "79"
+								})
+								+progress-bar-linear({
+									mod: 'progress-orange',
+									title: "3d modeling",
+									valueTo: "72"
+								})
+								+progress-bar-linear({
+									title: "Architecture",
+									valueTo: "88"
+								})
+
+							div#tabs-4-2.tab-pane.fade
+								.row.row-40.justify-content-center.text-center.inset-top-10
+									.col-sm-4
+										// Circle Progress Bar
+										.progress-bar-circle( data-value='0.87', data-gradient=colors.secondary2, data-empty-fill='transparent', data-size='150', data-thickness='12', data-reverse='true' )
+											span
+										p.progress-bar-circle-title Interior Design
+									.col-sm-4
+										// Circle Progress Bar
+										.progress-bar-circle( data-value='0.74', data-gradient=colors.orange, data-empty-fill='transparent', data-size='150', data-thickness='12', data-reverse='true' )
+											span
+										p.progress-bar-circle-title Architecture
+									.col-sm-4
+										// Circle Progress Bar
+										.progress-bar-circle( data-value='0.99', data-gradient=colors.primary, data-empty-fill='transparent', data-size='150', data-thickness='12', data-reverse='true' )
+											span
+										p.progress-bar-circle-title Space Planning
+								.group-md.group-middle
+									a.button.button-width-xl-230.button-primary.button-pipaluk( href='#' ) Get in touch
+									a.button.button-width-xl-310.button-default-outline.button-wapasha( href='#' ) Download presentation
+
+							div#tabs-4-3.tab-pane.fade
+								p Our mission is simple—working with people to create beautiful homes and environments through inspiration and design. We will take the time to understand you and your project, and then design a plan that suits you.
+								.text-center.text-sm-left.offset-top-30
+									ul.row-16.list-0.list-custom.list-marked.list-marked-sm.list-marked-secondary
+										li Interior design
+										li Space planning
+										li Decorating services
+										li Paint consultations
+										li Furniture selections
+										li Room layouts
+								.group-md.group-middle
+									a.button.button-width-xl-230.button-primary.button-pipaluk( href='#' ) Get in touch
+									a.button.button-width-xl-310.button-default-outline.button-wapasha( href='#' ) Download presentation
+
+
+	// Latest Projects
+	section.section.section-sm.section-fluid.bg-default
+		.container
+			h3 Project timeline
+		// Owl Carousel
+		.owl-carousel.owl-classic.owl-timeline( data-items='1', data-md-items='2', data-lg-items='3', data-xl-items='4', data-margin='30', data-nav='true', data-dots='true', data-autoplay='false' )
+			.owl-item
+				+thumbnail-mary({
+					titleNone: true,
+					img: 'project-1-420x308',
+					imgOriginal: 'grid-gallery-1-1200x800-original',
+					nameProject: 'Los Angeles coworking center',
+					datetime: '2005',
+					time: '2005'
+				}).thumbnail-md
+			.owl-item
+				+thumbnail-mary({
+					titleNone: true,
+					img: 'project-2-420x308',
+					imgOriginal: 'fullwidth-masonry-gallery-10-1200x800-original',
+					nameProject: 'daycare center',
+					datetime: '2007',
+					time: '2007'
+				}).thumbnail-md
+			.owl-item
+				+thumbnail-mary({
+					titleNone: true,
+					img: 'project-3-420x308',
+					imgOriginal: 'grid-gallery-3-1200x800-original',
+					nameProject: 'Sun valley hotel',
+					datetime: '2011',
+					time: '2011'
+				}).thumbnail-md
+			.owl-item
+				+thumbnail-mary({
+					titleNone: true,
+					img: 'project-4-420x308',
+					imgOriginal: 'project-4-1200x800-original',
+					nameProject: 'Residential house: living room',
+					datetime: '2015',
+					time: '2015'
+				}).thumbnail-md
+			.owl-item
+				+thumbnail-mary({
+					titleNone: true,
+					img: 'project-5-420x308',
+					imgOriginal: 'fullwidth-gallery-5-1200x800-original',
+					nameProject: 'Social Center',
+					datetime: '2017',
+					time: '2017'
+				}).thumbnail-md
+			.owl-item
+				+thumbnail-mary({
+					titleNone: true,
+					img: 'project-6-420x308',
+					imgOriginal: 'project-6-1200x800-original',
+					nameProject: 'Small Kitchen',
+					datetime: '2019',
+					time: '2019'
+				}).thumbnail-md
+
+
+	// What people Say
+	section.section.section-sm.section-last.bg-default
+		.container
+			h3 What people Say
+			include ../sections/_carousel-testimonials
+
+
+	include ../sections/_section-counter-classic
+
+	// Our clients
+	section.section.section-xl.bg-default
+		.container
+			h3 Our clients
+			include ../sections/_section-clients-classic
+
+
+	// Page Footer
+	+footer-classic

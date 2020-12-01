@@ -1,0 +1,20 @@
+//- Services
+
+mixin services-classic(obj)
+	// Services Classic
+	article.services-classic( class= obj.mod )
+		a.services-classic-figure( href='single-service.html' ): +jpg( obj.img )
+		.services-classic-caption
+			h4.services-classic-counter.box-ordered-item
+			h5.services-classic-title: a( href='single-service.html' )= obj.title
+
+mixin services-modern(obj)
+	// Services Modern
+	article.services-modern( class= obj.mod )
+		.services-modern-content-wrap: .services-modern-content
+			a.services-modern-figure( href='single-service.html' ): +jpg( obj.img )
+			h5.services-modern-title: a( href='single-service.html' )= obj.title
+		if(obj.counter)
+			.services-modern-counter= obj.counter
+		else
+			.services-modern-counter.box-ordered-item

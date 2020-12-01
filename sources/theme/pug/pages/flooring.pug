@@ -1,0 +1,365 @@
+extends  ../_skeleton
+
+//- Includes
+include ../sections/_header-corporate
+include ../components/_ui-box-team
+include ../components/_ui-box-icon
+include ../components/_ui-quote
+include ../components/_ui-counters
+include ../components/_ui-inline-subscribe-form
+include ../components/_ui-product
+include ../components/_ui-posts
+
+block variables
+	-
+		var
+			activeCategory = 'home',
+			pageName = 'Flooring',
+			style = '2';
+
+		logo = {
+			default: 'logo-default-flooring-190x43',
+			inverse: 'logo-inverse-190x43',
+			name: 'Creator'
+		};
+
+block page
+	// Page Header
+	+header-corporate
+
+	include ../sections/_swiper-slider-4
+
+	// Section Box Categories
+	section.section.section-lg.section-top-1.bg-gray-4
+		.container.offset-negative-1
+			// Owl Carousel
+			.owl-carousel.owl-classic.owl-services( data-items='1', data-md-items='2', data-lg-items='3', data-margin='30', data-autoplay='false', data-nav='true', data-dots='true', data-animation-in='fadeIn', data-animation-out='fadeOut' )
+				.box-categories: .box-categories-content
+					h5.box-categories-title Wall & floor tile
+					ul.list-marked-2.box-categories-list
+						li: a( href='#' ) Ceramic Tile
+						li: a( href='#' ) Porcelain Tile
+						li: a( href='#' ) Natural Stone Tile
+						li: a( href='#' ) Mosaic Tile
+				.box-categories: .box-categories-content
+					h5.box-categories-title Laminate flooring
+					ul.list-marked-2.box-categories-list
+						li: a( href='#' ) Laminate Plank Flooring
+						li: a( href='#' ) Laminate & Stone Flooring
+						li: a( href='#' ) Pergo Laminate Flooring
+						li: a( href='#' ) Underlayments
+				.box-categories: .box-categories-content
+					h5.box-categories-title Hardwood flooring
+					ul.list-marked-2.box-categories-list
+						li: a( href='#' ) Engineered Parquetry
+						li: a( href='#' ) Bamboo Flooring
+						li: a( href='#' ) Solid Hardwood Flooring
+						li: a( href='#' ) Modern Cork Flooring
+
+		a.link-classic.wow.fadeInUp( href='shop.html' ) More products
+			span
+
+
+	// You dream — we embody
+	section.section.section-sm.section-first.bg-default.text-md-left
+		.container
+			.row.row-50.align-items-center.justify-content-center.justify-content-xl-between
+				.col-lg-6.text-center.wow.fadeInUp
+					.figure-classic.figure-classic-left: +jpg('index-3-556x382')
+
+				.col-lg-6.wow.fadeInRight( data-wow-delay='.1s' ): .box-width-lg-470
+					h3 You dream — we embody
+					// Bootstrap tabs
+					#tabs-7.tabs-custom.tabs-horizontal.tabs-line.tabs-line-big.tabs-line-style-2.text-center.text-md-left
+						// Nav tabs
+						ul.nav.nav-tabs
+							li.nav-item( role='presentation' ): a.nav-link.active( href='#tabs-7-1', data-toggle='tab' ) About us
+							li.nav-item( role='presentation' ): a.nav-link( href='#tabs-7-2', data-toggle='tab' ) Why choose us
+							li.nav-item( role='presentation' ): a.nav-link( href='#tabs-7-3', data-toggle='tab' ) Our mission
+
+						// Tab panes
+						.tab-content
+							div#tabs-7-1.tab-pane.fade.show.active
+								p We are one of the largest flooring companies serving both commercial and residential clients. Our dedicated staff has the expertise to handle a project of any complexity.
+								.group-md.group-middle
+									a.button.button-secondary.button-pipaluk( href='#' ) Get in touch
+									a.button.button-default-outline.button-wapasha( href='#' ) Download presentation
+
+							div#tabs-7-2.tab-pane.fade
+								p We are your #1 choice when it comes to high-qulity flooring installation. Our company offers a turn-key approach to your flooring projects, while handling all of your needs.
+								.group-md.group-middle
+									a.button.button-secondary.button-pipaluk( href='#' ) Get in touch
+									a.button.button-default-outline.button-wapasha( href='#' ) Download presentation
+
+							div#tabs-7-3.tab-pane.fade
+								p Our mission is to achieve excellence in everything we do, especially when it concerns providing top-notch flooring services to our clients all over the USA.
+								.group-md.group-middle
+									a.button.button-secondary.button-pipaluk( href='#' ) Get in touch
+									a.button.button-default-outline.button-wapasha( href='#' ) Download presentation
+
+
+	// Section Masonry Gallery
+	section.section.section-sm.section-fluid.bg-default.text-center.isotope-wrap
+		.container-fluid.isotope-wrap
+			h3.oh-desktop: span.d-inline-block.wow.slideInDown Better flooring for your interior
+			.isotope-filters.isotope-filters-horizontal.oh-desktop
+				//- Isotope Filters
+				button.isotope-filters-toggle.button.button-md.button-icon.button-icon-right.button-default-outline.button-wapasha( data-custom-toggle='#isotope-4', data-custom-toggle-hide-on-blur='true', data-custom-toggle-disable-on-blur='true' )
+					span.icon.fa.fa-caret-down
+					| Filter
+				ul#isotope-4.isotope-filters-list.wow.slideInUp
+					li: a.active( href='#', data-isotope-filter='*' ) All
+					li: a( href='#', data-isotope-filter='Type 1' ) Bedroom
+					li: a( href='#', data-isotope-filter='Type 2' ) Living room
+					li: a( href='#', data-isotope-filter='Type 3' ) Dining room
+			include ../sections/_section-full-width-masonry-gallery
+
+
+	// Different people — one mission
+	section.section.section-sm.bg-default
+		.container
+			h3.wow.fadeInRight Different people — one mission
+			.row.row-sm.row-20.justify-content-center.justify-content-lg-start
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInLeft
+					+team-modern({
+						img: 'user-7-118x118',
+						name: 'Sam Robinson',
+						status: 'Founder, CEO'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInLeft( data-wow-delay='.1s' )
+					+team-modern({
+						img: 'user-8-118x118',
+						name: 'Sam Claflin',
+						status: 'Flooring Installer'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInLeft( data-wow-delay='.2s' )
+					+team-modern({
+						img: 'user-9-118x118',
+						name: 'Jill Peterson',
+						status: 'Customer Care Manager'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInLeft( data-wow-delay='.3s' )
+					+team-modern({
+						img: 'user-10-118x118',
+						name: 'James Smith',
+						status: 'Flooring Installer'
+					})
+
+
+	// Secrets of our success
+	section.section.section-sm.bg-default
+		.container
+			h3.oh-desktop: span.d-inline-block.wow.slideInUp Secrets of our success
+			.row.row-40.row-sm.align-items-lg-center.flex-lg-row-reverse
+				.col-lg-5.col-xl-6.wow.fadeInRight
+					.video-classic
+						+jpg('video-1-570x438')
+						a.video-classic-play( data-lightgallery='item', href='https://www.youtube.com/embed/e_TCFkRDmls' ): span
+				.col-lg-7.col-xl-6: .row.row-40.justify-content-center.box-ordered
+					.col-sm-6.col-md-5.col-lg-6.wow.fadeInDown( data-wow-delay='.1s' )
+						+box-icon-creative({
+							mod: 'box-icon-creative-2',
+							icon: 'fl-bigmug-line-paintbrush9',
+							title: 'Intuitive and easy',
+							text: 'Our team focuses on designing exciting floors that are intuitively organized.'
+						})
+					.col-sm-6.col-md-5.col-lg-6.wow.fadeInDown
+						+box-icon-creative({
+							mod: 'box-icon-creative-2',
+							icon: 'fl-bigmug-line-circular224',
+							title: 'Focus on Inhabitants',
+							text: 'We create all our projects with client in mind and adhere to their preferences and needs.'
+						})
+					.col-sm-6.col-md-5.col-lg-6.wow.fadeInUp( data-wow-delay='.1s' )
+						+box-icon-creative({
+							mod: 'box-icon-creative-2',
+							icon: 'fl-bigmug-line-hot67',
+							title: 'Non-trivial ideas',
+							text: 'At Flooring, we use the latest trends combined with innovations that give us great ideas.'
+						})
+					.col-sm-6.col-md-5.col-lg-6.wow.fadeInUp
+						+box-icon-creative({
+							mod: 'box-icon-creative-2',
+							icon: 'fl-bigmug-line-chat55',
+							title: 'Full project support',
+							text: 'From the beginning to project completion, our team provides full support on all levels.'
+						})
+
+
+	// Section CTA 2
+	section.section.section-sm.bg-default.text-center
+		+parallax({
+			img: 'bg-cta-5',
+			innerClass: 'section-xl section-inset-custom-1 context-dark bg-overlay-2-21 bg-second-overlay-4-22'
+		})
+			.container.bg-overlay-4-22
+				h3.oh-desktop.font-weight-normal: span.d-inline-block.wow.slideInDown Creative flooring solutions
+				p.oh-desktop.text-width-medium.text-spacing-75: span.d-inline-block.wow.slideInUp( data-wow-delay='.1s' ) Our company provides home owners all over the US with high-quality flooring solutions that are designed to last.
+				a.button.button-width-170.button-secondary.button-ujarak.wow.fadeInUp( href='shop.html', data-wow-delay='.2s' ) Shop now
+
+
+	// Test
+	section.section.section-sm.section-last.bg-default
+		.container
+			h3.oh-desktop: span.d-inline-block.wow.slideInDown Featured flooring products
+			.row.row-sm.row-40.row-md-50
+				.col-sm-6.col-md-12.wow.fadeInRight
+					+product-big({
+						img: 'product-big-1-600x366',
+						title: 'Black hardwood flooring',
+						text: 'If you prefer the dramatic statement of darker tones, you can fill your home with classic sophistication and elegant style with our Black Hardwood Flooring.',
+						price: '290'
+					})
+
+				.col-sm-6.col-md-12.wow.fadeInLeft
+					+product-big({
+						img: 'product-big-2-600x366',
+						title: 'Modern laminate flooring',
+						text: 'Contemporary laminate flooring can celebrate a bold starkness to complement interior decorating that has no problem swinging from one color to the other.',
+						price: '130'
+					})
+
+
+	// What people say
+	section.section.section-lg.bg-gray-4
+		.container
+			h3.wow.fadeInLeft What people say
+			.row.row-xxl.row-70.justify-content-center
+				.col-sm-10.col-md-6.col-lg-5.col-xl-4.wow.fadeInRight
+					+quote-creative({
+						img: 'user-13-87x87',
+						author: 'Rupert Wood',
+						text: 'I would like to thank you for the personal attention and courtesy. You allowed me to make those time consuming decisions that are always needed in selecting flooring for a home.'
+					})
+
+				.col-sm-10.col-md-6.col-lg-5.col-xl-4.wow.fadeInRight( data-wow-delay='.1s' )
+					+quote-creative({
+						img: 'user-14-87x87',
+						author: 'Catherine Williams',
+						text: 'I finally have the bedroom and bathroom finished and I’m really glad to have Creator as my flooring provider. Thanks for all your patience and help with our project. I’ve been referring lots of people to you!'
+					})
+
+				.col-sm-10.col-md-6.col-lg-5.col-xl-4.wow.fadeInRight( data-wow-delay='.2s' )
+					+quote-creative({
+						img: 'user-15-87x87',
+						author: 'Sam Peterson',
+						text: 'Just a note to tell you I’m pleased beyond description with the work you did for me. You were competent and left not a thing to show repair work had been done. I will certainly recommend you.'
+					})
+
+
+	// 7 years of Following the dream
+	section.section.section-sm.section-first.bg-default
+		.container
+			h3.oh-desktop: span.d-inline-block.wow.slideInUp 7 years of Following the dream
+			.row.row-30.justify-content-center
+				.col-8.col-sm-4.wow.fadeInUp
+					+counter-modern({
+						mod: 'counter-modern-2',
+						number: '12',
+						title: 'Design<br>awards'
+					})
+				.col-8.col-sm-4.wow.fadeInUp( data-wow-delay='.1s' )
+					+counter-modern({
+						mod: 'counter-modern-2',
+						number: '194',
+						title: 'Successful<br>projects'
+					})
+				.col-8.col-sm-4.wow.fadeInUp( data-wow-delay='.2s' )
+					+counter-modern({
+						mod: 'counter-modern-2',
+						number: '25',
+						title: 'Team<br>members'
+					})
+
+
+	// Section Subscribe
+	section.section.section-sm.bg-default.text-center
+		+parallax({
+			img: 'bg-forms',
+			innerClass: 'section-xl section-inset-custom-1 context-dark bg-overlay-2-21'
+		})
+			.container
+				h3.oh-desktop.font-weight-normal: span.d-inline-block.wow.slideInDown Sign Up for 25% Discount
+				p.text-width-medium.text-spacing-75.wow.fadeInLeft( data-wow-delay='.1s' ) Want to get an instant discount for your next interior renovation? Leave your email and sign up for our newsletter with 25% off all our services.
+				+inline-subscribe-form({ customUnique: '1', button: 'button-secondary button-ujarak' })
+
+
+	// Popular brands
+	section.section.section-sm.bg-default
+		.container
+			h3.wow.fadeInRight Popular brands
+			include ../sections/_section-clients-classic
+
+
+	// Latest blog posts
+	section.section.section-sm.section-last.bg-default
+		.container
+			h3.oh-desktop: span.d-inline-block.wow.slideInUp Latest blog posts
+			// Owl Carousel
+			.owl-carousel.owl-posts( data-items='1', data-md-items='2', data-margin='30', data-dots='true', data-animation-in='fadeIn', data-animation-out='fadeOut' )
+				+post-aria({
+					img: 'post-22-570x492',
+					title: '3 easy tips for caring for your hardwood floors',
+					time: { datetime: '2019-05-17', dateText: 'May 17, 2019' }
+				})
+				+post-aria({
+					img: 'post-23-570x492',
+					title: 'Choosing marble tile:' + '<br>' + ' a buyer’s guide',
+					time: { datetime: '2019-05-12', dateText: 'May 12, 2019' }
+				})
+				+post-aria({
+					img: 'post-24-570x492',
+					title: 'Top 10 Flooring Installation Tips that You May Find Useful',
+					time: { datetime: '2019-05-17', dateText: 'May 17, 2019' }
+				})
+				+post-aria({
+					img: 'post-25-570x492',
+					title: 'Beginner’s Guide to Laminate Flooring Maintenance',
+					time: { datetime: '2019-05-12', dateText: 'May 12, 2019' }
+				})
+
+
+	// Latest Projects
+	section.section.section-sm.section-top-0.section-fluid.section-relative.bg-gray-4: .container-fluid
+		h6.gallery-title Gallery
+		// Owl Carousel
+		.owl-carousel.owl-classic.owl-dots-secondary( data-items='1', data-sm-items='2', data-md-items='3', data-lg-items='4', data-xl-items='5', data-xxl-items='6', data-stage-padding='15', data-xxl-stage-padding='0', data-margin='30', data-nav='true', data-dots='true' )
+			+thumbnail-mary({
+				titleNone: true,
+				img: 'gallery-image-6-270x195',
+				imgOriginal: 'gallery-image-6-1200x800-original'
+			})
+			+thumbnail-mary({
+				titleNone: true,
+				img: 'project-10-270x195',
+				imgOriginal: 'fullwidth-gallery-5-1200x800-original'
+			})
+			+thumbnail-mary({
+				titleNone: true,
+				img: 'gallery-image-7-270x195',
+				imgOriginal: 'gallery-image-7-1200x800-original'
+			})
+			+thumbnail-mary({
+				titleNone: true,
+				img: 'gallery-image-8-270x195',
+				imgOriginal: 'fullwidth-gallery-10-1200x800-original'
+			})
+			+thumbnail-mary({
+				titleNone: true,
+				img: 'gallery-image-9-270x195',
+				imgOriginal: 'grid-gallery-5-1200x800-original'
+			})
+			+thumbnail-mary({
+				titleNone: true,
+				img: 'project-25-270x195',
+				imgOriginal: 'grid-gallery-4-1200x800-original'
+			})
+			+thumbnail-mary({
+				titleNone: true,
+				img: 'project-9-270x195',
+				imgOriginal: 'fullwidth-gallery-9-1200x800-original'
+			})
+
+
+	// Page Footer
+	include ../sections/_footer-corporate

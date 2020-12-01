@@ -1,0 +1,19 @@
+/*
+*
+* Footers
+*/
+
+//
+// Footer Classic
+//
+
+.footer-classic {
+	background: $gray-24;
+
+	* + p { margin-top: 32px; }
+
+	// Large ≥992px
+	@include media-breakpoint-up(lg) {
+		* + .button { margin-top: 45px; }
+	}
+}

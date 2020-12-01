@@ -1,0 +1,36 @@
+/*
+*
+* Contexts
+*/
+
+@mixin context-dark {
+	&,
+	#{headings()} {
+		color: $white;
+	}
+
+	.button.button-pipaluk {
+		&,
+		&:focus {
+			background: transparent;
+
+			&::after {
+				border-color: $white;
+			}
+		}
+
+		&:hover,
+		&:active {
+			color: $white;
+		}
+	}
+}
+
+@mixin context-light {
+	color: $body-color;
+
+	#{headings()} {
+		color: $headings-color;
+	}
+}
+

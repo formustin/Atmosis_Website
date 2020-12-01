@@ -1,0 +1,436 @@
+extends  ../_skeleton
+
+//- Includes
+include ../sections/_header-creative
+include ../components/_ui-product
+include ../components/_ui-box-icon
+include ../components/_ui-inline-subscribe-form
+include ../components/_ui-quote
+include ../components/_ui-counters
+include ../components/_ui-posts
+
+block variables
+	-
+		var
+			activeCategory = 'home',
+			pageName = 'Furniture',
+			style = '1';
+
+		logo = {
+			default: 'logo-default-furniture-190x43',
+			inverse: 'logo-inverse-190x43',
+			name: 'Creator'
+		};
+
+block page
+	// Page Header
+	+header-creative({
+		list: [
+			{ iconClass: 'fa fa-truck', text: 'Free shipping for all orders over $200' },
+			{ iconClass: 'fa fa-phone', href: 'tel:#', text: '+1 323-913-4688' },
+			{ iconClass: 'fa fa-clock-o', text: 'Mon-Sat: 07:00AM - 05:00PM '}
+		]
+	})
+		+thumbnail-mary({
+			titleNone: true,
+			img: 'project-7-270x195',
+			imgOriginal: 'fullwidth-masonry-gallery-10-1200x800-original'
+		}).thumbnail-mary-2
+		+thumbnail-mary({
+			titleNone: true,
+			img: 'project-8-270x195',
+			imgOriginal: 'masonry-gallery-4-1200x800-original'
+		}).thumbnail-mary-2
+		+thumbnail-mary({
+			titleNone: true,
+			img: 'project-9-270x195',
+			imgOriginal: 'fullwidth-gallery-9-1200x800-original'
+		}).thumbnail-mary-2
+		+thumbnail-mary({
+			titleNone: true,
+			img: 'project-10-270x195',
+			imgOriginal: 'fullwidth-gallery-5-1200x800-original'
+		}).thumbnail-mary-2
+		+thumbnail-mary({
+			titleNone: true,
+			img: 'project-11-270x195',
+			imgOriginal: 'fullwidth-gallery-13-1200x800-original'
+		}).thumbnail-mary-2
+		+thumbnail-mary({
+			titleNone: true,
+			img: 'project-12-270x195',
+			imgOriginal: 'fullwidth-masonry-gallery-6-1200x800-original'
+		}).thumbnail-mary-2
+		+thumbnail-mary({
+			titleNone: true,
+			img: 'project-25-270x195',
+			imgOriginal: 'grid-gallery-4-1200x800-original'
+		}).thumbnail-mary-2
+
+	include ../sections/_swiper-slider-5
+
+	// Popular Categories
+	section.section.section-sm.section-first.bg-default
+		.container
+			h4.oh: span.d-inline-block.wow.slideInUp Popular Categories
+			.row.no-gutters.row-0.border-modern
+				.col-6.col-sm-4.col-md-3
+					+product-categories({
+						img: 'icon-1-70x60',
+						title: 'Beds'
+					}).wow.fadeInDown
+				.col-6.col-sm-4.col-md-3
+					+product-categories({
+						img: 'icon-2-70x60',
+						title: 'Sofas'
+					}).wow.fadeInDown( data-wow-delay='.1s' )
+				.col-6.col-sm-4.col-md-3
+					+product-categories({
+						img: 'icon-3-70x60',
+						title: 'Wardrobes'
+					}).wow.fadeInDown( data-wow-delay='.2s' )
+				.col-6.col-sm-4.col-md-3
+					+product-categories({
+						img: 'icon-4-70x60',
+						title: 'Tables'
+					}).wow.fadeInDown( data-wow-delay='.3s' )
+				.col-6.col-sm-4.col-md-3
+					+product-categories({
+						img: 'icon-5-70x60',
+						title: 'Kids’ room'
+					}).wow.fadeInUp( data-wow-delay='.3s' )
+				.col-6.col-sm-4.col-md-3
+					+product-categories({
+						img: 'icon-6-70x60',
+						title: 'Lighting'
+					}).wow.fadeInUp( data-wow-delay='.2s' )
+				.col-6.col-sm-4.col-md-3
+					+product-categories({
+						img: 'icon-7-70x60',
+						title: 'Chairs'
+					}).wow.fadeInUp( data-wow-delay='.1s' )
+				.col-6.col-sm-4.col-md-3
+					+product-categories({
+						img: 'icon-8-70x60',
+						title: 'Decor'
+					}).wow.fadeInUp
+
+
+	// New Arrivals
+	section.section.section-sm.bg-default
+		.container
+			h4.oh: span.d-inline-block.wow.slideInUp New Arrivals
+			.row.row-40
+				.col-sm-6.col-md-4.col-lg-3
+					+product({
+						img: 'product-1-270x280',
+						title: 'CB2 chamber desk',
+						price: '520'
+						}).wow.fadeInLeft
+				.col-sm-6.col-md-4.col-lg-3
+					+product({
+						img: 'product-2-270x280',
+						title: 'ÖVERUD Lamp shade',
+						price: '94'
+						}).wow.fadeInLeft( data-wow-delay='.1s' )
+				.col-sm-6.col-md-4.col-lg-3
+					+product({
+						img: 'product-3-270x280',
+						title: 'Round dining table',
+						price: '200'
+						}).wow.fadeInLeft( data-wow-delay='.2s' )
+				.col-sm-6.col-md-4.col-lg-3
+					+product({
+						img: 'product-13-270x280',
+						title: 'Ikea Frode Chair',
+						price: '99'
+						}).wow.fadeInLeft( data-wow-delay='.3s' )
+				.col-sm-6.col-md-4.col-lg-3
+					+product({
+						img: 'product-4-270x280',
+						title: 'CB2 Coup Grey Office Chair',
+						price: '550'
+						}).wow.fadeInRight
+				.col-sm-6.col-md-4.col-lg-3
+					+product({
+						img: 'product-5-270x280',
+						title: 'Grasshoppa floor lamp',
+						price: '650'
+						}).wow.fadeInRight( data-wow-delay='.1s' )
+				.col-sm-6.col-md-4.col-lg-3
+					+product({
+						img: 'product-6-270x280',
+						title: 'Lucinda orange Chair',
+						price: '350'
+						}).wow.fadeInRight( data-wow-delay='.2s' )
+				.col-sm-6.col-md-4.col-lg-3
+					+product({
+						img: 'product-16-270x280',
+						title: 'Sanela cushion',
+						price: '100'
+						}).wow.fadeInRight( data-wow-delay='.3s' )
+
+			a.link-classic.wow.fadeInUp( href='shop.html' ) More products
+				span
+
+
+	// Section Subscribe
+	section.section.section-sm.bg-default.text-center
+		+parallax({
+			img: 'bg-forms-2',
+			innerClass: 'section-xl section-inset-custom-1 context-dark bg-overlay-2-21'
+		})
+			.container
+				h3.oh.font-weight-normal: span.d-inline-block.wow.slideInDown Sign Up for 25% Discount
+				p.text-width-medium.text-spacing-75.wow.fadeInLeft( data-wow-delay='.1s' ) Want to get an instant discount for your next order at our shop? Leave your email and sign up for our newsletter with 25% off all our services.
+				+inline-subscribe-form({ customUnique: '3', button: 'button-primary' })
+
+
+	// Trending products
+	section.section.section-sm.bg-default
+		.container
+			h4.oh: span.d-inline-block.wow.slideInUp Trending products
+			.row.row-40.justify-content-center
+				.col-sm-8.col-md-7.col-lg-6.wow.fadeInLeft( data-wow-delay='0s' )
+					.product-image-map.box-ordered-2
+						+jpg('image-map-2-570x715')
+						.product-image-marker-2-1( data-hover-group='group-2-1' ): span.box-ordered-item
+						.product-image-marker-2-2( data-hover-group='group-2-2' ): span.box-ordered-item
+						.product-image-marker-2-3( data-hover-group='group-2-3' ): span.box-ordered-item
+						.product-image-marker-2-4( data-hover-group='group-2-4' ): span.box-ordered-item
+				.col-md-5.col-lg-6: .row.row-30.justify-content-center.box-ordered-2
+					.col-sm-6.col-md-12.col-lg-6: .oh-desktop
+						+product-2({
+							unit: 'flex-row flex-lg-column',
+							img: 'product-18-270x280',
+							title: 'Ikea malm White Bed',
+							price: '1,299',
+							priceOld: '1,899'
+						}).box-ordered-item.wow.slideInLeft( data-hover-group='group-2-1', data-wow-delay='0s' )
+					.col-sm-6.col-md-12.col-lg-6: .oh-desktop
+						+product-2({
+							unit: 'flex-row flex-lg-column',
+							img: 'product-8-270x280',
+							title: 'SKOGSNÄVA pillow cover',
+							price: '125'
+						}).box-ordered-item.wow.slideInDown( data-hover-group='group-2-2', data-wow-delay='0s' )
+					.col-sm-6.col-md-12.col-lg-6: .oh-desktop
+						+product-2({
+							unit: 'flex-row flex-lg-column',
+							img: 'product-7-270x280',
+							title: 'Vejmon table',
+							price: '429'
+						}).box-ordered-item.wow.slideInUp( data-hover-group='group-2-3', data-wow-delay='0s' )
+					.col-sm-6.col-md-12.col-lg-6: .oh-desktop
+						+product-2({
+							unit: 'flex-row flex-lg-column',
+							img: 'product-9-270x280',
+							title: 'Ikea Tertial Work lamp',
+							price: '250'
+						}).box-ordered-item.wow.slideInRight( data-hover-group='group-2-4', data-wow-delay='0s' )
+
+
+	// Box Icons Classic
+	section.section.section-sm.bg-default
+		.container: .row.row-40
+			.col-sm-6.col-lg-4.wow.fadeInUp( data-wow-delay='.1s' )
+				+box-icon-classic({
+					mod: 'box-icon-classic-2',
+					align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+					icon: 'fl-bigmug-line-airplane86',
+					title: 'Worldwide delivery',
+					text: 'Our shop provides free worldwide delivery of all products you may need for your interior.'
+				})
+			.col-sm-6.col-lg-4.wow.fadeInUp
+				+box-icon-classic({
+					mod: 'box-icon-classic-2',
+					align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+					icon: 'fl-bigmug-line-giftbox54',
+					title: 'Nice Gifts for every client',
+					text: 'We regularly conduct special sales and have discounts for our clients with free gifts.'
+				})
+			.col-sm-6.col-lg-4.wow.fadeInUp( data-wow-delay='.1s' )
+				+box-icon-classic({
+					mod: 'box-icon-classic-2',
+					align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+					icon: 'fl-bigmug-line-hot67',
+					title: '-20% for the 1st purchase',
+					text: 'If you are our first client, you will instantly get 20% off your purchase at our store.'
+				})
+
+
+	// More ideas for you interior
+	section.section.section-sm.section-fluid.bg-default
+		.container-fluid.isotope-wrap
+			h4.oh: span.d-inline-block.wow.slideInUp More ideas for you interior
+			.isotope-filters.isotope-filters-horizontal
+				//- Isotope Filters
+				button.isotope-filters-toggle.button.button-md.button-icon.button-icon-right.button-default-outline.button-wapasha( data-custom-toggle='#isotope-7', data-custom-toggle-hide-on-blur='true', data-custom-toggle-disable-on-blur='true' )
+					span.icon.fa.fa-caret-down
+					| Filter
+				ul#isotope-7.isotope-filters-list.isotope-filters-list-2
+					li: a.active( href='#', data-isotope-filter='*' ) All
+					li: a( href='#', data-isotope-filter='Type 1' ) Bedroom
+					li: a( href='#', data-isotope-filter='Type 2' ) Living room
+					li: a( href='#', data-isotope-filter='Type 3' ) Children’s room
+			.row.row-30.isotope( data-lightgallery='group' )
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 1' )
+					+thumbnail-classic({
+						img: 'fullwidth-gallery-9-420x350',
+						imgOriginal: 'fullwidth-gallery-9-1200x800-original',
+						title: 'Sofas'
+					}).thumbnail-md
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 2' )
+					+thumbnail-classic({
+						img: 'fullwidth-gallery-10-420x350',
+						imgOriginal: 'fullwidth-gallery-10-1200x800-original',
+						title: 'Beds'
+					}).thumbnail-md
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 1' )
+					+thumbnail-classic({
+						img: 'fullwidth-gallery-11-420x350',
+						imgOriginal: 'fullwidth-gallery-11-1200x800-original',
+						title: 'Coffee Tables'
+					}).thumbnail-md
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 1' )
+					+thumbnail-classic({
+						img: 'fullwidth-gallery-12-420x350',
+						imgOriginal: 'grid-gallery-4-1200x800-original',
+						title: 'Kitchen Tables'
+					}).thumbnail-md
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 1' )
+					+thumbnail-classic({
+						img: 'fullwidth-gallery-5-420x350',
+						imgOriginal: 'fullwidth-gallery-5-1200x800-original',
+						title: 'Nightstands'
+					}).thumbnail-md
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 3' )
+					+thumbnail-classic({
+						img: 'fullwidth-gallery-13-420x350',
+						imgOriginal: 'fullwidth-gallery-13-1200x800-original',
+						title: 'Shelves'
+					}).thumbnail-md
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 3' )
+					+thumbnail-classic({
+						img: 'fullwidth-gallery-14-420x350',
+						imgOriginal: 'fullwidth-gallery-14-1200x800-original',
+						title: 'Couches'
+					}).thumbnail-md
+				.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 2' )
+					+thumbnail-classic({
+						img: 'fullwidth-gallery-15-420x350',
+						imgOriginal: 'grid-gallery-10-1200x800-original',
+						title: 'Bathroom Furniture'
+					}).thumbnail-md
+
+
+	// What people say
+	section.section.section-sm.bg-default
+		.container
+			h4.oh: span.d-inline-block.wow.slideInUp What people say
+			// Owl Carousel
+			.owl-carousel.owl-modern.owl-dots-secondary( data-items='1', data-stage-padding='15', data-margin='30', data-dots='true', data-animation-in='fadeIn', data-animation-out='fadeOut' )
+				+quote-lisa({
+					mod: 'quote-lisa-2',
+					img: 'user-16-100x100',
+					text: 'Following the delivery and set-up of my new dining room furniture today, I would like to thank your friendly team for their courteous manner and arriving within the time limit set when I was called earlier this morning. This is my 1st purchase with you, and it was a great experience. I wil definitely recommend you to my friends.',
+					author: 'Catherine Williams',
+					status: 'Local shop owner'
+				})
+				+quote-lisa({
+					mod: 'quote-lisa-2',
+					img: 'user-17-100x100',
+					text: 'Your team provided excellent service service today. Everything arrived on time and I was informed of your deliverers’ ETA. I was extra happy as I am wheelchair user and they went extra mile to make me happy by even putting my heavy mattress onto the bed afterwards which was in storage in my shed. Thank you!',
+					author: 'Rupert Wood',
+					status: 'House owner'
+				})
+				+quote-lisa({
+					mod: 'quote-lisa-2',
+					img: 'user-19-100x100',
+					text: 'Your guys have just delivered our 2 sofas, dining table and dining chairs, and I wanted to let you know how impressed I was with their level of professionalism. They were both polite and friendly, and very careful to ensure they didn’t bump into anything! They worked together quickly and efficiently.',
+					author: 'Sam Peterson',
+					status: 'Sales Manager'
+				})
+
+
+	// Counter Classic
+	section.section.section-sm.bg-default
+		+parallax({
+			img: 'bg-counter-2',
+			innerClass: 'section-xl context-dark bg-overlay-26'
+		})
+			.container
+				.row.row-50.justify-content-center.border-classic
+					.col-sm-6.col-md-5.col-lg-3
+						+counter-classic({
+							number: '12',
+							title: 'International awards'
+						})
+					.col-sm-6.col-md-5.col-lg-3
+						+counter-classic({
+							number: '194',
+							title: 'Custom projects'
+						})
+					.col-sm-6.col-md-5.col-lg-3
+						+counter-classic({
+							number: '5',
+							symbol: 'k',
+							title: 'Pieces of furniture sold'
+						})
+					.col-sm-6.col-md-5.col-lg-3
+						+counter-classic({
+							number: '25',
+							title: 'Team members'
+						})
+
+
+	// Latest news
+	section.section.section-sm.section-last.bg-default
+		.container
+			h4.oh: span.d-inline-block.wow.slideInUp Latest news
+			.row.row-md.row-30
+				.col-md-6: .oh-desktop
+					+post-ruth({
+						img: 'post-26-222x210',
+						time: { datetime: '2019-05-17', dateText: 'May 04, 2019' },
+						badge: { mod: 'badge-secondary-3 post-ruth-badge', text: 'Blog' },
+						title: 'Pros and cons of customly designed furniture'
+					}).post-ruth-1.wow.slideInDown
+				.col-md-6: .oh-desktop
+					+post-ruth({
+						img: 'post-27-222x210',
+						time: { datetime: '2019-05-17', dateText: 'May 04, 2019' },
+						badge: { mod: 'badge-primary post-ruth-badge', text: 'Furniture' },
+						title: 'Furniture & decor: 10 catchy combinations'
+					}).post-ruth-1.wow.slideInUp
+				.col-md-6: .oh-desktop
+					+post-ruth({
+						img: 'post-28-222x210',
+						time: { datetime: '2019-05-17', dateText: 'May 04, 2019' },
+						badge: { mod: 'badge-primary post-ruth-badge', text: 'Furniture' },
+						title: 'Selecting Furniture for your bathroom'
+					}).post-ruth-1.wow.slideInUp
+				.col-md-6: .oh-desktop
+					+post-ruth({
+						img: 'post-29-222x210',
+						time: { datetime: '2019-05-17', dateText: 'May 04, 2019' },
+						badge: { mod: 'badge-pink post-ruth-badge', text: 'Colors' },
+						title: 'Color trend: grey and terracotta'
+					}).post-ruth-1.wow.slideInDown
+
+
+	// Section clients
+	section.section.section-xs.section-fluid.bg-gray-2: .container-fluid
+		.owl-carousel.owl-classic.owl-nav-secondary.owl-dots-secondary( data-items='1', data-sm-items='2', data-md-items='3', data-lg-items='4', data-xl-items='5', data-xxl-items='6', data-margin='30', data-nav='true', data-dots='true' )
+			a.clients-creative( href='#' ): +png('clients-9-270x117')
+			a.clients-creative( href='#' ): +png('clients-7-270x117')
+			a.clients-creative.clients-creative-2( href='#' ): +png('clients-10-270x117')
+			a.clients-creative( href='#' ): +png('clients-8-270x117')
+			a.clients-creative.clients-creative-2( href='#' ): +png('clients-11-270x117')
+			a.clients-creative( href='#' ): +png('clients-3-270x117')
+			a.clients-creative( href='#' ): +png('clients-5-270x117')
+			a.clients-creative( href='#' ): +png('clients-6-270x117')
+
+
+	// Page Footer
+	include ../sections/_footer-creative

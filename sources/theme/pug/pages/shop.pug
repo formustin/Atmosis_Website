@@ -1,0 +1,182 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-product
+include ../components/_ui-pagination
+
+block variables
+	- var activeCategory = 'shop'
+	- var pageName = 'Shop'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-39',
+		bgImage: 'bg-shop'
+	})
+
+	// Shop
+	section.section.section-xl.bg-default
+		.container
+			.row.row-90.justify-content-center
+				.col-lg-8.col-xl-9
+					.product-top-panel.group-lg
+						.product-top-panel-title Showing 1–12 of 18 results
+						.product-top-panel-select
+							//Select 2
+							select.form-input.select-filter( data-minimum-results-for-search='Infinity', data-constraints='@Required' )
+								option( value='1' ) Sort by new
+								option( value='2' ) Sort by popular
+								option( value='3' ) Sort by rating
+
+					.row.row-lg.row-40
+						.col-sm-6.col-md-4
+							+product({
+								img: 'product-1-270x280',
+								title: 'CB2 chamber desk',
+								price: '520'
+							})
+						.col-sm-6.col-md-4
+							+product({
+								img: 'product-2-270x280',
+								title: 'ÖVERUD Lamp shade',
+								price: '94'
+							})
+						.col-sm-6.col-md-4
+							+product({
+								img: 'product-3-270x280',
+								title: 'Round dining table',
+								price: '200'
+							})
+						.col-sm-6.col-md-4
+							+product({
+								img: 'product-4-270x280',
+								title: 'CB2 Coup Grey Office Chair',
+								price: '550'
+							})
+						.col-sm-6.col-md-4
+							+product({
+								img: 'product-5-270x280',
+								title: 'Grasshoppa floor lamp',
+								price: '650'
+							})
+						.col-sm-6.col-md-4
+							+product({
+								img: 'product-6-270x280',
+								title: 'Lucinda orange Chair',
+								price: '350'
+							})
+						.col-sm-6.col-md-4
+							+product({
+								img: 'product-7-270x280',
+								title: 'Vejmon table',
+								price: '429'
+							})
+						.col-sm-6.col-md-4
+							+product({
+								img: 'product-8-270x280',
+								title: 'SKOGSNÄVA pillow cover',
+								price: '125'
+							})
+						.col-sm-6.col-md-4
+							+product({
+								img: 'product-9-270x280',
+								title: 'Ikea Tertial Work lamp',
+								price: '250'
+							})
+
+					.pagination-wrap
+						+pagination-bootstrap(null, 1, 4)
+
+				.col-sm-10.col-md-12.col-lg-4.col-xl-3
+					// RD Search Form
+					form.form-search.rd-search.form-product-search( action='search-results.html', method='GET' )
+						.form-wrap
+							label.form-label( for='search-form' ) Product Search..
+							input#search-form.form-input( type='text', name='s', autocomplete='off' )
+							button( type='submit' ).button-search.fl-bigmug-line-search74
+
+					.row.row-lg.row-50.product-sidebar
+						.col-md-6.col-lg-12
+							h5 Popular categories
+							ul.list.list-shop-filter
+								li
+									label.checkbox-inline
+										input( name='input-group-radio', value='checkbox-1', type='checkbox' )
+										| Chairs
+									span.list-shop-filter-number 2
+								li
+									label.checkbox-inline
+										input( name='input-group-radio', value='checkbox-2', type='checkbox' )
+										| Desks
+									span.list-shop-filter-number 1
+								li
+									label.checkbox-inline
+										input( name='input-group-radio', value='checkbox-3', type='checkbox' )
+										| Lighting
+									span.list-shop-filter-number 3
+								li
+									label.checkbox-inline
+										input( name='input-group-radio', value='checkbox-4', type='checkbox' )
+										| Decor
+									span.list-shop-filter-number 1
+
+						.col-md-6.col-lg-12
+							h5 Filter by price
+							// RD Range
+							.rd-range(
+								data-min='0',
+								data-max='999',
+								data-min-diff='100',
+								data-start='[66, 290]',
+								data-step='1',
+								data-tooltip='false',
+								data-input='.rd-range-input-value-1',
+								data-input-2='.rd-range-input-value-2'
+							)
+
+							.group-sm.group-justify
+								div
+									.button.button-md.button-primary.button-pipaluk Filter
+								div
+									.rd-range-wrap
+										.rd-range-title Price:
+										.rd-range-form-wrap
+											input#test.rd-range-input.rd-range-input-value-1( type='text', name='value-1' )
+											span $
+										.rd-range-divider
+										.rd-range-form-wrap
+											input.rd-range-input.rd-range-input-value-2( type='text', name='value-2' )
+											span $
+
+						.col-md-6.col-lg-12
+							h5 Popular products
+							.list-popular-product
+								.list-popular-product-item
+									+product-minimal({
+										img: 'product-mini-1-108x100',
+										title: 'Ikea frode chair',
+										price: '235'
+									})
+
+								.list-popular-product-item
+									+product-minimal({
+										img: 'product-mini-2-108x100',
+										title: 'Sanela cushion',
+										price: '290'
+									})
+
+								.list-popular-product-item
+									+product-minimal({
+										img: 'product-mini-3-108x100',
+										title: 'White lampshade',
+										price: '129'
+									})
+
+
+	// Page Footer
+	+footer-classic
