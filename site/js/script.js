@@ -15,67 +15,160 @@
 		windowReady = false,
 		isNoviBuilder = false,
 		loaderTimeoutId,
+
 		plugins = {
-			bootstrapTooltip: $("[data-toggle='tooltip']"),
-			bootstrapModalDialog: $('.modal'),
-			bootstrapTabs: $(".tabs-custom"),
-			rdNavbar: $(".rd-navbar"),
-			materialParallax: $(".parallax-container"),
-			rdGoogleMaps: $(".rd-google-map"),
-			rdMailForm: $(".rd-mailform"),
-			rdInputLabel: $(".form-label"),
-			regula: $("[data-constraints]"),
-			wow: $(".wow"),
-			owl: $(".owl-carousel"),
-			swiper: $(".swiper-slider"),
-			search: $(".rd-search"),
-			searchResults: $('.rd-search-results'),
-			statefulButton: $('.btn-stateful'),
-			isotope: $(".isotope"),
-			popover: $('[data-toggle="popover"]'),
-			viewAnimate: $('.view-animate'),
-			radio: $("input[type='radio']"),
-			checkbox: $("input[type='checkbox']"),
-			customToggle: $("[data-custom-toggle]"),
-			counter: $(".counter"),
-			progressLinear: $(".progress-linear"),
-			circleProgress: $(".progress-bar-circle"),
-			dateCountdown: $('.DateCountdown'),
-			preloader: $(".preloader"),
-			captcha: $('.recaptcha'),
-			scroller: $(".scroll-wrap"),
-			lightGallery: $("[data-lightgallery='group']"),
-			lightGalleryItem: $("[data-lightgallery='item']"),
+			bootstrapTooltip:        $("[data-toggle='tooltip']"),
+			bootstrapModalDialog:    $('.modal'),
+			bootstrapTabs:           $(".tabs-custom"),
+			rdNavbar:                $(".rd-navbar"),
+			materialParallax:        $(".parallax-container"),
+			rdMailForm:              $(".rd-mailform"),
+			rdInputLabel:            $(".form-label"),
+			regula:                  $("[data-constraints]"),
+			selectFilter:            $("select"),
+			stepper:                 $("input[type='number']"),
+			wow:                     $(".wow"),
+			maps:                    $( '.google-map-container' ),
+			owl:                     $(".owl-carousel"),
+			swiper:                  $(".swiper-slider"),
+			slick:                   $('.slick-slider'),
+			search:                  $(".rd-search"),
+			searchResults:           $('.rd-search-results'),
+			statefulButton:          $('.btn-stateful'),
+			isotope:                 $(".isotope-wrap"),
+			popover:                 $('[data-toggle="popover"]'),
+			viewAnimate:             $('.view-animate'),
+			radio:                   $("input[type='radio']"),
+			checkbox:                $("input[type='checkbox']"),
+			customToggle:            $("[data-custom-toggle]"),
+			counter:                 $(".counter"),
+			progressLinear:          $(".progress-linear"),
+			circleProgress:          $(".progress-bar-circle"),
+			dateCountdown:           $('.DateCountdown'),
+			preloader:               $(".preloader"),
+			captcha:                 $('.recaptcha'),
+			scroller:                $(".scroll-wrap"),
+			lightGallery:            $("[data-lightgallery='group']"),
+			lightGalleryItem:        $("[data-lightgallery='item']"),
 			lightDynamicGalleryItem: $("[data-lightgallery='dynamic']"),
-			mailchimp: $('.mailchimp-mailform'),
-			campaignMonitor: $('.campaign-mailform'),
-			copyrightYear: $(".copyright-year"),
-			layoutToggle: $(".layout-toggle"),
-			jscolor: $(".jscolor"),
-			themeSwitcher: $("[data-color-picker], [data-theme-name]"),
-			themeCheckbox: $("[data-theme-checkbox]"),
-      parallaxJs: $(".parallax-scene-js")
+			mailchimp:               $('.mailchimp-mailform'),
+			campaignMonitor:         $('.campaign-mailform'),
+			copyrightYear:           $(".copyright-year"),
+			layoutToggle:            $(".layout-toggle"),
+			rdRange:                 $('.rd-range'),
+			radioPanel:              $('.radio-panel .radio-inline'),
+			multitoggle:             document.querySelectorAll( '[data-multitoggle]' ),
+			hoverEls:                document.querySelectorAll( '[data-hover-group]' ),
+			vide:                    $('.bg-vide'),
+			videoTriggers:           $('[data-video-trigger][data-target]'),
+			beforeAfter:             $(".twentytwenty-container"),
 		};
 
-	// Initialize scripts that require a loaded page
+	/**
+	 * @desc Check the element was been scrolled into the view
+	 * @param {object} elem - jQuery object
+	 * @return {boolean}
+	 */
+	function isScrolledIntoView ( elem ) {
+		if ( isNoviBuilder ) return true;
+		return elem.offset().top + elem.outerHeight() >= $window.scrollTop() && elem.offset().top <= $window.scrollTop() + $window.height();
+	}
+
+	/**
+	 * @desc Calls a function when element has been scrolled into the view
+	 * @param {object} element - jQuery object
+	 * @param {function} func - init function
+	 */
+	function lazyInit( element, func ) {
+		var scrollHandler = function () {
+			if ( ( !element.hasClass( 'lazy-loaded' ) && ( isScrolledIntoView( element ) ) ) ) {
+				func.call();
+				element.addClass( 'lazy-loaded' );
+			}
+		};
+
+		scrollHandler();
+		$window.on( 'scroll', scrollHandler );
+	}
+
+	// Initialize scripts that require a loaded window
 	$window.on('load', function () {
+
 		// Page loader & Page transition
 		if (plugins.preloader.length && !isNoviBuilder) {
 			pageTransition({
-				page: $('.page'),
-				animDelay: 500,
-				animDuration: 500,
-				animIn: 'fadeIn',
-				animOut: 'fadeOut',
+				target: document.querySelector('.page'),
+				delay: 0,
+				duration: 500,
+				classIn: 'fadeIn',
+				classOut: 'fadeOut',
+				classActive: 'animated',
 				conditions: function (event, link) {
-					return !/(\#|callto:|tel:|mailto:|:\/\/)/.test(link) && !event.currentTarget.hasAttribute('data-light-gallery');
+					return link && !/(\#|javascript:void\(0\)|callto:|tel:|mailto:|:\/\/)/.test(link) && !event.currentTarget.hasAttribute('data-lightgallery');
+				},
+				onTransitionStart: function (options) {
+					setTimeout(function () {
+						plugins.preloader.removeClass('loaded');
+					}, options.duration * .75);
 				},
 				onReady: function () {
-					clearTimeout(loaderTimeoutId);
 					plugins.preloader.addClass('loaded');
 					windowReady = true;
 				}
 			});
+		}
+
+		// Isotope
+		if ( plugins.isotope.length ) {
+			for ( var i = 0; i < plugins.isotope.length; i++ ) {
+				var
+					wrap = plugins.isotope[ i ],
+					filterHandler = function ( event ) {
+						event.preventDefault();
+						for ( var n = 0; n < this.isoGroup.filters.length; n++ ) this.isoGroup.filters[ n ].classList.remove( 'active' );
+						this.classList.add( 'active' );
+						this.isoGroup.isotope.arrange( { filter: this.getAttribute( "data-isotope-filter" ) !== '*' ? '[data-filter*="' + this.getAttribute( "data-isotope-filter" ) + '"]' : '*' } );
+					},
+					resizeHandler = function () {
+						this.isoGroup.isotope.layout();
+					};
+
+				wrap.isoGroup = {};
+				wrap.isoGroup.filters = wrap.querySelectorAll( '[data-isotope-filter]' );
+				wrap.isoGroup.node = wrap.querySelector( '.isotope' );
+				wrap.isoGroup.layout = wrap.isoGroup.node.getAttribute( 'data-isotope-layout' ) ? wrap.isoGroup.node.getAttribute( 'data-isotope-layout' ) : 'masonry';
+				wrap.isoGroup.isotope = new Isotope( wrap.isoGroup.node, {
+					itemSelector: '.isotope-item',
+					layoutMode: wrap.isoGroup.layout,
+					filter: '*',
+					columnWidth: ( function() {
+						if ( wrap.isoGroup.node.hasAttribute('data-column-class') ) return wrap.isoGroup.node.getAttribute('data-column-class');
+						if ( wrap.isoGroup.node.hasAttribute('data-column-width') ) return parseFloat( wrap.isoGroup.node.getAttribute('data-column-width') );
+					}() )
+				} );
+
+				for ( var n = 0; n < wrap.isoGroup.filters.length; n++ ) {
+					var filter = wrap.isoGroup.filters[ n ];
+					filter.isoGroup = wrap.isoGroup;
+					filter.addEventListener( 'click', filterHandler );
+				}
+
+				window.addEventListener( 'resize', resizeHandler.bind( wrap ) );
+			}
+		}
+
+		// Material Parallax
+		if ( plugins.materialParallax.length ) {
+			if ( !isNoviBuilder && !isIE && !isMobile) {
+				plugins.materialParallax.parallax();
+			} else {
+				for ( var i = 0; i < plugins.materialParallax.length; i++ ) {
+					var $parallax = $(plugins.materialParallax[i]);
+
+					$parallax.addClass( 'parallax-disabled' );
+					$parallax.css({ "background-image": 'url('+ $parallax.data("parallax-img") +')' });
+				}
+			}
 		}
 	});
 
@@ -187,115 +280,82 @@
 
 		/**
 		 * @desc Initialize owl carousel plugin
-		 * @param {object} c - carousel jQuery object
+		 * @param {object} carousel - carousel jQuery object
 		 */
-		function initOwlCarousel(c) {
-			var aliaces = ["-", "-sm-", "-md-", "-lg-", "-xl-", "-xxl-"],
-				values = [0, 576, 768, 992, 1200, 1600],
-				responsive = {};
+		function initOwlCarousel ( carousel ) {
+			var
+				aliaces = [ '-', '-sm-', '-md-', '-lg-', '-xl-', '-xxl-' ],
+				values = [ 0, 576, 768, 992, 1200, 1600 ],
+				responsive = {},
+				resizeCb = function () {
+					initLightGalleryItem( carousel.find( '[data-lightgallery="item"]' ), 'lightGallery-in-carousel' );
+				};
 
-			for (var j = 0; j < values.length; j++) {
-				responsive[values[j]] = {};
-				for (var k = j; k >= -1; k--) {
-					if (!responsive[values[j]]["items"] && c.attr("data" + aliaces[k] + "items")) {
-						responsive[values[j]]["items"] = k < 0 ? 1 : parseInt(c.attr("data" + aliaces[k] + "items"), 10);
+			for ( var j = 0; j < values.length; j++ ) {
+				responsive[ values[ j ] ] = {};
+				for ( var k = j; k >= -1; k-- ) {
+					if ( !responsive[ values[ j ] ][ 'items' ] && carousel.attr( 'data' + aliaces[ k ] + 'items' ) ) {
+						responsive[ values[ j ] ][ 'items' ] = k < 0 ? 1 : parseInt( carousel.attr( 'data' + aliaces[ k ] + 'items' ), 10 );
 					}
-					if (!responsive[values[j]]["stagePadding"] && responsive[values[j]]["stagePadding"] !== 0 && c.attr("data" + aliaces[k] + "stage-padding")) {
-						responsive[values[j]]["stagePadding"] = k < 0 ? 0 : parseInt(c.attr("data" + aliaces[k] + "stage-padding"), 10);
+					if ( !responsive[ values[ j ] ][ 'stagePadding' ] && responsive[ values[ j ] ][ 'stagePadding' ] !== 0 && carousel.attr( 'data' + aliaces[ k ] + 'stage-padding' ) ) {
+						responsive[ values[ j ] ][ 'stagePadding' ] = k < 0 ? 0 : parseInt( carousel.attr( 'data' + aliaces[ k ] + 'stage-padding' ), 10 );
 					}
-					if (!responsive[values[j]]["margin"] && responsive[values[j]]["margin"] !== 0 && c.attr("data" + aliaces[k] + "margin")) {
-						responsive[values[j]]["margin"] = k < 0 ? 30 : parseInt(c.attr("data" + aliaces[k] + "margin"), 10);
+					if ( !responsive[ values[ j ] ][ 'margin' ] && responsive[ values[ j ] ][ 'margin' ] !== 0 && carousel.attr( 'data' + aliaces[ k ] + 'margin' ) ) {
+						responsive[ values[ j ] ][ 'margin' ] = k < 0 ? 30 : parseInt( carousel.attr( 'data' + aliaces[ k ] + 'margin' ), 10 );
 					}
 				}
 			}
 
 			// Enable custom pagination
-			if (c.attr('data-dots-custom')) {
-				c.on("initialized.owl.carousel", function (event) {
-					var carousel = $(event.currentTarget),
-						customPag = $(carousel.attr("data-dots-custom")),
+			if ( carousel.attr( 'data-dots-custom' ) ) {
+				carousel.on( 'initialized.owl.carousel', function ( event ) {
+					var
+						carousel = $( event.currentTarget ),
+						customPag = $( carousel.attr( 'data-dots-custom' ) ),
 						active = 0;
 
-					if (carousel.attr('data-active')) {
-						active = parseInt(carousel.attr('data-active'), 10);
+					if ( carousel.attr( 'data-active' ) ) {
+						active = parseInt( carousel.attr( 'data-active' ), 10 );
 					}
 
-					carousel.trigger('to.owl.carousel', [active, 300, true]);
-					customPag.find("[data-owl-item='" + active + "']").addClass("active");
+					carousel.trigger( 'to.owl.carousel', [ active, 300, true ] );
+					customPag.find( '[data-owl-item="' + active + '"]' ).addClass( 'active' );
 
-					customPag.find("[data-owl-item]").on('click', function (e) {
-						e.preventDefault();
-						carousel.trigger('to.owl.carousel', [parseInt(this.getAttribute("data-owl-item"), 10), 300, true]);
-					});
+					customPag.find( '[data-owl-item]' ).on( 'click', function ( event ) {
+						event.preventDefault();
+						carousel.trigger( 'to.owl.carousel', [ parseInt( this.getAttribute( 'data-owl-item' ), 10 ), 300, true ] );
+					} );
 
-					carousel.on("translate.owl.carousel", function (event) {
-						customPag.find(".active").removeClass("active");
-						customPag.find("[data-owl-item='" + event.item.index + "']").addClass("active")
-					});
-				});
+					carousel.on( 'translate.owl.carousel', function ( event ) {
+						customPag.find( '.active' ).removeClass( 'active' );
+						customPag.find( '[data-owl-item="' + event.item.index + '"]' ).addClass( 'active' )
+					} );
+				} );
 			}
 
-			c.on("initialized.owl.carousel", function () {
-				initLightGalleryItem(c.find('[data-lightgallery="item"]'), 'lightGallery-in-carousel');
-			});
+			// Initialize lightgallery items in cloned owl items
+			carousel.on( 'initialized.owl.carousel', resizeCb );
+			carousel.on( 'resize.owl.carousel', resizeCb );
 
-			c.owlCarousel({
-				autoplay: isNoviBuilder ? false : c.attr("data-autoplay") === "true",
-				loop: isNoviBuilder ? false : c.attr("data-loop") !== "false",
-				items: 1,
-				center: c.attr("data-center") === "true",
-				dotsContainer: c.attr("data-pagination-class") || false,
-				navContainer: c.attr("data-navigation-class") || false,
-				mouseDrag: isNoviBuilder ? false : c.attr("data-mouse-drag") !== "false",
-				nav: c.attr("data-nav") === "true",
-				dots: c.attr("data-dots") === "true",
-				dotsEach: c.attr("data-dots-each") ? parseInt(c.attr("data-dots-each"), 10) : false,
-				animateIn: c.attr('data-animation-in') ? c.attr('data-animation-in') : false,
-				animateOut: c.attr('data-animation-out') ? c.attr('data-animation-out') : false,
-				responsive: responsive,
-				navText: function () {
-					try {
-						return JSON.parse(c.attr("data-nav-text"));
-					} catch (e) {
-						return [];
-					}
-				}(),
-				navClass: function () {
-					try {
-						return JSON.parse(c.attr("data-nav-class"));
-					} catch (e) {
-						return ['owl-prev', 'owl-next'];
-					}
-				}()
-			});
-		}
-
-		/**
-		 * @desc Check the element whas been scrolled into the view
-		 * @param {object} elem - jQuery object
-		 * @return {boolean}
-		 */
-		function isScrolledIntoView(elem) {
-			if (!isNoviBuilder) {
-				return elem.offset().top + elem.outerHeight() >= $window.scrollTop() && elem.offset().top <= $window.scrollTop() + $window.height();
-			}
-			else {
-				return true;
-			}
-		}
-
-		/**
-		 * @desc Calls a function when element has been scrolled into the view
-		 * @param {object} element - jQuery object
-		 * @param {function} func - callback function
-		 */
-		function lazyInit(element, func) {
-			$document.on('scroll', function () {
-				if ((!element.hasClass('lazy-loaded') && (isScrolledIntoView(element)))) {
-					func.call();
-					element.addClass('lazy-loaded');
-				}
-			}).trigger("scroll");
+			carousel.owlCarousel( {
+				autoplay:           isNoviBuilder ? false : carousel.attr( 'data-autoplay' ) !== 'false',
+				autoplayTimeout:    carousel.attr( "data-autoplay" ) ? Number( carousel.attr( "data-autoplay" ) ) : 3000,
+				autoplayHoverPause: true,
+				loop:               isNoviBuilder ? false : carousel.attr( 'data-loop' ) !== 'false',
+				items:              1,
+				center:             carousel.attr( 'data-center' ) === 'true',
+				dotsContainer:      carousel.attr( 'data-pagination-class' ) || false,
+				navContainer:       carousel.attr( 'data-navigation-class' ) || false,
+				mouseDrag:          isNoviBuilder ? false : carousel.attr( 'data-mouse-drag' ) !== 'false',
+				nav:                carousel.attr( 'data-nav' ) === 'true',
+				dots:               carousel.attr( 'data-dots' ) === 'true',
+				dotsEach:           carousel.attr( 'data-dots-each' ) ? parseInt( carousel.attr( 'data-dots-each' ), 10 ) : false,
+				animateIn:          carousel.attr( 'data-animation-in' ) ? carousel.attr( 'data-animation-in' ) : false,
+				animateOut:         carousel.attr( 'data-animation-out' ) ? carousel.attr( 'data-animation-out' ) : false,
+				responsive:         responsive,
+				navText:            carousel.attr( 'data-nav-text' ) ? $.parseJSON( carousel.attr( 'data-nav-text' ) ) : [],
+				navClass:           carousel.attr( 'data-nav-class' ) ? $.parseJSON( carousel.attr( 'data-nav-class' ) ) : [ 'owl-prev', 'owl-next' ]
+			} );
 		}
 
 		/**
@@ -570,6 +630,154 @@
 			}
 		}
 
+		/**
+		 * @desc Google map function for getting latitude and longitude
+		 */
+		function getLatLngObject(str, marker, map, callback) {
+			var coordinates = {};
+			try {
+				coordinates = JSON.parse(str);
+				callback(new google.maps.LatLng(
+					coordinates.lat,
+					coordinates.lng
+				), marker, map)
+			} catch (e) {
+				map.geocoder.geocode({'address': str}, function (results, status) {
+					if (status === google.maps.GeocoderStatus.OK) {
+						var latitude = results[0].geometry.location.lat();
+						var longitude = results[0].geometry.location.lng();
+
+						callback(new google.maps.LatLng(
+							parseFloat(latitude),
+							parseFloat(longitude)
+						), marker, map)
+					}
+				})
+			}
+		}
+
+		/**
+		 * @desc Initialize Google maps
+		 */
+		function initMaps() {
+			var key;
+
+			for ( var i = 0; i < plugins.maps.length; i++ ) {
+				if ( plugins.maps[i].hasAttribute( "data-key" ) ) {
+					key = plugins.maps[i].getAttribute( "data-key" );
+					break;
+				}
+			}
+
+			$.getScript('//maps.google.com/maps/api/js?'+ ( key ? 'key='+ key + '&' : '' ) +'sensor=false&libraries=geometry,places&v=quarterly', function () {
+				var head = document.getElementsByTagName('head')[0],
+					insertBefore = head.insertBefore;
+
+				head.insertBefore = function (newElement, referenceElement) {
+					if (newElement.href && newElement.href.indexOf('//fonts.googleapis.com/css?family=Roboto') !== -1 || newElement.innerHTML.indexOf('gm-style') !== -1) {
+						return;
+					}
+					insertBefore.call(head, newElement, referenceElement);
+				};
+				var geocoder = new google.maps.Geocoder;
+				for (var i = 0; i < plugins.maps.length; i++) {
+					var zoom = parseInt(plugins.maps[i].getAttribute("data-zoom"), 10) || 11;
+					var styles = plugins.maps[i].hasAttribute('data-styles') ? JSON.parse(plugins.maps[i].getAttribute("data-styles")) : [];
+					var center = plugins.maps[i].getAttribute("data-center") || "New York";
+
+					// Initialize map
+					var map = new google.maps.Map(plugins.maps[i].querySelectorAll(".google-map")[0], {
+						zoom: zoom,
+						styles: styles,
+						scrollwheel: false,
+						center: {lat: 0, lng: 0}
+					});
+
+					// Add map object to map node
+					plugins.maps[i].map = map;
+					plugins.maps[i].geocoder = geocoder;
+					plugins.maps[i].keySupported = true;
+					plugins.maps[i].google = google;
+
+					// Get Center coordinates from attribute
+					getLatLngObject(center, null, plugins.maps[i], function (location, markerElement, mapElement) {
+						mapElement.map.setCenter(location);
+					});
+
+					// Add markers from google-map-markers array
+					var markerItems = plugins.maps[i].querySelectorAll(".google-map-markers li");
+
+					if (markerItems.length){
+						var markers = [];
+						for (var j = 0; j < markerItems.length; j++){
+							var markerElement = markerItems[j];
+							getLatLngObject(markerElement.getAttribute("data-location"), markerElement, plugins.maps[i], function(location, markerElement, mapElement){
+								var icon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon");
+								var activeIcon = markerElement.getAttribute("data-icon-active") || mapElement.getAttribute("data-icon-active");
+								var info = markerElement.getAttribute("data-description") || "";
+								var infoWindow = new google.maps.InfoWindow({
+									content: info
+								});
+								markerElement.infoWindow = infoWindow;
+								var markerData = {
+									position: location,
+									map: mapElement.map
+								}
+								if (icon){
+									markerData.icon = icon;
+								}
+								var marker = new google.maps.Marker(markerData);
+								markerElement.gmarker = marker;
+								markers.push({markerElement: markerElement, infoWindow: infoWindow});
+								marker.isActive = false;
+								// Handle infoWindow close click
+								google.maps.event.addListener(infoWindow,'closeclick',(function(markerElement, mapElement){
+									var markerIcon = null;
+									markerElement.gmarker.isActive = false;
+									markerIcon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon");
+									markerElement.gmarker.setIcon(markerIcon);
+								}).bind(this, markerElement, mapElement));
+
+
+								// Set marker active on Click and open infoWindow
+								google.maps.event.addListener(marker, 'click', (function(markerElement, mapElement) {
+									if (markerElement.infoWindow.getContent().length === 0) return;
+									var gMarker, currentMarker = markerElement.gmarker, currentInfoWindow;
+									for (var k =0; k < markers.length; k++){
+										var markerIcon;
+										if (markers[k].markerElement === markerElement){
+											currentInfoWindow = markers[k].infoWindow;
+										}
+										gMarker = markers[k].markerElement.gmarker;
+										if (gMarker.isActive && markers[k].markerElement !== markerElement){
+											gMarker.isActive = false;
+											markerIcon = markers[k].markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon")
+											gMarker.setIcon(markerIcon);
+											markers[k].infoWindow.close();
+										}
+									}
+
+									currentMarker.isActive = !currentMarker.isActive;
+									if (currentMarker.isActive) {
+										if (markerIcon = markerElement.getAttribute("data-icon-active") || mapElement.getAttribute("data-icon-active")){
+											currentMarker.setIcon(markerIcon);
+										}
+
+										currentInfoWindow.open(map, marker);
+									}else{
+										if (markerIcon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon")){
+											currentMarker.setIcon(markerIcon);
+										}
+										currentInfoWindow.close();
+									}
+								}).bind(this, markerElement, mapElement))
+							})
+						}
+					}
+				}
+			});
+		}
+
 		// Google ReCaptcha
 		if (plugins.captcha.length) {
 			$.getScript("//www.google.com/recaptcha/api.js?onload=onloadCaptchaCallback&render=explicit&hl=en");
@@ -684,91 +892,9 @@
 			plugins.copyrightYear.text(initialDate.getFullYear());
 		}
 
-		// Page loader
-		if (plugins.preloader.length) {
-			loaderTimeoutId = setTimeout(function () {
-				if (!windowReady && !isNoviBuilder) plugins.preloader.removeClass('loaded');
-			}, 2000);
-		}
-
-		// RD Google Maps
-		if (plugins.rdGoogleMaps.length) {
-			$.getScript("//maps.google.com/maps/api/js?key=AIzaSyAwH60q5rWrS8bXwpkZwZwhw9Bw0pqKTZM&sensor=false&libraries=geometry,places&v=3.7", function () {
-				var head = document.getElementsByTagName('head')[0],
-					insertBefore = head.insertBefore;
-
-				head.insertBefore = function (newElement, referenceElement) {
-					if (newElement.href && newElement.href.indexOf('//fonts.googleapis.com/css?family=Roboto') !== -1 || newElement.innerHTML.indexOf('gm-style') !== -1) {
-						return;
-					}
-					insertBefore.call(head, newElement, referenceElement);
-				};
-
-				for (var i = 0; i < plugins.rdGoogleMaps.length; i++) {
-					var $googleMapItem = $(plugins.rdGoogleMaps[i]);
-
-					lazyInit($googleMapItem, $.proxy(function () {
-						var $this = $(this),
-							styles = $this.attr("data-styles");
-
-						$this.googleMap({
-							marker: {
-								basic: $this.data('marker'),
-								active: $this.data('marker-active')
-							},
-							styles: styles ? JSON.parse(styles) : [],
-							onInit: function (map) {
-								var inputAddress = $('#rd-google-map-address');
-
-
-								if (inputAddress.length) {
-									var input = inputAddress;
-									var geocoder = new google.maps.Geocoder();
-									var marker = new google.maps.Marker(
-										{
-											map: map,
-											icon: $this.data('marker-url')
-										}
-									);
-
-									var autocomplete = new google.maps.places.Autocomplete(inputAddress[0]);
-									autocomplete.bindTo('bounds', map);
-									inputAddress.attr('placeholder', '');
-									inputAddress.on('change', function () {
-										$("#rd-google-map-address-submit").trigger('click');
-									});
-									inputAddress.on('keydown', function (e) {
-										if (e.keyCode === 13) {
-											$("#rd-google-map-address-submit").trigger('click');
-										}
-									});
-
-
-									$("#rd-google-map-address-submit").on('click', function (e) {
-										e.preventDefault();
-										var address = input.val();
-										geocoder.geocode({'address': address}, function (results, status) {
-											if (status === google.maps.GeocoderStatus.OK) {
-												var latitude = results[0].geometry.location.lat();
-												var longitude = results[0].geometry.location.lng();
-
-												map.setCenter(new google.maps.LatLng(
-													parseFloat(latitude),
-													parseFloat(longitude)
-												));
-												marker.setPosition(new google.maps.LatLng(
-													parseFloat(latitude),
-													parseFloat(longitude)
-												))
-											}
-										});
-									});
-								}
-							}
-						});
-					}, $googleMapItem));
-				}
-			});
+		// Google maps
+		if( plugins.maps.length ) {
+			lazyInit( plugins.maps, initMaps );
 		}
 
 		// Add custom styling options for input[type="radio"]
@@ -794,47 +920,28 @@
 		}
 
 		// RD Navbar
-		if (plugins.rdNavbar.length) {
-			var aliaces, i, j, len, value, values, responsiveNavbar;
+		if ( plugins.rdNavbar.length ) {
+			var
+				navbar = plugins.rdNavbar,
+				aliases = { '-': 0, '-sm-': 576, '-md-': 768, '-lg-': 992, '-xl-': 1200, '-xxl-': 1600 },
+				responsive = {};
 
-			aliaces = ["-", "-sm-", "-md-", "-lg-", "-xl-", "-xxl-"];
-			values = [0, 576, 768, 992, 1200, 1600];
-			responsiveNavbar = {};
-
-			for (i = j = 0, len = values.length; j < len; i = ++j) {
-				value = values[i];
-				if (!responsiveNavbar[values[i]]) {
-					responsiveNavbar[values[i]] = {};
-				}
-				if (plugins.rdNavbar.attr('data' + aliaces[i] + 'layout')) {
-					responsiveNavbar[values[i]].layout = plugins.rdNavbar.attr('data' + aliaces[i] + 'layout');
-				}
-				if (plugins.rdNavbar.attr('data' + aliaces[i] + 'device-layout')) {
-					responsiveNavbar[values[i]]['deviceLayout'] = plugins.rdNavbar.attr('data' + aliaces[i] + 'device-layout');
-				}
-				if (plugins.rdNavbar.attr('data' + aliaces[i] + 'hover-on')) {
-					responsiveNavbar[values[i]]['focusOnHover'] = plugins.rdNavbar.attr('data' + aliaces[i] + 'hover-on') === 'true';
-				}
-				if (plugins.rdNavbar.attr('data' + aliaces[i] + 'auto-height')) {
-					responsiveNavbar[values[i]]['autoHeight'] = plugins.rdNavbar.attr('data' + aliaces[i] + 'auto-height') === 'true';
-				}
-
-				if (isNoviBuilder) {
-					responsiveNavbar[values[i]]['stickUp'] = false;
-				} else if (plugins.rdNavbar.attr('data' + aliaces[i] + 'stick-up')) {
-					responsiveNavbar[values[i]]['stickUp'] = plugins.rdNavbar.attr('data' + aliaces[i] + 'stick-up') === 'true';
-				}
-
-				if (plugins.rdNavbar.attr('data' + aliaces[i] + 'stick-up-offset')) {
-					responsiveNavbar[values[i]]['stickUpOffset'] = plugins.rdNavbar.attr('data' + aliaces[i] + 'stick-up-offset');
-				}
+			for ( var alias in aliases ) {
+				var link = responsive[ aliases[ alias ] ] = {};
+				if ( navbar.attr( 'data'+ alias +'layout' ) )          link.layout        = navbar.attr( 'data'+ alias +'layout' );
+				if ( navbar.attr( 'data'+ alias +'device-layout' ) )   link.deviceLayout  = navbar.attr( 'data'+ alias +'device-layout' );
+				if ( navbar.attr( 'data'+ alias +'hover-on' ) )        link.focusOnHover  = navbar.attr( 'data'+ alias +'hover-on' ) === 'true';
+				if ( navbar.attr( 'data'+ alias +'auto-height' ) )     link.autoHeight    = navbar.attr( 'data'+ alias +'auto-height' ) === 'true';
+				if ( navbar.attr( 'data'+ alias +'stick-up-offset' ) ) link.stickUpOffset = navbar.attr( 'data'+ alias +'stick-up-offset' );
+				if ( navbar.attr( 'data'+ alias +'stick-up' ) )        link.stickUp       = navbar.attr( 'data'+ alias +'stick-up' ) === 'true';
+				if ( isNoviBuilder ) link.stickUp = false;
+				else if ( navbar.attr( 'data'+ alias +'stick-up' ) )   link.stickUp       = navbar.attr( 'data'+ alias +'stick-up' ) === 'true';
 			}
-
 
 			plugins.rdNavbar.RDNavbar({
 				anchorNav: !isNoviBuilder,
 				stickUpClone: (plugins.rdNavbar.attr("data-stick-up-clone") && !isNoviBuilder) ? plugins.rdNavbar.attr("data-stick-up-clone") === 'true' : false,
-				responsive: responsiveNavbar,
+				responsive: responsive,
 				callbacks: {
 					onStuck: function () {
 						var navbarSearch = this.$element.find('.rd-search input');
@@ -860,17 +967,12 @@
 					}
 				}
 			});
-
-
-			if (plugins.rdNavbar.attr("data-body-class")) {
-				document.body.className += ' ' + plugins.rdNavbar.attr("data-body-class");
-			}
 		}
 
 		// RD Search
 		if (plugins.search.length || plugins.searchResults) {
 			var handler = "bat/rd-search.php";
-			var defaultTemplate = '<h5 class="search-title"><a target="_top" href="#{href}" class="search-link">#{title}</a></h5>' +
+			var defaultTemplate = '<h6 class="search-title"><a target="_top" href="#{href}" class="search-link">#{title}</a></h6>' +
 				'<p>...#{token}...</p>' +
 				'<p class="match"><em>Terms matched: #{count} - URL: #{href}</em></p>';
 			var defaultFilter = '*.html';
@@ -997,7 +1099,7 @@
 
 				s.swiper({
 					autoplay: s.attr('data-autoplay') ? s.attr('data-autoplay') === "false" ? undefined : s.attr('data-autoplay') : 5000,
-					direction: s.attr('data-direction') ? s.attr('data-direction') : "horizontal",
+					direction: s.attr('data-direction') && isDesktop ? s.attr('data-direction') : "horizontal",
 					effect: s.attr('data-slide-effect') ? s.attr('data-slide-effect') : "slide",
 					speed: s.attr('data-slide-speed') ? s.attr('data-slide-speed') : 600,
 					keyboardControl: s.attr('data-keyboard') === "true",
@@ -1007,9 +1109,15 @@
 					prevButton: prev.length ? prev.get(0) : null,
 					pagination: pag.length ? pag.get(0) : null,
 					paginationClickable: pag.length ? pag.attr("data-clickable") !== "false" : false,
-					paginationBulletRender: pag.length ? pag.attr("data-index-bullet") === "true" ? function (swiper, index, className) {
-						return '<span class="' + className + '">' + (index + 1) + '</span>';
-					} : null : null,
+					paginationBulletRender: function( swiper, index, className ) {
+						if ( pag.attr("data-index-bullet") === "true" ) {
+							return '<span class="' + className + '">' + (index + 1) + '</span>';
+						} else if ( pag.attr("data-bullet-custom") === "true" ) {
+							return '<span class="' + className + '"><span></span></span>';
+						} else {
+							return '<span class="' + className + '"></span>';
+						}
+					},
 					scrollbar: bar.length ? bar.get(0) : null,
 					scrollbarDraggable: bar.length ? bar.attr("data-draggable") !== "false" : true,
 					scrollbarHide: bar.length ? bar.attr("data-draggable") === "false" : false,
@@ -1021,11 +1129,33 @@
 					onTransitionEnd: function (swiper) {
 						toggleSwiperCaptionAnimation(swiper);
 					},
-					onInit: function (swiper) {
+					onInit: (function(s) { return function (swiper) {
 						toggleSwiperInnerVideos(swiper);
 						toggleSwiperCaptionAnimation(swiper);
-						initLightGalleryItem(s.find('[data-lightgallery="item"]'), 'lightGallery-in-carousel');
-					}
+
+						var $swiper = $(s);
+
+						var swiperCustomIndex = $swiper.find('.swiper-pagination__fraction-index').get(0),
+							swiperCustomCount = $swiper.find('.swiper-pagination__fraction-count').get(0);
+
+						if (swiperCustomIndex && swiperCustomCount) {
+							swiperCustomIndex.innerHTML = formatIndex(swiper.realIndex + 1);
+							if (swiperCustomCount) {
+								if (isNoviBuilder ? false : s.attr('data-loop') !== "false") {
+									swiperCustomCount.innerHTML = formatIndex(swiper.slides.length - 2);
+								} else {
+									swiperCustomCount.innerHTML = formatIndex(swiper.slides.length);
+								}
+							}
+						}
+					}}(s)),
+					onSlideChangeStart: (function(s) { return function (swiper) {
+						var swiperCustomIndex = $(s).find('.swiper-pagination__fraction-index').get(0);
+
+						if (swiperCustomIndex) {
+							swiperCustomIndex.innerHTML = formatIndex(swiper.realIndex + 1);
+						}
+					}}(s))
 				});
 
 				$window.on("resize", (function (s) {
@@ -1040,74 +1170,17 @@
 			}
 		}
 
-		// Owl carousel
-		if (plugins.owl.length) {
-			for (var i = 0; i < plugins.owl.length; i++) {
-				var c = $(plugins.owl[i]);
-				plugins.owl[i].owl = c;
-
-				initOwlCarousel(c);
-			}
+		function formatIndex(index) {
+			return index < 10 ? '0' + index : index;
 		}
 
-		// Isotope
-		if (plugins.isotope.length) {
-			var isogroup = [];
-			for (var i = 0; i < plugins.isotope.length; i++) {
-				var isotopeItem = plugins.isotope[i],
-					isotopeInitAttrs = {
-						itemSelector: '.isotope-item',
-						layoutMode: isotopeItem.getAttribute('data-isotope-layout') ? isotopeItem.getAttribute('data-isotope-layout') : 'masonry',
-						filter: '*'
-					};
-
-				if (isotopeItem.getAttribute('data-column-width')) {
-					isotopeInitAttrs.masonry = {
-						columnWidth: parseFloat(isotopeItem.getAttribute('data-column-width'))
-					};
-				} else if (isotopeItem.getAttribute('data-column-class')) {
-					isotopeInitAttrs.masonry = {
-						columnWidth: isotopeItem.getAttribute('data-column-class')
-					};
-				}
-
-				var iso = new Isotope(isotopeItem, isotopeInitAttrs);
-				isogroup.push(iso);
+		// Owl carousel
+		if ( plugins.owl.length ) {
+			for ( var i = 0; i < plugins.owl.length; i++ ) {
+				var carousel = $( plugins.owl[ i ] );
+				plugins.owl[ i ].owl = carousel;
+				initOwlCarousel( carousel );
 			}
-
-
-			setTimeout(function () {
-				for (var i = 0; i < isogroup.length; i++) {
-					isogroup[i].element.className += " isotope--loaded";
-					isogroup[i].layout();
-				}
-			}, 200);
-
-			var resizeTimout;
-
-			$("[data-isotope-filter]").on("click", function (e) {
-				e.preventDefault();
-				var filter = $(this);
-				clearTimeout(resizeTimout);
-				filter.parents(".isotope-filters").find('.active').removeClass("active");
-				filter.addClass("active");
-				var iso = $('.isotope[data-isotope-group="' + this.getAttribute("data-isotope-group") + '"]'),
-					isotopeAttrs = {
-						itemSelector: '.isotope-item',
-						layoutMode: iso.attr('data-isotope-layout') ? iso.attr('data-isotope-layout') : 'masonry',
-						filter: this.getAttribute("data-isotope-filter") === '*' ? '*' : '[data-filter*="' + this.getAttribute("data-isotope-filter") + '"]'
-					};
-				if (iso.attr('data-column-width')) {
-					isotopeAttrs.masonry = {
-						columnWidth: parseFloat(iso.attr('data-column-width'))
-					};
-				} else if (iso.attr('data-column-class')) {
-					isotopeAttrs.masonry = {
-						columnWidth: iso.attr('data-column-class')
-					};
-				}
-				iso.isotope(isotopeAttrs);
-			}).eq(0).trigger("click")
 		}
 
 		// WOW
@@ -1458,26 +1531,20 @@
 		if (plugins.customToggle.length) {
 			for (var i = 0; i < plugins.customToggle.length; i++) {
 				var $this = $(plugins.customToggle[i]);
-
-				$this.on('click', $.proxy(function (event) {
+				$this.on('click', $.proxy(function(event) {
 					event.preventDefault();
-
 					var $ctx = $(this);
 					$($ctx.attr('data-custom-toggle')).add(this).toggleClass('active');
 				}, $this));
-
 				if ($this.attr("data-custom-toggle-hide-on-blur") === "true") {
-					$body.on("click", $this, function (e) {
-						if (e.target !== e.data[0]
-							&& $(e.data.attr('data-custom-toggle')).find($(e.target)).length
-							&& e.data.find($(e.target)).length === 0) {
+					$body.on("click", $this, function(e) {
+						if (e.target !== e.data[0] && $(e.data.attr('data-custom-toggle')).find($(e.target)).length && e.data.find($(e.target)).length === 0) {
 							$(e.data.attr('data-custom-toggle')).add(e.data[0]).removeClass('active');
 						}
 					})
 				}
-
 				if ($this.attr("data-custom-toggle-disable-on-blur") === "true") {
-					$body.on("click", $this, function (e) {
+					$body.on("click", $this, function(e) {
 						if (e.target !== e.data[0] && $(e.data.attr('data-custom-toggle')).find($(e.target)).length === 0 && e.data.find($(e.target)).length === 0) {
 							$(e.data.attr('data-custom-toggle')).add(e.data[0]).removeClass('active');
 						}
@@ -1510,28 +1577,12 @@
 		// TimeCircles
 		if (plugins.dateCountdown.length) {
 			for (var i = 0; i < plugins.dateCountdown.length; i++) {
-				var dateCountdownItem = $(plugins.dateCountdown[i]),
-					time = {
-						"Days": {
-							"text": "Days",
-							"show": true,
-							color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
-						},
-						"Hours": {
-							"text": "Hours",
-							"show": true,
-							color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
-						},
-						"Minutes": {
-							"text": "Minutes",
-							"show": true,
-							color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
-						},
-						"Seconds": {
-							"text": "Seconds",
-							"show": true,
-							color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
-						}
+				var
+					dateCountdownItem = $(plugins.dateCountdown[i]),
+					countdownRender = function () {
+						dateCountdownItem.TimeCircles({
+							time: {Seconds: {show: !( window.innerWidth < 768 )}}
+						}).rebuild();
 					};
 
 				dateCountdownItem.TimeCircles({
@@ -1539,66 +1590,33 @@
 					animation: "smooth",
 					bg_width: dateCountdownItem.attr("data-bg-width") ? dateCountdownItem.attr("data-bg-width") : 0.6,
 					circle_bg_color: dateCountdownItem.attr("data-bg") ? dateCountdownItem.attr("data-bg") : "rgba(0, 0, 0, 1)",
-					fg_width: dateCountdownItem.attr("data-width") ? dateCountdownItem.attr("data-width") : 0.03
+					fg_width: dateCountdownItem.attr("data-width") ? dateCountdownItem.attr("data-width") : 0.03,
+					time: {
+						Days: {
+							text: "Days",
+							show: true,
+							color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
+						},
+						Hours: {
+							text: "Hours",
+							show: true,
+							color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
+						},
+						Minutes: {
+							text: "Minutes",
+							show: true,
+							color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
+						},
+						Seconds: {
+							text: "Seconds",
+							show: false,
+							color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
+						}
+					}
 				});
 
-				(function (dateCountdownItem, time) {
-					$window.on('load resize orientationchange', function () {
-						if (window.innerWidth < 479) {
-							dateCountdownItem.TimeCircles({
-								time: {
-									"Days": {
-										"text": "Days",
-										"show": true,
-										color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
-									},
-									"Hours": {
-										"text": "Hours",
-										"show": true,
-										color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
-									},
-									"Minutes": {
-										"text": "Minutes",
-										"show": true,
-										color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
-									},
-									Seconds: {
-										"text": "Seconds",
-										show: false,
-										color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
-									}
-								}
-							}).rebuild();
-						} else if (window.innerWidth < 767) {
-							dateCountdownItem.TimeCircles({
-								time: {
-									"Days": {
-										"text": "Days",
-										"show": true,
-										color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
-									},
-									"Hours": {
-										"text": "Hours",
-										"show": true,
-										color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
-									},
-									"Minutes": {
-										"text": "Minutes",
-										"show": true,
-										color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
-									},
-									Seconds: {
-										text: '',
-										show: false,
-										color: dateCountdownItem.attr("data-color") ? dateCountdownItem.attr("data-color") : "#f9f9f9"
-									}
-								}
-							}).rebuild();
-						} else {
-							dateCountdownItem.TimeCircles({time: time}).rebuild();
-						}
-					});
-				})(dateCountdownItem, time);
+				countdownRender();
+				window.addEventListener('resize', countdownRender);
 			}
 		}
 
@@ -1652,43 +1670,6 @@
 			}
 		}
 
-		// Material Parallax
-		if (plugins.materialParallax.length) {
-			if (!isNoviBuilder && !isIE && !isMobile) {
-				plugins.materialParallax.parallax();
-
-				// heavy pages fix
-				$window.on('load', function () {
-					setTimeout(function () {
-						$window.scroll();
-					}, 500);
-				});
-			} else {
-				for (var i = 0; i < plugins.materialParallax.length; i++) {
-					var parallax = $(plugins.materialParallax[i]),
-						imgPath = parallax.data("parallax-img");
-
-					parallax.css({
-						"background-image": 'url(' + imgPath + ')',
-						"background-size": "cover"
-					});
-				}
-			}
-		}
-
-		// JQuery mousewheel plugin
-		if (plugins.scroller.length) {
-			for (var i = 0; i < plugins.scroller.length; i++) {
-				var scrollerItem = $(plugins.scroller[i]);
-
-				scrollerItem.mCustomScrollbar({
-					theme: scrollerItem.attr('data-theme') ? scrollerItem.attr('data-theme') : 'minimal',
-					scrollInertia: 100,
-					scrollButtons: {enable: false}
-				});
-			}
-		}
-
 		// Wide/Boxed Layout Toggle
 		if (plugins.layoutToggle.length) {
 			for (var i = 0; i < plugins.layoutToggle.length; i++) {
@@ -1720,67 +1701,223 @@
 			}
 		}
 
-		// JS Color
-		if (plugins.jscolor.length) {
-			jscolorInit();
+		// Select2
+		if (plugins.selectFilter.length) {
+			var i;
+			for (i = 0; i < plugins.selectFilter.length; i++) {
+				var select = $(plugins.selectFilter[i]),
+					selectStyle = 'html-' + select.attr('data-style') + '-select';
+				$html.addClass(selectStyle);
+
+				select.select2({
+					placeholder: select.attr("data-placeholder") ? select.attr("data-placeholder") : false,
+					minimumResultsForSearch: select.attr("data-minimum-results-search") ? select.attr("data-minimum-results-search") :  -1,
+					maximumSelectionSize: 3
+				});
+			}
 		}
 
-		// ThemeSwitcher
-		if (plugins.themeSwitcher.length) {
-			document.documentElement.addEventListener('theme-switching', function () {
-				loaderTimeoutId = setTimeout(function () {
-					plugins.preloader.removeClass("loaded");
-				}, 500);
-			});
-
-			document.documentElement.addEventListener('theme-switched', function (event) {
-				clearTimeout(loaderTimeoutId);
-				setTimeout(function () {
-					if (windowReady) {
-						plugins.preloader.addClass("loaded");
-					}
-				}, 400);
-
-				if (plugins.themeCheckbox.length) {
-					plugins.themeCheckbox.checked = (plugins.themeCheckbox.getAttribute('data-theme-checkbox') === event.switcher.active );
+		// Stepper
+		if (plugins.stepper.length) {
+			plugins.stepper.stepper({
+				labels: {
+					up: "",
+					down: ""
 				}
 			});
+		}
 
-			document.documentElement.addEventListener('theme-color-change', function (event) {
-				document.querySelector(event.switcher.selectors.color + '[name="' + event.variable + '"]').style.backgroundColor = event.value;
-			});
+		//RD Range
+		if (plugins.rdRange.length && !isNoviBuilder) {
+			plugins.rdRange.RDRange({
+				callbacks: {
+					onChange: function() {
+						var $inputs = $('.rd-range-input-value-1, .rd-range-input-value-2');
 
-			var switcher = themeSwitcherInit({
-				variablesFallback: isIE,
-				themes: {
-					"default": {
-						styles: 'css/style.css'
+						for(var z = 0; z < $inputs.length; z++) {
+
+							if(isDesktop) {
+								$inputs[z].style.width = ($inputs[z].value.length + 1) * 1.15 + 'ch';
+							}
+						}
 					},
-					"style-1": {
-						styles: 'css/style-1.css'
-					}
 				}
 			});
 		}
 
-		// ThemeSwitcher Checkbox
-		if (plugins.themeSwitcher.length && plugins.themeCheckbox.length) {
-			plugins.themeCheckbox.addEventListener('change', function (event) {
-				if (this.checked) {
-					switcher.setTheme(this.getAttribute('data-theme-checkbox'));
-				}
-				else {
-					switcher.setTheme(switcher.initial);
-				}
+		// Slick carousel
+		if (plugins.slick.length) {
+			for (var i = 0; i < plugins.slick.length; i++) {
+				var $slickItem = $(plugins.slick[i]);
+
+				$slickItem.on('init', function (slick) {
+					initLightGallery($('[data-lightgallery="group-slick"]'), 'lightGallery-in-carousel');
+					initLightGallery($('[data-lightgallery="item-slick"]'), 'lightGallery-in-carousel');
+				});
+
+				$slickItem.slick({
+					slidesToScroll: parseInt($slickItem.attr('data-slide-to-scroll'), 10) || 1,
+					asNavFor: $slickItem.attr('data-for') || false,
+					dots: $slickItem.attr("data-dots") === "true",
+					infinite:  isNoviBuilder ? false : $slickItem.attr("data-loop") === "true",
+					focusOnSelect: true,
+					arrows: $slickItem.attr("data-arrows") === "true",
+					swipe: $slickItem.attr("data-swipe") === "true",
+					autoplay: $slickItem.attr("data-autoplay") === "true",
+					centerMode: $slickItem.attr("data-center-mode") === "true",
+					centerPadding: $slickItem.attr("data-center-padding") ? $slickItem.attr("data-center-padding") : '0.50',
+					mobileFirst: true,
+					nextArrow: '<button type="button" class="slick-next"></button>',
+					prevArrow: '<button type="button" class="slick-prev"></button>',
+					responsive: [
+						{
+							breakpoint: 0,
+							settings: {
+								slidesToShow: parseInt($slickItem.attr('data-items'), 10) || 1,
+								vertical: $slickItem.attr('data-vertical') === 'true' || false
+							}
+						},
+						{
+							breakpoint: 575,
+							settings: {
+								slidesToShow: parseInt($slickItem.attr('data-sm-items'), 10) || 1,
+								vertical: $slickItem.attr('data-sm-vertical') === 'true' || false
+							}
+						},
+						{
+							breakpoint: 767,
+							settings: {
+								slidesToShow: parseInt($slickItem.attr('data-md-items'), 10) || 1,
+								vertical: $slickItem.attr('data-md-vertical') === 'true' || false
+							}
+						},
+						{
+							breakpoint: 991,
+							settings: {
+								slidesToShow: parseInt($slickItem.attr('data-lg-items'), 10) || 1,
+								vertical: $slickItem.attr('data-lg-vertical') === 'true' || false
+							}
+						},
+						{
+							breakpoint: 1199,
+							settings: {
+								slidesToShow: parseInt($slickItem.attr('data-xl-items'), 10) || 1,
+								vertical: $slickItem.attr('data-xl-vertical') === 'true' || false
+							}
+						}
+					]
+				})
+					.on('afterChange', function (event, slick, currentSlide, nextSlide) {
+						var $this = $(this),
+							childCarousel = $this.attr('data-child');
+
+						if (childCarousel) {
+							$(childCarousel + ' .slick-slide').removeClass('slick-current');
+							$(childCarousel + ' .slick-slide').eq(currentSlide).addClass('slick-current');
+						}
+					});
+
+			}
+		}
+
+		// Radio Panel
+		if (plugins.radioPanel) {
+			for (var i = 0; i < plugins.radioPanel.length; i++) {
+				var $element = $(plugins.radioPanel[i]);
+				$element.on('click', function () {
+					plugins.radioPanel.removeClass('active');
+					$(this).addClass('active');
+				})
+			}
+		}
+
+		// Multitoggles
+		if(plugins.multitoggle.length) {
+			multitoggles();
+		}
+
+		// Hover groups
+		for ( var i = 0; i < plugins.hoverEls.length; i++ ) {
+			var hel = plugins.hoverEls[i];
+
+			hel.addEventListener( 'mouseenter', function( event ) {
+				var hoverGroupName = event.target.getAttribute( 'data-hover-group' ),
+					hoverGroup = document.querySelectorAll( '[data-hover-group="'+hoverGroupName+'"]' );
+
+				for ( var e = 0; e < hoverGroup.length; e++ ) hoverGroup[e].classList.add( 'active' );
 			});
+
+			hel.addEventListener( 'mouseleave', function( event ) {
+				var hoverGroupName = event.target.getAttribute( 'data-hover-group' ),
+					hoverGroup = document.querySelectorAll( '[data-hover-group="'+hoverGroupName+'"]' );
+
+				for ( var e = 0; e < hoverGroup.length; e++ ) hoverGroup[e].classList.remove( 'active' );
+			});
+		}
+
+		// Vide
+		if ( plugins.vide.length ) {
+			for ( var i = 0; i < plugins.vide.length; i++ ) {
+				var $element = $(plugins.vide[i]),
+					options = $element.data('vide-options'),
+					path = $element.data('vide-bg');
+
+				$element.vide( path, options );
+
+				var videObj = $element.data('vide').getVideoObject();
+
+				if ( isNoviBuilder ) {
+					videObj.pause();
+				} else {
+					document.addEventListener( 'scroll', function ( $element, videObj ) {
+						return function () {
+							if ( isScrolledIntoView( $element ) ) videObj.play();
+							else videObj.pause();
+						}
+					}( $element, videObj ) );
+				}
+			}
+		}
+
+		// Vide Addon
+		if(!isNoviBuilder) {
+			for (var i = 0; i < plugins.videoTriggers.length; i++) {
+				var videoTrigger = $(plugins.videoTriggers[i]),
+					bgVideoObj = $(videoTrigger.attr('data-video-trigger')).data("vide").getVideoObject(),
+					relatedModal = $(videoTrigger.attr('data-target')),
+					modalVideoObj = relatedModal.find('video')[0];
+
+				relatedModal.on('show.bs.modal', (function (bgVideoObj) {
+					return function () {
+						bgVideoObj.pause();
+					}
+				})(bgVideoObj));
+
+				relatedModal.on('shown.bs.modal', (function (modalVideoObj) {
+					return function () {
+						modalVideoObj.play();
+					}
+				})(modalVideoObj));
+
+				relatedModal.on('hide.bs.modal', (function (bgVideoObj, modalVideoObj) {
+					return function () {
+						modalVideoObj.pause();
+						modalVideoObj.currentTime = 0;
+						bgVideoObj.play();
+					}
+				})(bgVideoObj, modalVideoObj));
+			}
+		}
+
+		// Initialize before-after image plugin
+		if (plugins.beforeAfter.length) {
+			for (var i = 0; i < plugins.beforeAfter.length; i++) {
+				var $item = $(plugins.beforeAfter[i]);
+				$item.twentytwenty({
+					default_offset_pct: $item.attr('data-offset'),
+					orientation: $item.attr('data-orientation')
+				});
+			}
 		}
 	});
-
-  // Parallax JS
-  if (plugins.parallaxJs.length) {
-    for (var i = 0; i < plugins.parallaxJs.length; i++) {
-      var scene = plugins.parallaxJs[i];
-      new Parallax(scene);
-    }
-  }
 }());
