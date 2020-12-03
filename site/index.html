@@ -123,7 +123,7 @@
                       </li>
                       <li class="rd-nav-item"><a class="rd-nav-link" href="about-us.html">About Us</a>
                       </li>
-                      <li class="rd-nav-item"><a class="rd-nav-link" href="grid-gallery.html">Portfolio</a>
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="full-width-gallery.html">Portfolio</a>
                         <!-- RD Navbar Dropdown-->
                         <ul class="rd-menu rd-navbar-dropdown">
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="grid-gallery.html">Grid Gallery</a></li>
@@ -145,6 +145,19 @@
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="./single-service3.html">Furniture Design</a></li>
                           
                         </ul>
+                      </li>
+
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="./services.html">Pricing Tables</a>
+                        <!-- RD Navbar Dropdown-->
+                        <ul class="rd-menu rd-navbar-dropdown">
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="./pricing1.html">Residential Interior</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="./pricing2.html">Modular Kitchen</a></li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="./pricing3.html">Modular Wardrobe</a></li>
+                          
+                        </ul>
+                      </li>
+
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="./faq.html">FAQ</a>
                       </li>
 
 
@@ -332,6 +345,95 @@
         </div>
       </header>
       <!-- Swiper-->
+
+
+      <div style="position: absolute;width: 400px;height: 450px;margin-bottom:50px;margin-left: 800px;background-color: rgb(0,0,0,0.5);margin-top: 10px;overflow-y: scroll;z-index: 3;">
+        <center><div class="group-md group-middle" style="margin-left: 80px;"><a class="button button-md button-gradient button-primary-gradient" href="#">Get Estimate</a></div></center>
+                
+                <!-- <a class="button button-gray-8 button-ujarak wow fadeInUp" href="shop.html" data-wow-delay=".2s">ESTIMATE</a> -->
+                <p style="color: white;font-family: Ubuntu;font-weight: bold;font-size: 18px;letter-spacing: 2px;">1. Please select type of Residential</p>
+                <input type="radio" id="apartment" name="res" value="apartment" checked style="margin-left: -30%;margin-top:10px;position: absolute;">
+<label for="apartment" style="color:white;margin-left: -95px;margin-top: 5px;">Apartment  </label>
+<input type="radio" id="plot" name="res" value="plot" style="margin-left: 20px;">
+<label for="Plot" style="color:white;">Plot</label>
+
+
+              <p style="color: white;font-family: Ubuntu;font-weight: bold;font-size: 18px;letter-spacing: 2px;position: absolute;margin-left: 10px;">2. Select location</p><br>
+              <!-- <label for="city" style="margin-top: 20px;">Choose a city:</label> -->
+
+<select name="city" id="city" style="margin-top: 50px;margin-left: -60px;height: 10px;padding: none;width: 20px;">
+  <option style="width: 20px;"value="Delhi">Delhi</option>
+  <option value="Noida">Noida</option>
+  <option value="Gurgaon">Gurgaon</option>
+  <option value="Gaziabad">Gaziabad</option>
+  <option value="Gaziabad">Faridabad</option>
+  <option value="Gaziabad">Greater Noida</option>
+  <option value="Gaziabad">Outside Delhi NCR</option>
+
+</select>
+<br>
+ 
+
+ <p style="color: white;font-family: Ubuntu;font-weight: bold;font-size: 18px;letter-spacing: 2px;position: absolute;margin-left: 10px;">3. Select Size of the Apartment</p><br>
+ <input type="text" id="size" name="size" style="margin-top: 25px;margin-left: -150px; border: none;
+  border-bottom: 2px solid red;">
+<br>
+
+<p style="color: white;font-family: Ubuntu;font-weight: bold;font-size: 18px;letter-spacing: 2px;position: absolute;margin-left: 10px;">4. Number of bedrooms per floor</p><br>
+<select style="margin-top: 30px;margin-left: -60px;">
+<option value="one">1</option>
+
+<option value="two">2</option>
+<option value="three">3</option>
+<option value="four">4</option>
+<option value="five">5</option>
+</select>
+<br>
+
+<p style="color: white;font-family: Ubuntu;font-weight: bold;font-size: 18px;letter-spacing: 2px;margin-left: 10px;position: absolute; ">5. Number of Bathrooms</p><br>
+<select style="margin-left: -40px;margin-top: 30px;">
+<option value="one">1</option>
+
+<option value="two">2</option>
+<option value="three">3</option>
+</select>
+<br>
+
+<p style="color: white;font-family: Ubuntu;font-weight: bold;font-size: 18px;letter-spacing: 2px;position: absolute;margin-left: 10px;">6. Study and Pooja Room??</p>
+                <input type="radio" id="yes" name="res" value="yes" checked style="margin-left: -40%;margin-top:50px;position: absolute;">
+<label for="yes" style="color:white;margin-left: -125px;margin-top: 45px;">Yes  </label>
+<input type="radio" id="no" name="res" value="no" style="margin-left: 20px;margin-top: 45px;">
+<label for="no" style="color:white;margin-top: 45px;">No</label><br>
+
+<p style="color: white;font-family: Ubuntu;font-weight: bold;font-size: 18px;letter-spacing: 2px;position: absolute;margin-left: 10px;">7. Chose type of estimation??</p>
+                <input type="radio" id="yes" name="res" value="yes" checked style="margin-left: -30%;margin-top:50px;position: absolute;">
+<label for="yes" style="color:white;margin-left: -95px;margin-top: 45px;">quick  </label>
+<input type="radio" id="no" name="res" value="no" style="margin-left: 20px;margin-top: 45px;">
+<label for="no" style="color:white;margin-top: 45px;">Detailed</label><br>
+
+
+
+<!-- <p style="color: white;font-family: Ubuntu;font-weight: bold;font-size: 18px;letter-spacing: 2px;">6. Study and Pooja Room??</p><br>
+
+
+ <input type="radio" id="yes" name="yes" value="yes">
+<label for="yes">Yes</label><br>
+<input type="radio" id="no" name="no" value="no">
+<label for="no">No</label><br>
+<br> -->
+
+<!-- <p style="color: white;font-family: Ubuntu;font-weight: bold;font-size: 18px;letter-spacing: 2px;">7. Chose type of Estimation??</p><br>
+
+
+ <input type="radio" id="quick" name="quick" value="quick">
+<label for="quick">Quick</label><br>
+<input type="radio" id="detailed" name="detailed" value="detailed">
+<label for="detailed">Detailed</label><br>
+<br> -->
+
+<button class="button button-block button-ujarak button-primary" type="submit">Get Estimate</button><br>
+
+              </div>
       <section class="section swiper-container swiper-slider swiper-slider-classic swiper-slider-classic-2" data-loop="true" data-autoplay="5000" data-simulate-touch="true" data-direction="vertical" data-nav="false">
         <div class="swiper-wrapper text-center" style="z-index: -1;">
           <div class="swiper-slide swiper-slide-1 context-dark text-left" data-slide-bg="images/slider-5-slide-1-1770x742.jpg">
@@ -341,7 +443,7 @@
                 <h3 class="text-strike-1" data-caption-animate="fadeInRight" data-caption-delay="0">Interior Design</h3>
                 <h2 class="oh"><span class="d-inline-block" data-caption-animate="slideInDown" data-caption-delay="300">Coziness</span></h2><a class="button button-white-outline button-ujarak" href="#" data-caption-animate="fadeInLeft" data-caption-delay="600">Get in touch</a>
               </div>
-              <div style="position: absolute;width: 400px;height: 450px;margin-bottom:50px;margin-left: 700px;background-color: rgb(0,0,0,0.5);margin-top: -380px;overflow-y: scroll;position: fixed;z-index: 3;">
+              <!-- <div style="position: absolute;width: 400px;height: 450px;margin-bottom:50px;margin-left: 700px;background-color: rgb(0,0,0,0.5);margin-top: -380px;overflow-y: scroll;position: fixed;z-index: 3;">
                 <br>
                 <p style="color: white;font-family: Ubuntu;font-weight: bold;font-size: 18px;letter-spacing: 2px;">1. Please select type of Residential</p><br>
                 <input type="radio" id="apartment" name="res" value="apartment">
@@ -416,7 +518,7 @@
 
 
 
-              </div>
+              </div> -->
             </div>
           </div>
 
@@ -427,7 +529,7 @@
                 <h3 class="text-strike-1" data-caption-animate="fadeInRight" data-caption-delay="0">Interior Design</h3>
                 <h2 class="oh"><span class="d-inline-block" data-caption-animate="slideInDown" data-caption-delay="300">Coziness</span></h2><a class="button button-white-outline button-ujarak" href="#" data-caption-animate="fadeInLeft" data-caption-delay="600">Get in touch</a>
               </div>
-              <div style="position: absolute;width: 400px;height: 450px;margin-bottom:50px;margin-left: 700px;background-color: rgb(0,0,0,0.5);margin-top: -380px;overflow-y: scroll;"><br>
+              <!-- <div style="position: absolute;width: 400px;height: 450px;margin-bottom:50px;margin-left: 700px;background-color: rgb(0,0,0,0.5);margin-top: -380px;overflow-y: scroll;"><br>
                 <p style="color: white;font-family: Ubuntu;font-weight: bold;font-size: 18px;letter-spacing: 2px;">Please select type of Residential</p><br>
                 <input type="radio" id="apartment" name="res" value="apartment">
 <label for="apartment">Apartment</label><br>
@@ -496,7 +598,7 @@
 
 <button type="submit">Submit</button>
 
-              </div>
+              </div> -->
             </div>
           </div>
 
@@ -507,7 +609,7 @@
                 <h3 class="text-strike-1" data-caption-animate="fadeInRight" data-caption-delay="0">Interior Design</h3>
                 <h2 class="oh"><span class="d-inline-block" data-caption-animate="slideInDown" data-caption-delay="300">Coziness</span></h2><a class="button button-white-outline button-ujarak" href="#" data-caption-animate="fadeInLeft" data-caption-delay="600">Get in touch</a>
               </div>
-              <div style="position: absolute;width: 400px;height: 450px;margin-bottom:50px;margin-left: 700px;background-color: rgb(0,0,0,0.5);margin-top: -380px;overflow-y: scroll;">
+              <!-- <div style="position: absolute;width: 400px;height: 450px;margin-bottom:50px;margin-left: 700px;background-color: rgb(0,0,0,0.5);margin-top: -380px;overflow-y: scroll;">
                 <p style="color: white;font-family: Ubuntu;font-weight: bold;font-size: 18px;letter-spacing: 2px;">Please select type of Residential</p><br>
                 <input type="radio" id="apartment" name="res" value="apartment">
 <label for="apartment">Apartment</label><br>
@@ -574,7 +676,7 @@
 <br>
 
 <button type="submit">Submit</button>
-              </div>
+              </div> -->
             </div>
           </div>
 
@@ -605,7 +707,7 @@
 
 
       <!-- pricing -->
-<div style="z-index: 5;">
+
 <section class="section section-sm section-first bg-default" style="z-index: 3;">
         <div class="container" style="margin-top: -40px;z-index: 3;position: relative;">
           <!-- <h3>White</h3> -->
@@ -614,8 +716,8 @@
               <div class="box-pricing">
                 <div class="box-pricing-body">
                   <div class="box-pricing-caption">
-                    <h5 class="box-pricing-title">Economy</h5>
-                    <h3 class="box-pricing-price">Rs799*</h3>
+                    <h3 class="box-pricing-title">Economy</h3>
+                    <h3 class="box-pricing-price">₹ 799*</h3>
                     <div class="box-pricing-time">Per Sqft</div>
                   </div>
                   <div class="divider divider-35"></div>
@@ -634,8 +736,8 @@
               <div class="box-pricing box-pricing-popular">
                 <div class="box-pricing-body">
                   <div class="box-pricing-caption">
-                    <h5 class="box-pricing-title">Premium</h5>
-                    <h3 class="box-pricing-price">Rs1299*</h3>
+                    <h3 class="box-pricing-title">Premium</h3>
+                    <h3 class="box-pricing-price">₹ 1299*</h3>
                     <div class="box-pricing-time">Per Sqft</div>
                   </div>
                   <div class="divider divider-35"></div>
@@ -644,7 +746,7 @@
                     <li class="active">Modular Kitchen – Matte/Gloss Laminate finish (soft close)</li>
                     <li class="active">Modular Wardrobe – Matte/Gloss Laminate finish (soft close)</li>
                     <li class="active">Furniture (bed) – Archidply/virgo(Laminated)</li>
-                    <li>Vitrified Tile Flooring – Not Included</li>
+                    <li>Vitrified Tile Flooring – Not Included</li><br>
                   </ul>
                 </div>
                 <div class="box-pricing-button"><a class="button button-lg button-block button-primary" href="#">Read More</a></div>
@@ -655,8 +757,8 @@
               <div class="box-pricing">
                 <div class="box-pricing-body">
                   <div class="box-pricing-caption">
-                    <h5 class="box-pricing-title">Deluxe</h5>
-                    <h3 class="box-pricing-price">Rs 1999*</h3>
+                    <h3 class="box-pricing-title">Deluxe</h3>
+                    <h3 class="box-pricing-price">₹ 1999*</h3>
                     <div class="box-pricing-time">Per Sqft</div>
                   </div>
                   <div class="divider divider-35"></div>
@@ -665,7 +767,7 @@
                     <li class="active">Semi-Modular Kitchen – Acrylic finish (soft close)</li>
                     <li class="active">Semi-Modular Wardrobe – Acrylic finish (soft close)</li>
                     <li class="active">Furniture (bed) – Greenply/kitply (Veneer/tufting)</li>
-                    <li class="active">Vitrified Tile Flooring – Kajaria/Somany (Deluxe series)</li>
+                    <li class="active">Vitrified Tile Flooring – Kajaria/Somany (Deluxe series)</li><br>
                   </ul>
                 </div>
                 <div class="box-pricing-button"><a class="button button-lg button-block button-gray-4" href="#">Read More</a></div>
@@ -716,28 +818,29 @@
       <section class="section section-sm section-fluid bg-default text-center isotope-wrap">
         <div class="container">
           <div class="isotope-top-panel oh-desktop">
-            <h3 class="isotope-top-panel-title"><span class="d-inline-block wow slideInDown">Latest Projects</span></h3>
-            <div class="isotope-filters isotope-filters-horizontal oh-desktop">
+            <h3 class="isotope-top-panel-title"><span class="d-inline-block wow slideInDown">Our Services</span></h3>
+            <!-- <div class="isotope-filters isotope-filters-horizontal oh-desktop">
               <button class="isotope-filters-toggle button button-md button-icon button-icon-right button-default-outline button-wapasha" data-custom-toggle="#isotope-5" data-custom-toggle-hide-on-blur="true" data-custom-toggle-disable-on-blur="true"><span class="icon fa fa-caret-down"></span>Filter</button>
               <ul class="isotope-filters-list-classic wow slideInUp" id="isotope-5">
                 <li><a class="active" href="#" data-isotope-filter="*">All Works</a></li>
                 <li><a href="#" data-isotope-filter="Type 1">Home design</a></li>
                 <li><a href="#" data-isotope-filter="Type 2">Commercial design</a></li>
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="container-fluid isotope-content">
           <div class="row row-30 row-isotope isotope" data-lightgallery="group">
             <div class="col-sm-6 col-md-4 col-xl-3 isotope-item" data-filter="Type 1">
               <!-- Thumbnail Classic-->
-              <article class="thumbnail thumbnail-mary thumbnail-md">
-                <div class="thumbnail-mary-figure"><img src="images/fullwidth-masonry-gallery-7-420x330.jpg" alt="" width="420" height="330"/>
+              <!-- <article class="thumbnail thumbnail-mary thumbnail-md"> -->
+                <div class="im1"><img src="images/fullwidth-masonry-gallery-7-420x330.jpg" alt="" width="420" height="330" style="opacity: 0.7;" />
+                  <h5 style="position: absolute;margin-top: -150px;"><a href="single-project.html">Architecture & Interior Design</a></h5>
                 </div>
-                <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="images/fullwidth-masonry-gallery-7-1200x800-original.jpg" data-lightgallery="item"><img src="images/fullwidth-masonry-gallery-7-420x330.jpg" alt="" width="420" height="330"/></a>
+              <!--   <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="images/fullwidth-masonry-gallery-7-1200x800-original.jpg" data-lightgallery="item"><img src="images/fullwidth-masonry-gallery-7-420x330.jpg" alt="" width="420" height="330"/></a>
                   <h5 class="thumbnail-mary-title"><a href="single-project.html">Architecture & Interior Design</a></h5>
-                </div>
-              </article>
+                </div> -->
+              <!-- </article> -->
             </div>
             <div class="col-sm-6 col-md-4 col-xl-3 isotope-item" data-filter="Type 2">
               <!-- Thumbnail Classic-->
@@ -761,23 +864,27 @@
             </div>
             <div class="col-sm-6 col-md-8 col-xl-6 isotope-item" data-filter="Type 2">
               <!-- Thumbnail Classic-->
-              <article class="thumbnail thumbnail-mary thumbnail-xl thumbnail-custom-mobile-1">
-                <div class="thumbnail-mary-figure"><img src="images/fullwidth-masonry-gallery-10-870x330.jpg" alt="" width="870" height="330"/>
+              <!-- <article class="thumbnail thumbnail-mary thumbnail-xl thumbnail-custom-mobile-1"> -->
+                <div class="im1"><img src="images/fullwidth-masonry-gallery-10-870x330.jpg" alt="" width="870" height="330" style="opacity: 0.7" />
+
+                   <h5 style="position: absolute;margin-top: -150px;margin-left: 200px;"><a href="single-project.html">Furniture Design</a></h5>
+
                 </div>
-                <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="images/fullwidth-masonry-gallery-10-1200x800-original.jpg" data-lightgallery="item"><img src="images/fullwidth-masonry-gallery-10-870x330.jpg" alt="" width="870" height="330"/></a>
-                  <h5 class="thumbnail-mary-title"><a href="single-project.html">Furniture Design</a></h5>
-                </div>
-              </article>
+                <!-- <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="images/fullwidth-masonry-gallery-10-1200x800-original.jpg" data-lightgallery="item"><img src="images/fullwidth-masonry-gallery-10-870x330.jpg" alt="" width="870" height="330"/></a>
+                  <h5 class="im1" style="position: absolute;margin-top: -150px;><a href="single-project.html">Furniture Design</a></h5>
+                </div> -->
+              <!-- </article> -->
             </div>
             <div class="col-sm-6 col-md-4 col-xl-3 isotope-item" data-filter="Type 2">
               <!-- Thumbnail Classic-->
-              <article class="thumbnail thumbnail-mary thumbnail-md">
-                <div class="thumbnail-mary-figure"><img src="images/fullwidth-masonry-gallery-11-420x330.jpg" alt="" width="420" height="330"/>
+              <!-- <article class="thumbnail thumbnail-mary thumbnail-md"> -->
+                <div class="im1"><img src="images/fullwidth-masonry-gallery-11-420x330.jpg" alt="" width="420" height="330" style="opacity: 0.5" />
+                  <h5 style="position: absolute;margin-top: -150px;margin-left: 15px;"><a href="single-project.html">Lean Construction Management</a></h5>
                 </div>
-                <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="images/fullwidth-masonry-gallery-11-1200x800-original.jpg" data-lightgallery="item"><img src="images/fullwidth-masonry-gallery-11-420x330.jpg" alt="" width="420" height="330"/></a>
+                <!-- <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60" href="images/fullwidth-masonry-gallery-11-1200x800-original.jpg" data-lightgallery="item"><img src="images/fullwidth-masonry-gallery-11-420x330.jpg" alt="" width="420" height="330"/></a>
                   <h5 class="thumbnail-mary-title"><a href="single-project.html">Lean Construction Management</a></h5>
-                </div>
-              </article>
+                </div> -->
+              <!-- </article> -->
             </div>
             <div class="col-sm-6 col-md-4 col-xl-3 isotope-item" data-filter="Type 1">
               <!-- Thumbnail Classic-->
@@ -902,7 +1009,7 @@
                 <div class="col-sm-6 col-md-5 col-lg-6 wow fadeInDown" data-wow-delay=".1s">
                   <article class="box-icon-creative">
                     <div class="box-icon-creative-header">
-                      <div class="box-icon-creative-icon fl-bigmug-line-paintbrush9"></div>
+                      <div class="ic4"><img src="images/stop.png" width="50px" height="50px"></div>
                       <div class="box-icon-creative-decor"></div>
                       <div class="box-icon-creative-count box-ordered-item"></div>
                     </div>
@@ -913,7 +1020,7 @@
                 <div class="col-sm-6 col-md-5 col-lg-6 wow fadeInDown">
                   <article class="box-icon-creative">
                     <div class="box-icon-creative-header">
-                      <div class="box-icon-creative-icon fl-bigmug-line-circular224"></div>
+                      <div class="ic3"><img src="images/bulb.png" width="50px" height="50px"></div>
                       <div class="box-icon-creative-decor"></div>
                       <div class="box-icon-creative-count box-ordered-item"></div>
                     </div>
@@ -924,7 +1031,7 @@
                 <div class="col-sm-6 col-md-5 col-lg-6 wow fadeInUp" data-wow-delay=".1s">
                   <article class="box-icon-creative">
                     <div class="box-icon-creative-header">
-                      <div class="box-icon-creative-icon fl-bigmug-line-hot67"></div>
+                      <div class="ic2"><img src="images/time.png" width="70px" height="70px"></div>
                       <div class="box-icon-creative-decor"></div>
                       <div class="box-icon-creative-count box-ordered-item"></div>
                     </div>
@@ -935,7 +1042,7 @@
                 <div class="col-sm-6 col-md-5 col-lg-6 wow fadeInUp">
                   <article class="box-icon-creative">
                     <div class="box-icon-creative-header">
-                      <div class="box-icon-creative-icon fl-bigmug-line-chat55"></div>
+                      <div class="ic"><img src="images/construction.png" width="50px" height="50px"></div>
                       <div class="box-icon-creative-decor"></div>
                       <div class="box-icon-creative-count box-ordered-item"></div>
                     </div>
@@ -947,7 +1054,7 @@
                  <div class="col-sm-6 col-md-5 col-lg-6 wow fadeInDown" data-wow-delay=".1s">
                   <article class="box-icon-creative">
                     <div class="box-icon-creative-header">
-                      <div class="box-icon-creative-icon fl-bigmug-line-paintbrush9"></div>
+                      <div class="ic5"><img src="images/diverse.png" width="50px" height="50px"></div>
                       <div class="box-icon-creative-decor"></div>
                       <div class="box-icon-creative-count box-ordered-item"></div>
                     </div>
@@ -961,7 +1068,7 @@
                  <div class="col-sm-6 col-md-5 col-lg-6 wow fadeInUp" data-wow-delay=".1s">
                   <article class="box-icon-creative">
                     <div class="box-icon-creative-header">
-                      <div class="box-icon-creative-icon fl-bigmug-line-hot67"></div>
+                      <div class="ic6"><img src="images/sustain.jpg" width="50px" height="50px"></div>
                       <div class="box-icon-creative-decor"></div>
                       <div class="box-icon-creative-count box-ordered-item"></div>
                     </div>
@@ -1157,11 +1264,13 @@
       <!-- Page Footer-->
       <footer class="section section-fluid footer-classic footer-classic-2">
         <div class="container-fluid">
-          <div class="row row-30 justify-content-center" >
-            <div class="col-md-10 col-lg-12 col-xl-4 wow fadeInRight" style="height: 300px;">
-              <div class="box-footer box-footer-small" style="overflow-y: scroll;height: 200px;">
+          <div class="row row-30 justify-content-center" style="height: 560px;">
+            <div class="col-md-10 col-lg-12 col-xl-4 wow fadeInRight">
+              <div class="box-footer box-footer-small">
                 <div class="footer-brand" ><a href="../index.html"><img src="images/atmosis_logo.png" alt="" width="190" height="23"/></a></div>
+                <div class="text" style="width: 200px;height: 220px;color:white;margin-left: 190px;margin-top: -230px;">
                 <p class="text-width-medium">Our design studio helps clients make wise decisions and avoid costly mistakes. Allow our designers and architectors to make your dream space a reality.</p>
+              </div>
                 <div class="contact-classic">
                   <div class="contact-classic-item">
                     <div class="unit align-items-center">
@@ -1198,8 +1307,8 @@
                 </ul>
               </div>
             </div>
-            <div class="col-md-10 col-lg-6 col-xl-4 wow fadeInRight" data-wow-delay=".1s" style="height: 300px;">
-              <div class="box-footer" style="overflow-y: scroll;height: 200px;">
+            <div class="col-md-10 col-lg-6 col-xl-4 wow fadeInRight" data-wow-delay=".1s">
+              <div class="box-footer">
                 <h5 class="font-weight-normal">Questions? Contact Us</h5><br>
                 <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
                   <div class="form-wrap">
@@ -1218,8 +1327,8 @@
                 </form>
               </div>
             </div>
-            <div class="col-md-10 col-lg-6 col-xl-4 wow fadeInRight" data-wow-delay=".2s" style="height: 300px;">
-              <div class="box-footer" style="overflow-y: scroll;height: 200px;">
+            <div class="col-md-10 col-lg-6 col-xl-4 wow fadeInRight" data-wow-delay=".2s">
+              <div class="box-footer">
                 <h5 class="font-weight-normal">See how we work</h5><br>
                 <ul class="footer-list-category">
                   <li class="heading-5"><a href="#">About Us<span></span></a></li>
@@ -1234,7 +1343,7 @@
             </div>
           </div>
         </div>
-        <div class="container footer-bottom-panel wow fadeInUp">
+        <div class="container footer-bottom-panel wow fadeInUp" style="margin-top: 100px;">
           <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>Creator</span>. All rights reserved. <a href="privacy-policy.html">Privacy Policy</a>. Design&nbsp;by&nbsp;<a href="https://zemez.io/">Zemez</a>
           </p>
         </div>
