@@ -1,0 +1,398 @@
+extends  ../_skeleton
+
+//- Includes
+include ../sections/_header-creative
+include ../components/_ui-box-icon
+include ../components/_ui-box-team
+include ../components/_ui-quote
+include ../components/_ui-counters
+include ../components/_ui-posts
+
+block variables
+	-
+		var
+			activeCategory = 'home',
+			pageName = 'Landscaping',
+			style = '4';
+
+		logo = {
+			default: 'logo-default-landscape-190x43',
+			inverse: 'logo-inverse-190x43',
+			name: 'Creator'
+		};
+
+block page
+	// Page Header
+	+header-creative({
+		list: [
+			{ iconClass: 'fa fa-location-arrow', href: '#', text: '4730 Crystal Springs Dr, Los Angeles, CA 90027' },
+			{ iconClass: 'fa fa-phone', href: 'tel:#', text: '+1 323-913-4688' },
+			{ iconClass: 'fa fa-clock-o', text: 'Mon-Sat: 07:00AM - 05:00PM' }
+		]
+	}).rd-navbar-creative-2
+		+thumbnail-mary({
+			titleNone: true,
+			img: 'landscape-design/project-1-270x195',
+			imgOriginal: 'landscape-design/project-1-1200x800-original'
+		}).thumbnail-mary-2
+		+thumbnail-mary({
+			titleNone: true,
+			img: 'landscape-design/project-2-270x195',
+			imgOriginal: 'landscape-design/project-2-1200x800-original'
+		}).thumbnail-mary-2
+		+thumbnail-mary({
+			titleNone: true,
+			img: 'landscape-design/project-3-270x195',
+			imgOriginal: 'landscape-design/project-3-1200x800-original'
+		}).thumbnail-mary-2
+		+thumbnail-mary({
+			titleNone: true,
+			img: 'landscape-design/project-4-270x195',
+			imgOriginal: 'landscape-design/project-4-1200x800-original'
+		}).thumbnail-mary-2
+		+thumbnail-mary({
+			titleNone: true,
+			img: 'landscape-design/project-5-270x195',
+			imgOriginal: 'landscape-design/project-5-1200x800-original'
+		}).thumbnail-mary-2
+		+thumbnail-mary({
+			titleNone: true,
+			img: 'landscape-design/project-6-270x195',
+			imgOriginal: 'landscape-design/project-6-1200x800-original'
+		}).thumbnail-mary-2
+		+thumbnail-mary({
+			titleNone: true,
+			img: 'landscape-design/project-7-270x195',
+			imgOriginal: 'landscape-design/project-7-1200x800-original'
+		}).thumbnail-mary-2
+
+	include ../sections/_swiper-slider-3
+
+	// See all services
+	section.section.section-60.bg-gray-4
+		.container
+			.row.row-30.justify-content-center
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInRight
+					+box-icon-modern({
+						mod: 'box-icon-modern-3',
+						icon: 'fl-bigmug-line-paintbrush9',
+						title: 'Design & Planting',
+						text: 'We can help you design and plant your garden the way you want it.'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInRight( data-wow-delay='.1s' )
+					+box-icon-modern({
+						mod: 'box-icon-modern-3',
+						icon: 'fl-bigmug-line-like51',
+						title: 'Garden care',
+						text: 'Our seasoned experts will gladly provide full garden care & maintenance.'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInRight( data-wow-delay='.2s' )
+					+box-icon-modern({
+						mod: 'box-icon-modern-3',
+						icon: 'fl-bigmug-line-sun81',
+						title: 'Lawn Treatment',
+						text: 'Achieve a greener lawn with lawn care services from Creator team.'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInRight( data-wow-delay='.3s' )
+					article.box-icon-modern.box-icon-modern-custom: div
+						h3.box-icon-modern-big-title See all services
+						.box-icon-modern-decor
+						a.button.button-md.button-default-outline.button-wapasha( href='services.html' ) All services
+
+
+	// More than 180 projects
+	section.section.section-lg.bg-default
+		.container
+			.row.row-30( data-lightgallery='group' )
+				.col-sm-6.col-md-4.col-lg-3.order-negative-2.oh-desktop
+					.box-project.wow.slideInLeft: .box-project-content
+						h3.box-project-title More than #[span 180] projects
+						p.box-project-text A variety of customly designed landscapes.
+						a.button.button-md.button-default-outline.button-wapasha( href='single-project.html' ) See all
+				.col-sm-6.col-md-4.col-lg-3: .oh-desktop
+					+thumbnail-mary({
+						img: 'landscape-design/masonry-gallery-2-270x345',
+						imgOriginal: 'landscape-design/masonry-gallery-2-1200x800-original',
+						title: '379 Harvey Rd'
+					}).thumbnail-mary-2.thumbnail-xs.wow.slideInDown
+				.col-sm-6.col-md-8.col-lg-6.order-md-first: .oh-desktop
+					+thumbnail-mary({
+						img: 'landscape-design/masonry-gallery-1-570x345',
+						imgOriginal: 'landscape-design/masonry-gallery-1-1200x800-original',
+						title: '64 James Ave'
+					}).thumbnail-mary-2.thumbnail-lg.thumbnail-custom-mobile.wow.slideInRight
+				.col-sm-6.col-md-8.col-lg-6: .oh-desktop
+					+thumbnail-mary({
+						img: 'landscape-design/masonry-gallery-3-570x345',
+						imgOriginal: 'landscape-design/masonry-gallery-3-1200x800-original',
+						title: '861 E. Oklahoma Dr'
+					}).thumbnail-mary-2.thumbnail-lg.thumbnail-custom-mobile.wow.slideInUp
+				.col-sm-6.col-md-4.col-lg-3: .oh-desktop
+					+thumbnail-mary({
+						img: 'landscape-design/masonry-gallery-4-270x345',
+						imgOriginal: 'landscape-design/masonry-gallery-4-1200x800-original',
+						title: '14 Pulaski Str'
+					}).thumbnail-mary-2.thumbnail-xs.wow.slideInRight
+				.col-sm-6.col-md-4.col-lg-3: .oh-desktop
+					+thumbnail-mary({
+						img: 'landscape-design/masonry-gallery-5-270x345',
+						imgOriginal: 'landscape-design/masonry-gallery-5-1200x800-original',
+						title: '8381 Peg Shop Str'
+					}).thumbnail-mary-2.thumbnail-xs.wow.slideInLeft
+
+
+	// You dream — we embody
+	section.section.section-lg.bg-gray-4.text-md-left
+		.container: .row.row-30.justify-content-center
+			.col-md-10.col-lg-6.wow.fadeInLeft( data-wow-delay='.1s' )
+				.twentytwenty-wrapper.twentytwenty-horizontal
+					.twentytwenty-container( data-offset='0.5', data-orientation='horizontal')
+						img.twentytwenty-before(src='images/after-1-570x453.jpg', width='570', height='453', alt='')
+						img.twentytwenty-after(src='images/before-1-570x453.jpg', width='570', height='453', alt='')
+						.twentytwenty-overlay
+							.twentytwenty-before-label
+							.twentytwenty-after-label
+						.twentytwenty-handle
+							span.twentytwenty-left-arrow
+							span.twentytwenty-right-arrow
+			.col-lg-6.wow.fadeInLeft: .tabs-custom-wrap: .tabs-custom-body
+				h3 You dream — we embody
+				// Bootstrap tabs
+				#tabs-8.tabs-custom.tabs-horizontal.tabs-line.tabs-line-style-3.text-center.text-md-left
+					// Nav tabs
+					ul.nav.nav-tabs
+						li.nav-item( role='presentation' ): a.nav-link.nav-link-small.active( href='#tabs-8-1', data-toggle='tab' ) Step #1
+						li.nav-item( role='presentation' ): a.nav-link.nav-link-small( href='#tabs-8-2', data-toggle='tab' ) Step #2
+						li.nav-item( role='presentation' ): a.nav-link.nav-link-small( href='#tabs-8-3', data-toggle='tab' ) Step #3
+						li.nav-item( role='presentation' ): a.nav-link.nav-link-small( href='#tabs-8-4', data-toggle='tab' ) Step #4
+
+					// Tab panes
+					.tab-content
+						div#tabs-8-1.tab-pane.fade.show.active
+							h5.font-weight-normal Starting with the right idea
+							p Every project we create starts with an idea, which eventually grows into a great landscape design. But before it does, our team proposes several variants to choose from.
+							.group-md.group-middle
+								a.button.button-md.button-gradient.button-primary-gradient( href='#' ) Get in touch
+								a.button.button-md.button-default-outline.button-wapasha( href='#' ) Download presentation
+
+						div#tabs-8-2.tab-pane.fade
+							h5.font-weight-normal Developing the initial concept
+							p After choosing the right design idea, our team members cooperate with you to create the initial concept of how your landscape will look and discuss the project budget.
+							.group-md.group-middle
+								a.button.button-md.button-gradient.button-primary-gradient( href='#' ) Get in touch
+								a.button.button-md.button-default-outline.button-wapasha( href='#' ) Download presentation
+
+						div#tabs-8-3.tab-pane.fade
+							h5.font-weight-normal Working on landscape design implementation
+							p After completion of the previous stage, we move on to bring our project to life and create a better landscape & garden for your property with constant adherence to the current standards.
+							.group-md.group-middle
+								a.button.button-md.button-gradient.button-primary-gradient( href='#' ) Get in touch
+								a.button.button-md.button-default-outline.button-wapasha( href='#' ) Download presentation
+
+						div#tabs-8-4.tab-pane.fade
+							h5.font-weight-normal Achieving the final result
+							p Finally, we discuss what you like and don’t like in your new landscape and try to make sure everything is done the way it should be so that you could enjoy the exterior of your house.
+							.group-md.group-middle
+								a.button.button-md.button-gradient.button-primary-gradient( href='#' ) Get in touch
+								a.button.button-md.button-default-outline.button-wapasha( href='#' ) Download presentation
+
+
+	// See all services
+	section.section.section-lg.bg-default
+		.container
+			h3.oh-desktop: span.d-inline-block.wow.slideInUp Different people  — one mission
+			// Owl Carousel
+			.owl-carousel.owl-team-2( data-items='1', data-sm-items='2', data-md-items='3', data-lg-items='4', data-margin='30', data-dots='true', data-animation-in='fadeIn', data-animation-out='fadeOut' )
+				+team-nikki({
+					img: 'team-7-270x248',
+					name: 'Ann Anderson',
+					status: 'Founder, landscape designer'
+				})
+				+team-nikki({
+					img: 'team-17-270x248',
+					name: 'Will Morgan',
+					status: 'Garden worker'
+				})
+				+team-nikki({
+					img: 'team-9-270x248',
+					name: 'Mary Lee',
+					status: 'Junior landscape Designer'
+				})
+				+team-nikki({
+					img: 'team-10-270x248',
+					name: 'Samuel Miller',
+					status: 'Landscape construction foreman'
+				})
+				+team-nikki({
+					img: 'team-18-270x248',
+					name: 'Jane Peterson',
+					status: 'Landscape Designer'
+				})
+				+team-nikki({
+					img: 'team-8-270x248',
+					name: 'Sam Robinson',
+					status: 'Project manager'
+				})
+
+
+	// Our mission
+	section.section.section-lg.section-inset-custom-4.context-dark.bg-overlay-4-60.bg-vide( id='1', data-vide-bg="video/video-1" data-vide-options='posterType: jpg, position: 50% 50%')
+		.container: .row.justify-content-center: .col-lg-10.col-xl-8: .video-modern
+			h5.video-modern-subtitle.wow.fadeInLeft( data-wow-delay='.1s' ) Our mission
+			h3.oh-desktop.video-modern-title: span.d-inline-block.wow.slideInDown We aim to Make the world more beautiful
+			p.video-modern-text.wow.fadeInRight( data-wow-delay='.1s' ) Our mission is to make the world a nicer place to live, one yard at a time. This is accomplished by using the best available materials and technologies in the industry.
+			button.video-classic-play( type='button', data-toggle='modal', data-target='#exampleModal', data-video-trigger='#1'): span
+
+
+	// What people say
+	section.section.section-lg.bg-default
+		.container
+			h3.wow.fadeInLeft What people say
+			.row.row-xxl.row-70.justify-content-center
+				.col-sm-10.col-md-6.col-lg-5.col-xl-4.wow.fadeInRight
+					+quote-creative({
+						img: 'user-13-87x87',
+						author: 'Rupert Wood',
+						text: 'Creator is an excellent company to work with. They do everything they say they are going to do and are only pleased when you are pleased. They go above and beyond on each project.'
+					})
+				.col-sm-10.col-md-6.col-lg-5.col-xl-4.wow.fadeInRight( data-wow-delay='.1s' )
+					+quote-creative({
+						img: 'user-14-87x87',
+						author: 'Catherine Williams',
+						text: 'Great experience! Ann has made the whole process easy from the planning stage to the final plant going in. Samuel and his crew did a great job. I felt like they really listened to what I wanted.'
+					})
+				.col-sm-10.col-md-6.col-lg-5.col-xl-4.wow.fadeInRight( data-wow-delay='.2s' )
+					+quote-creative({
+						img: 'user-15-87x87',
+						author: 'Sam Peterson',
+						text: 'You made my backyard an extension of my home that my whole family will enjoy for years to come. I will actually miss working with you and your company. Thank you for everything.'
+					})
+
+
+	// Following the dream since 1999
+	section.section.bg-default
+		+parallax({
+			img: 'bg-counter-3',
+			innerClass: 'section-xl context-dark'
+		})
+			.container
+				h3.oh-desktop: span.d-inline-block.wow.slideInDown Following the dream since 1999
+				.row.row-30.justify-content-center
+					.col-sm-6.col-md-3.wow.fadeInUp
+						+counter-classic({
+							mod: 'counter-abby',
+							number: '12',
+							title: 'Design awards'
+						})
+					.col-sm-6.col-md-3.wow.fadeInUp( data-wow-delay='.1s' )
+						+counter-classic({
+							mod: 'counter-abby',
+							number: '194',
+							title: 'Projects'
+						})
+					.col-sm-6.col-md-3.wow.fadeInUp( data-wow-delay='.2s' )
+						+counter-classic({
+							mod: 'counter-abby',
+							number: '5',
+							symbol: 'k',
+							title: 'Planted trees'
+						})
+					.col-sm-6.col-md-3.wow.fadeInUp( data-wow-delay='.3s' )
+						+counter-classic({
+							mod: 'counter-abby',
+							number: '25',
+							title: 'Team members'
+						})
+
+
+	// Our clients
+	section.section.section-sm.section-first.bg-default
+		.container
+			h3.oh-desktop: span.d-inline-block.wow.slideInUp Our clients
+			include ../sections/_section-clients-classic
+
+
+	// Latest blog posts
+	section.section.section-sm.section-last.bg-default
+		.container
+			h3.oh-desktop: span.d-inline-block.wow.slideInDown Latest blog posts
+			.row.row-60.row-sm
+				.col-sm-6.col-lg-4.wow.fadeInLeft
+					+post-modern({
+						img: 'landscape-design/post-30-370x307',
+						time: { datetime: '2019-07-04', dateNumber: '04', dateMonth: 'July' },
+						title: 'Top 5 best landscapes for summer',
+						text: 'Annual survey and analysis of community of over 35 million monthly users reveals the top-rated home remodeling professionals...'
+					})
+
+				.col-sm-6.col-lg-4.wow.fadeInLeft( data-wow-delay='.1s' )
+					+post-modern({
+						img: 'landscape-design/post-31-370x307',
+						time: { datetime: '2019-07-17', dateNumber: '17', dateMonth: 'July' },
+						title: 'The Right Stones for your Garden',
+						text: 'Stone has always been a cost-effective hardscape material for all garden styles. Nowadays they are used as an affordable...'
+					})
+
+				.col-sm-6.col-lg-4.wow.fadeInLeft( data-wow-delay='.2s' )
+					+post-modern({
+						img: 'landscape-design/post-32-370x307',
+						time: { datetime: '2019-07-22', dateNumber: '22', dateMonth: 'July' },
+						title: 'Why landscape design is important',
+						text: 'It is vital to have the house look attractive from the outside, as it is the face of you and your family. In some way it gives a picture of the...'
+					})
+
+
+	// Latest Projects
+	section.section.section-sm.section-top-0.section-fluid.section-relative.bg-gray-4: .container-fluid
+		h6.gallery-title Gallery
+		// Owl Carousel
+		.owl-carousel.owl-classic.owl-dots-secondary( data-items='1', data-sm-items='2', data-md-items='3', data-lg-items='4', data-xl-items='5', data-xxl-items='6', data-stage-padding='15', data-xxl-stage-padding='0', data-margin='30', data-nav='true', data-dots='true' )
+			+thumbnail-mary({
+				titleNone: true,
+				img: 'landscape-design/gallery-image-1-270x195',
+				imgOriginal: 'landscape-design/gallery-image-1-1200x800-original'
+			})
+			+thumbnail-mary({
+				titleNone: true,
+				img: 'landscape-design/project-3-270x195',
+				imgOriginal: 'landscape-design/project-3-1200x800-original'
+			})
+			+thumbnail-mary({
+				titleNone: true,
+				img: 'landscape-design/gallery-image-2-270x195',
+				imgOriginal: 'landscape-design/gallery-image-2-1200x800-original'
+			})
+			+thumbnail-mary({
+				titleNone: true,
+				img: 'landscape-design/project-7-270x195',
+				imgOriginal: 'landscape-design/project-7-1200x800-original'
+			})
+			+thumbnail-mary({
+				titleNone: true,
+				img: 'landscape-design/gallery-image-3-270x195',
+				imgOriginal: 'landscape-design/masonry-gallery-2-1200x800-original'
+			})
+			+thumbnail-mary({
+				titleNone: true,
+				img: 'landscape-design/project-2-270x195',
+				imgOriginal: 'landscape-design/project-2-1200x800-original'
+			})
+			+thumbnail-mary({
+				titleNone: true,
+				img: 'landscape-design/project-6-270x195',
+				imgOriginal: 'landscape-design/project-6-1200x800-original'
+			})
+
+
+	// Page Footer
+	include ../sections/_section-gmap-2
+	include ../sections/_footer-minimal
+
+	.modal.modal-video#exampleModal(tabindex='-1', role='dialog')
+		.modal-dialog( role='document')
+			.modal-content
+				.modal-header
+					button.close( type='button', data-dismiss='modal', aria-label='Close')
+						span(aria-hidden='true' ) ×
+				.modal-body
+					video(src='video/video-2.mp4' controls='controls' poster='video/video-1.jpg' )

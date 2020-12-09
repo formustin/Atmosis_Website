@@ -1,0 +1,59 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-posts
+include ../components/_ui-pagination
+
+block variables
+	- var activeCategory = 'blog'
+	- var pageName = 'Grid blog 3'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-39',
+		bgImage: 'bg-blog'
+	})
+
+	// Grid blog
+	section.section.section-xl.bg-default.text-md-left
+		.container
+			.row.row-60.justify-content-center
+				.col-sm-9.col-md-6.col-lg-6
+					+post-aria({
+						img: 'post-22-570x492',
+						title: 'Here are the most stylish colors for next spring',
+						time: { datetime: '2019-05-17', dateText: 'May 17, 2019' }
+					})
+
+				.col-sm-9.col-md-6.col-lg-6
+					+post-aria({
+						img: 'post-23-570x492',
+						title: 'Popular Décor Trends you surely need to know about',
+						time: { datetime: '2019-05-12', dateText: 'May 12, 2019' }
+					})
+
+				.col-sm-9.col-md-6.col-lg-6
+					+post-aria({
+						img: 'post-24-570x492',
+						title: 'The accent color has the power to transform any room in your house',
+						time: { datetime: '2019-05-17', dateText: 'May 17, 2019' }
+					})
+
+				.col-sm-9.col-md-6.col-lg-6
+					+post-aria({
+						img: 'post-25-570x492',
+						title: 'Affordable office furniture that looks expensive',
+						time: { datetime: '2019-05-12', dateText: 'May 12, 2019' }
+					})
+
+			.pagination-wrap
+				+pagination-bootstrap(null, 1, 4)
+
+
+	// Page Footer
+	+footer-classic

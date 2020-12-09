@@ -1,0 +1,64 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-icon
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Services'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName + ' #1'],
+		mod: 'bg-overlay-68',
+		bgImage: 'bg-services'
+	})
+
+	// Section-services
+	section.section.section-xl.bg-default
+		.container
+			.row.row-40
+				.col-md-6.col-lg-4
+					+box-icon-modern({
+						icon: 'fl-bigmug-line-paintbrush9',
+						title: 'Interior design',
+						text: 'We develop and implement better interior design concepts for you so that you and all your guests could enjoy the unique atmosphere of your home.'
+					})
+				.col-md-6.col-lg-4
+					+box-icon-modern({
+						icon: 'fl-bigmug-line-cropping1',
+						title: 'Space planning',
+						text: 'We create better interior experiences through space planning services. They are vital for a successful interior design project of your home or office.'
+					})
+				.col-md-6.col-lg-4
+					+box-icon-modern({
+						icon: 'fl-bigmug-line-chat55',
+						title: 'Consultations',
+						text: 'Our specialists are ready to consult you on any interior design related topic. All you have to do is to contact us and we will organize a free consultation.'
+					})
+				.col-md-6.col-lg-4
+					+box-icon-modern({
+						icon: 'fl-bigmug-line-images21',
+						title: 'Feng shui design',
+						text: 'With years of experience, our experts can help you design your interior according to the ancient Feng Shui philosophy while saving time.'
+					})
+				.col-md-6.col-lg-4
+					+box-icon-modern({
+						icon: 'fl-bigmug-line-foggy3',
+						title: 'Landscape design',
+						text: 'Our designers will team with you to create your ideal landscape design plan. Their expert advice and solutions will deliver a plan to meet your needs.'
+					})
+				.col-md-6.col-lg-4
+					+box-icon-modern({
+						icon: 'fl-bigmug-line-favourites5',
+						title: 'Decorative services',
+						text: 'Our professional decorators will be happy to help you change your house’s inner look without spending too much money on interior design.'
+					})
+
+
+	// Page Footer
+	+footer-classic

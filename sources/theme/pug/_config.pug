@@ -1,0 +1,123 @@
+-
+	var
+		html_class = "wide wow-animation",
+		fonts = "//fonts.googleapis.com/css?family=Poppins:400,500%7CTeko:300,400,500%7CMaven+Pro:500",
+		subscribeFormCounter = 0,
+		logo = {
+			default: 'logo-default-190x43',
+			inverse: 'logo-inverse-190x43',
+			name: 'Creator'
+		},
+		links = {
+			post:        'blog-post.html',
+			getTemplate: '#get-template'
+		},
+		colors = {
+			primary:    '#50ba87',
+			secondary2: '#ec7575',
+			orange:     '#e7a855'
+		},
+		menu = [
+			{
+				title: 'Home',
+				category: 'home',
+				link: '../index.html',
+				dropdown: [
+					{ title: 'Interior design' },
+					{ title: 'Decor' },
+					{
+						title: 'Feng Shui',
+						link: 'index.html'
+					},
+					{ title: 'Landscaping' },
+					{ title: 'Flooring' },
+					{ title: 'Furniture' },
+					{ title: 'Windows and Doors' }
+				]
+			},
+			{
+				title: 'About Us',
+				category: 'about'
+			},
+			{
+				title: 'Portfolio',
+				category: 'gallery',
+				link: 'grid-gallery.html',
+				dropdown: [
+					{ title: 'Grid Gallery' },
+					{ title: 'Full width Gallery' },
+					{ title: 'Masonry Gallery' },
+					{ title: 'Full Width Masonry Gallery' },
+					{	title: 'Single Project' },
+					{	title: 'Single Project 2' },
+					{	title: 'Single Project 3' },
+					{	title: 'Single Project 4' }
+				]
+			},
+			{
+				title: 'Blog',
+				category: 'blog',
+				link: 'classic-blog.html',
+				dropdown: [
+					{	title: 'Classic Blog' },
+					{	title: 'Grid Blog' },
+					{	title: 'Grid Blog 2' },
+					{	title: 'Grid Blog 3' },
+					{	title: 'Blog Post' }
+				]
+			},
+			{
+				title: 'Shop',
+				category: 'shop',
+				dropdown: [
+					{  title: 'Ecwid Shop' },
+					{  title: 'Shop' },
+					{  title: 'Single Product' },
+					{  title: 'Cart Page' },
+					{  title: 'Checkout' }
+				]
+			},
+			{
+				title: 'Contact Us',
+				category: 'contacts'
+			},
+			{
+				title: 'Pages',
+				category: 'pages',
+				link: '#',
+				megamenu: [
+					{
+						title: 'Elements',
+						list: [
+							{ title: 'Typography' },
+							{ title: 'Buttons' },
+							{ title: 'Forms' },
+							{ title: 'Tabs and Accordions' },
+							{ title: 'Counters' },
+							{ title: 'Icons with Text' },
+							{ title: 'Progress Bars' },
+							{ title: 'Calls to Action' },
+							{ title: 'Hover Effects' },
+							{ title: 'Grid System' }
+						]
+					},
+					{
+						title: 'Additional pages',
+						list: [
+							{ title: 'Services' },
+							{ title: 'Services 2' },
+							{ title: 'Single Service' },
+							{ title: 'Our Team' },
+							{ title: 'Testimonials' },
+							{ title: '404 Page' },
+							{ title: '503 Page' },
+							{ title: 'Pricing' },
+							{ title: 'Coming Soon' },
+							{ title: 'Contact Us 2' },
+							{ title: 'FAQ' },
+							{ title: 'Search results' }
+						]
+					}
+				]
+			}
+		];

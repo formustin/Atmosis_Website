@@ -1,0 +1,63 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-progress-bar-linear
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Progress Bars'
+
+block page  
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-59',
+		bgImage: 'bg-elements-3'
+	})
+
+	// Section Skill Bars and Circle Progress Bars
+	section.section.section-xl.bg-default
+		.container
+			.row.row-50.justify-content-center
+				.col-md-10.col-lg-5.col-xl-6
+					+progress-bar-linear({
+						mod: 'progress-secondary',
+						title: "Dedication",
+						valueTo: "79"
+					})
+
+					+progress-bar-linear({
+						mod: 'progress-orange',
+						title: "Knowledge",
+						valueTo: "72"
+					})
+
+					+progress-bar-linear({
+						title: "Professionalism",
+						valueTo: "88"
+					})
+
+				.col-md-10.col-lg-7.col-xl-6
+					.row.row-50.justify-content-center
+						.col-sm-4
+							// Circle Progress Bar
+							.progress-bar-circle( data-value='0.9', data-gradient=colors.secondary2, data-empty-fill='transparent', data-size='150', data-thickness='12', data-reverse='true' )
+								span
+							p.progress-bar-circle-title Leadership
+						.col-sm-4
+							// Circle Progress Bar
+							.progress-bar-circle( data-value='0.6', data-gradient=colors.orange, data-empty-fill='transparent', data-size='150', data-thickness='12', data-reverse='true' )
+								span
+							p.progress-bar-circle-title Creativity
+						.col-sm-4
+							// Circle Progress Bar
+							.progress-bar-circle( data-value='0.87', data-gradient=colors.primary, data-empty-fill='transparent', data-size='150', data-thickness='12', data-reverse='true' )
+								span
+							p.progress-bar-circle-title Innovations
+
+
+	// Page Footer
+	+footer-classic

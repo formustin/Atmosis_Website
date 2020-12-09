@@ -1,0 +1,81 @@
+/*
+*
+* Material Parallax
+*/
+
+.parallax-container {
+	position: relative;
+	overflow: hidden;
+}
+
+.material-parallax {
+	position: absolute;
+	top: 0;
+	left: -1px;
+	right: -1px;
+	bottom: 0;
+}
+
+.ipad, .iphone {
+	.material-parallax {
+		background-attachment: scroll !important;
+	}
+}
+
+.material-parallax img {
+	display: none;
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	min-width: 101%;
+	max-width: none;
+	min-height: 101%;
+	transform: translate3d(-50%, 0, 0);
+}
+
+.parallax-content {
+	position: relative;
+	z-index: 1;
+}
+
+
+
+// Parallax Scene
+.parallax-scene-js {
+	overflow: hidden;
+}
+
+.container-scene {
+	position: relative;
+}
+
+.layer-1 {
+	width: 159px;
+	height: 521px;
+	left: -40px;
+	bottom: 30px;
+}
+
+.layer-2 {
+	width: 537px;
+	height: 477px;
+	right: -85px;
+	bottom: 36px;
+}
+
+.layer-1,
+.layer-2 {
+	display: none;
+	position: absolute;
+	z-index: -1;
+}
+
+.desktop {
+	// Large ≥992px
+	@include media-breakpoint-up(xl) {
+		.layer-1,
+		.layer-2 {
+			display: block;
+		}
+	}
+}

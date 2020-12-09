@@ -1,0 +1,84 @@
+extends  ../_skeleton
+
+//- Includes
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Pricing'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-46',
+		bgImage: 'bg-pricing'
+	})
+
+	// Section Pricing
+	section.section.section-sm.section-first.bg-default
+		.container
+			h3 White
+			include ../sections/_pricing-list
+
+
+	// Section Pricing
+	section.section.section-sm.section-last.bg-default
+		.container
+			h3 Black
+			.row.row-30.justify-content-center
+				.col-md-6.col-lg-5.col-xl-4
+					.box-pricing.box-pricing-black
+						.box-pricing-body
+							h5.box-pricing-title Basic
+							h3.box-pricing-price $9.00
+							.box-pricing-time Per Month
+							.box-pricing-divider
+								.divider
+								span Basic
+							ul.box-pricing-list
+								li.active Concept development
+								li.active Photorealistic 3D visualisation
+								li Sketches and elevations
+								li Space planning
+								li Decorative services
+						.box-pricing-button: a.button.button-lg.button-block.button-gray-4( href='#' ) Get started
+				.col-md-6.col-lg-5.col-xl-4
+					.box-pricing.box-pricing-black.box-pricing-popular
+						.box-pricing-body
+							h5.box-pricing-title Standard
+							h3.box-pricing-price $19.99
+							.box-pricing-time Per Month
+							.box-pricing-divider
+								.divider
+								span Standard
+							ul.box-pricing-list
+								li.active Concept development
+								li.active Photorealistic 3D visualisation
+								li.active Sketches and elevations
+								li.active Space planning
+								li Decorative services
+						.box-pricing-button: a.button.button-lg.button-block.button-primary( href='#' ) Get started
+						.box-pricing-badge popular
+				.col-md-6.col-lg-5.col-xl-4
+					.box-pricing.box-pricing-black
+						.box-pricing-body
+							h5.box-pricing-title Premium
+							h3.box-pricing-price $30.00
+							.box-pricing-time Per Month
+							.box-pricing-divider
+								.divider
+								span Premium
+							ul.box-pricing-list
+								li.active Concept development
+								li.active Photorealistic 3D visualisation
+								li.active Sketches and elevations
+								li.active Space planning
+								li.active Decorative services
+						.box-pricing-button: a.button.button-lg.button-block.button-gray-4( href='#' ) Get started
+
+
+	// Page Footer
+	+footer-classic

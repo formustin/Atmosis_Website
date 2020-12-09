@@ -1,0 +1,363 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-product
+include ../components/_ui-box-icon
+include ../components/_ui-counters
+include ../components/_ui-quote
+include ../components/_ui-box-team
+include ../components/_ui-posts
+
+block variables
+	-
+		var
+			activeCategory = 'home',
+			pageName = 'Decor',
+			style = '1';
+
+		logo = {
+			default: 'logo-default-decor-190x43',
+			inverse: 'logo-inverse-190x43',
+			name: 'Creator'
+		};
+
+block page
+	// Page Header
+	include ../sections/_header-modern
+	include ../sections/_swiper-slider-2
+
+	// In the spotlight
+	section.section.section-sm.section-first.bg-default
+		.container
+			.oh: .title-decoration-lines.wow.slideInUp( data-wow-delay='0s' ): h6.title-decoration-lines-content In the spotlight
+			.row.row-30.justify-content-center
+				.col-md-12.col-lg-8: .oh
+					+box-sportlight({
+						img: 'spotlight-1-770x332',
+						title: 'New Collection Now Available',
+						badgeNew: true
+					}).wow.slideInDown( data-wow-delay='0s' )
+				.col-sm-6.col-lg-4: .oh-desktop
+					+box-sportlight({
+						mod: 'box-sportlight-sm',
+						img: 'spotlight-2-370x332',
+						title: 'Bed linen sale',
+						badgeSale: '30'
+					}).wow.slideInRight( data-wow-delay='.1s' )
+				.col-sm-6.col-lg-4: .oh-desktop
+					+box-sportlight({
+						mod: 'box-sportlight-sm',
+						img: 'spotlight-3-370x332',
+						title: 'Modern lighting'
+					}).wow.slideInLeft( data-wow-delay='0s' )
+				.col-md-12.col-lg-8: .oh
+					+box-sportlight({
+						img: 'spotlight-4-770x332',
+						title: 'Add magic to children’s room'
+					}).wow.slideInUp( data-wow-delay='.1s' )
+
+
+	// Trending products
+	section.section.section-sm.bg-default
+		.container
+			.oh: .title-decoration-lines.wow.slideInUp( data-wow-delay='0s' ): h6.title-decoration-lines-content Trending products
+			.row.row-40.justify-content-center
+				.col-sm-8.col-md-7.col-lg-6.wow.fadeInLeft( data-wow-delay='0s' )
+					.product-image-map.box-ordered-2
+						+jpg('image-map-1-570x715')
+						.product-image-marker-1-1( data-hover-group='group-1-1' ): span.box-ordered-item
+						.product-image-marker-1-2( data-hover-group='group-1-2' ): span.box-ordered-item
+						.product-image-marker-1-3( data-hover-group='group-1-3' ): span.box-ordered-item
+						.product-image-marker-1-4( data-hover-group='group-1-4' ): span.box-ordered-item
+				.col-md-5.col-lg-6: .row.row-30.justify-content-center.box-ordered-2
+					.col-sm-6.col-md-12.col-lg-6: .oh-desktop
+						+product-2({
+							unit: 'flex-row flex-lg-column',
+							img: 'product-14-270x280',
+							title: 'V1 lounge chair',
+							price: '1,899',
+							priceOld: '2,299'
+						}).box-ordered-item.wow.slideInRight( data-hover-group='group-1-1', data-wow-delay='0s' )
+					.col-sm-6.col-md-12.col-lg-6: .oh-desktop
+						+product-2({
+							unit: 'flex-row flex-lg-column',
+							img: 'product-15-270x280',
+							title: 'Isunda Cushion',
+							price: '150'
+						}).box-ordered-item.wow.slideInLeft( data-hover-group='group-1-2', data-wow-delay='0s' )
+					.col-sm-6.col-md-12.col-lg-6: .oh-desktop
+						+product-2({
+							unit: 'flex-row flex-lg-column',
+							img: 'product-16-270x280',
+							title: 'Sanela cushion',
+							price: '100'
+						}).box-ordered-item.wow.slideInLeft( data-hover-group='group-1-3', data-wow-delay='0s' )
+					.col-sm-6.col-md-12.col-lg-6: .oh-desktop
+						+product-2({
+							unit: 'flex-row flex-lg-column',
+							img: 'product-5-270x280',
+							title: 'Grasshoppa floor lamp',
+							price: '650'
+						}).box-ordered-item.wow.slideInRight( data-hover-group='group-1-4', data-wow-delay='0s' )
+
+
+	// Icons Ruby
+	section.section.section-sm.bg-default
+		.container: .row.row-30.justify-content-center
+			.col-sm-6.col-lg-4.wow.fadeInRight( data-wow-delay='0s' )
+				+box-icon-ruby({
+					align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+					icon: 'fl-bigmug-line-airplane86',
+					title: 'Free worldwide Delivery',
+					text: 'When ordering from $300'
+				})
+			.col-sm-6.col-lg-4.wow.fadeInRight( data-wow-delay='.1s' )
+				+box-icon-ruby({
+					align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+					icon: 'fl-bigmug-line-giftbox54',
+					title: 'Nice Gifts for every client',
+					text: 'Free gifts for every customer'
+				})
+			.col-sm-6.col-lg-4.wow.fadeInRight( data-wow-delay='.2s' )
+				+box-icon-ruby({
+					align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+					icon: 'fl-bigmug-line-hot67',
+					title: '-20% on first purchase',
+					text: 'Get your discount today!'
+				})
+
+
+	// Improve your interior with deco
+	section.section.section-sm.bg-default
+		.container
+			.oh: .title-decoration-lines.wow.slideInUp( data-wow-delay='0s' ): h6.title-decoration-lines-content Improve your interior with deco
+			.row.row-30( data-lightgallery='group' )
+				.col-sm-6.col-lg-4: .oh-desktop
+					+thumbnail-mary({
+						img: 'grid-gallery-7-370x303',
+						imgOriginal: 'fullwidth-gallery-4-1200x800-original',
+						title: 'Pillows'
+					}).thumbnail-sm.wow.slideInLeft( data-wow-delay='0s' )
+				.col-sm-6.col-lg-4: .oh-desktop
+					+thumbnail-mary({
+						img: 'grid-gallery-8-370x303',
+						imgOriginal: 'grid-gallery-8-1200x800-original',
+						title: 'Wall Decor'
+					}).thumbnail-sm.wow.slideInUp( data-wow-delay='.1s' )
+				.col-sm-6.col-lg-4: .oh-desktop
+					+thumbnail-mary({
+						img: 'grid-gallery-9-370x303',
+						imgOriginal: 'grid-gallery-9-1200x800-original',
+						title: 'Vases'
+					}).thumbnail-sm.wow.slideInRight( data-wow-delay='.0s' )
+				.col-sm-6.col-lg-4: .oh-desktop
+					+thumbnail-mary({
+						img: 'grid-gallery-10-370x303',
+						imgOriginal: 'grid-gallery-10-1200x800-original',
+						title: 'Rugs'
+					}).thumbnail-sm.wow.slideInUp( data-wow-delay='.1s' )
+				.col-sm-6.col-lg-4: .oh-desktop
+					+thumbnail-mary({
+						img: 'grid-gallery-11-370x303',
+						imgOriginal: 'grid-gallery-11-1200x800-original',
+						title: 'Coffee Tables'
+					}).thumbnail-sm.wow.slideInLeft( data-wow-delay='0s' )
+				.col-sm-6.col-lg-4: .oh-desktop
+					+thumbnail-mary({
+						img: 'grid-gallery-12-370x303',
+						imgOriginal: 'fullwidth-masonry-gallery-6-1200x800-original',
+						title: 'Lighting'
+					}).thumbnail-sm.wow.slideInDown( data-wow-delay='.1s' )
+
+
+	// Section CTA
+	section.section.section-sm.bg-default.text-md-left
+		include ../sections/_section-call-to-action
+
+
+	// About us
+	section.section.section-sm.bg-default
+		.container
+			.oh: .title-decoration-lines.wow.slideInUp( data-wow-delay='0s' ): h6.title-decoration-lines-content About us
+			.row.row-lg.row-50.justify-content-center.border-classic.border-classic-big
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInLeft( data-wow-delay='0s' )
+					+counter-creative({
+						mod: 'counter-creative-2',
+						icon: 'fl-bigmug-line-trophy55',
+						number: '12',
+						title: 'Design awards'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInLeft( data-wow-delay='.1s' )
+					+counter-creative({
+						mod: 'counter-creative-2',
+						icon: 'fl-bigmug-line-up104',
+						number: '2',
+						symbol: 'k',
+						title: 'Home Decor Products'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInLeft( data-wow-delay='.2s' )
+					+counter-creative({
+						mod: 'counter-creative-2',
+						icon: 'fl-bigmug-line-sun81',
+						number: '679',
+						title: 'Happy clients every day'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInLeft( data-wow-delay='.3s' )
+					+counter-creative({
+						mod: 'counter-creative-2',
+						icon: 'fl-bigmug-line-user143',
+						number: '13',
+						title: 'Team members'
+					})
+
+
+	// What people say
+	section.section.section-sm.bg-default
+		.container
+			.oh: .title-decoration-lines.wow.slideInUp( data-wow-delay='0s' ): h6.title-decoration-lines-content What people say
+			// Owl Carousel
+			.owl-carousel.owl-modern.owl-dots-secondary( data-items='1', data-stage-padding='15', data-margin='30', data-dots='true', data-animation-in='fadeIn', data-animation-out='fadeOut' )
+				+quote-lisa({
+					mod: 'quote-lisa-2',
+					img: 'user-16-100x100',
+					text: 'The exceptional service that my company and I received from you is beyond compare. You have a wonderful eye for detail and color. Your employees were able to take my ideas and transform them into reality. I couldn’t have had a better and more rewarding relationship. I recommend your services wholeheartedly!',
+					author: 'Catherine Williams',
+					status: 'Local shop owner'
+				})
+				+quote-lisa({
+					mod: 'quote-lisa-2',
+					img: 'user-17-100x100',
+					text: 'My wife and I would like to say thank you for the excellent craftsmanship exhibited by your team’s refinishing of our small round pie-shell walnut table. We picked it up yesterday and are very happy how nice (and new) it looks. It was obviously a good decision on our part to have this piece restored.',
+					author: 'Rupert Wood',
+					status: 'House owner'
+				})
+				+quote-lisa({
+					mod: 'quote-lisa-2',
+					img: 'user-19-100x100',
+					text: 'Deco are pleasant to work with, their team carefully listens to clients and works hard to create custom home decor that reflects individual yet broad personalities. Under Jill Peterson’s patient direction, our wishes developed into furnishings that we feel are functional and appealing to our home.',
+					author: 'Sam Peterson',
+					status: 'Sales Manager'
+				})
+
+
+	// Team of professionals
+	section.section.section-sm.bg-default
+		.container
+			.oh: .title-decoration-lines.wow.slideInUp( data-wow-delay='0s' ): h6.title-decoration-lines-content Team of professionals
+			.row.row-30.justify-content-center
+				.col-md-6.col-lg-4.col-xl-4.wow.fadeInRight( data-wow-delay='0s' )
+					+team-classic({
+						mod: 'team-classic-2',
+						img: 'team-1-370x406',
+						name: 'Ryan Wilson',
+						status: 'Founder, Senior Designer'
+					})
+				.col-md-6.col-lg-4.col-xl-4.wow.fadeInRight( data-wow-delay='.1s' )
+					+team-classic({
+						mod: 'team-classic-2',
+						img: 'team-2-370x406',
+						name: 'Jill Peterson',
+						status: 'Designer'
+					})
+				.col-md-6.col-lg-4.col-xl-4.wow.fadeInRight( data-wow-delay='.2s' )
+					+team-classic({
+						mod: 'team-classic-2',
+						img: 'team-3-370x406',
+						name: 'Sam Robinson',
+						status: 'Customer Care Manager'
+					})
+
+
+	// Popular products
+	section.section.section-sm.bg-default
+		.container
+			.oh: .title-decoration-lines.wow.slideInUp( data-wow-delay='0s' ): h6.title-decoration-lines-content Popular products
+			// Owl Carousel
+			.owl-carousel.owl-products.owl-dots-secondary( data-items='1', data-sm-items='2', data-md-items='3', data-lg-items='4', data-margin='30', data-dots='true', data-animation-in='fadeIn', data-animation-out='fadeOut' )
+				+product({
+					img: 'product-1-270x280',
+					title: 'CB2 chamber desk',
+					price: '520'
+				})
+				+product({
+					img: 'product-2-270x280',
+					title: 'ÖVERUD Lamp shade',
+					price: '94'
+				})
+				+product({
+					img: 'product-3-270x280',
+					title: 'Round dining table',
+					price: '200'
+				})
+				+product({
+					img: 'product-13-270x280',
+					title: 'Ikea FRODE',
+					price: '99'
+				})
+				+product({
+					img: 'product-17-270x280',
+					title: 'LAKHEDEN Lamp shade',
+					price: '19'
+				})
+				+product({
+					img: 'product-4-270x280',
+					title: 'CB2 Coup Grey Office Chair',
+					price: '550'
+				})
+
+
+	// Latest posts
+	section.section.section-sm.bg-default
+		.container
+			.oh: .title-decoration-lines.wow.slideInUp( data-wow-delay='0s' ): h6.title-decoration-lines-content Latest posts
+			.row.row-50.justify-content-center
+				.col-sm-9.col-md-6.col-lg-5.col-xl-4.wow.fadeInLeft( data-wow-delay='0s' )
+					+post-creative({
+						mod: 'post-creative-2',
+						imgUser: 'user-4-49x49',
+						author: 'Mary Lee',
+						time: { datetime: '2019-05-17', dateText: 'May 17, 2019' },
+						img: 'post-16-370x267',
+						title: 'Refurnishing your living room in 2 quick & easy steps'
+					})
+				.col-sm-9.col-md-6.col-lg-5.col-xl-4.wow.fadeInLeft( data-wow-delay='.1s' )
+					+post-creative({
+						mod: 'post-creative-2',
+						imgUser: 'user-5-49x49',
+						author: 'Samuel Miller',
+						time: { datetime: '2019-05-04', dateText: 'May 04, 2019' },
+						img: 'post-17-370x267',
+						title: 'Essential tips: lighting and heating as parts of home decor'
+					})
+				.col-sm-9.col-md-6.col-lg-5.col-xl-4.wow.fadeInLeft( data-wow-delay='.2s' )
+					+post-creative({
+						mod: 'post-creative-2',
+						imgUser: 'user-6-49x49',
+						author: 'Ann Anderson',
+						time: { datetime: '2019-05-17', dateText: 'May 17, 2019' },
+						img: 'post-18-370x267',
+						title: '8 design secrets for a room you will certainly love'
+					})
+
+
+	// Section CTA 2
+	section.section.section-sm.bg-default.text-center
+		include ../sections/_section-call-to-action-2
+
+
+	section.section.section-sm.section-last.bg-default
+		.container
+			// Owl Carousel
+			.owl-carousel.owl-clients.owl-dots-secondary( data-items='1', data-sm-items='2', data-md-items='3', data-lg-items='4', data-margin='30', data-dots='true', data-animation-in='fadeIn', data-animation-out='fadeOut' )
+				a.clients-modern( href='#' ): +png('clients-1-270x145')
+				a.clients-modern( href='#' ): +png('clients-2-270x145')
+				a.clients-modern( href='#' ): +png('clients-3-270x145')
+				a.clients-modern( href='#' ): +png('clients-4-270x145')
+				a.clients-modern( href='#' ): +png('clients-5-270x145')
+				a.clients-modern( href='#' ): +png('clients-6-270x145')
+				a.clients-modern( href='#' ): +png('clients-7-270x145')
+				a.clients-modern( href='#' ): +png('clients-8-270x145')
+
+
+	// Page Footer
+	include ../sections/_footer-modern

@@ -1,0 +1,69 @@
+footer.section.footer-variant-2.footer-modern.context-dark
+	.footer-variant-2-content: .container
+		.row.row-40.justify-content-between
+			.col-sm-6.col-lg-4.col-xl-3: .oh-desktop: .wow.slideInRight( data-wow-delay='0s' )
+				.footer-brand: a( href='../index.html' ): +png( logo.inverse )
+				p Deco is an industry-leading home decor provider. We are your one-stop solution for refurbishing your house.
+				ul.footer-contacts.d-inline-block.d-md-block
+					li: .unit.unit-spacing-xs
+						.unit-left: span.icon.fa.fa-phone
+						.unit-body: a.link-phone( href='tel:#' ) +1 323-913-4688
+					li: .unit.unit-spacing-xs
+						.unit-left: span.icon.fa.fa-clock-o
+						.unit-body: p Mon-Sat: 07:00AM - 05:00PM
+					li: .unit.unit-spacing-xs
+						.unit-left: span.icon.fa.fa-location-arrow
+						.unit-body: a.link-location( href='#' ) 4730 Crystal Springs Dr, Los Angeles, CA 90027
+
+			.col-sm-6.col-lg-4.col-xl-4: .oh-desktop: .inset-top-18.wow.slideInDown( data-wow-delay='0s' )
+				h5.text-spacing-75 Newsletter
+				p Join Our Email List for Tips and Useful Information
+				form.rd-form.rd-mailform( data-form-output='form-output-global', data-form-type='subscribe', method='post', action='bat/rd-mailform.php' )
+					.form-wrap
+						input.form-input( id='subscribe-form-5-email', type='email', name='email', data-constraints='@Email @Required' )
+						label.form-label( for='subscribe-form-5-email' ) Enter Your E-mail
+					button.button.button-block.button-secondary-4.button-ujarak( type='submit' ) Subscribe
+
+				.group-lg.group-middle
+					p.text-white Follow Us
+					div: +widget-list([], '', 'list-inline-sm footer-social-list-2' )
+
+			.col-lg-3.col-xl-3: .oh-desktop: .inset-top-18.wow.slideInLeft( data-wow-delay='0s' )
+				h5.text-spacing-75 Gallery
+				.row.row-10.gutters-10( data-lightgallery='group' )
+					.col-6.col-sm-3.col-lg-6
+						+thumbnail-mary({
+							titleNone: true,
+							img: 'gallery-image-10-128x120',
+							imgOriginal: 'grid-gallery-4-1200x800-original'
+						}).thumbnail-xxs.thumbnail-mary-2
+					.col-6.col-sm-3.col-lg-6
+						+thumbnail-mary({
+							titleNone: true,
+							img: 'gallery-image-11-128x120',
+							imgOriginal: 'gallery-image-11-1200x800-original'
+						}).thumbnail-xxs.thumbnail-mary-2
+					.col-6.col-sm-3.col-lg-6
+						+thumbnail-mary({
+							titleNone: true,
+							img: 'gallery-image-12-128x120',
+							imgOriginal: 'fullwidth-masonry-gallery-11-1200x800-original'
+						}).thumbnail-xxs.thumbnail-mary-2
+					.col-6.col-sm-3.col-lg-6
+						+thumbnail-mary({
+							titleNone: true,
+							img: 'gallery-image-13-128x120',
+							imgOriginal: 'gallery-image-13-1200x800-original'
+						}).thumbnail-xxs.thumbnail-mary-2
+
+	.footer-variant-2-bottom-panel: .container
+		// Rights
+		.group-sm.group-sm-justify
+			p.rights
+				span &copy;&nbsp;
+				span.copyright-year
+				= ' '
+				span= logo.name
+				= '. All rights reserved'
+				| . Design&nbsp;by&nbsp;#[a(href="https://zemez.io/") Zemez]
+			p.rights: a( href='privacy-policy.html' ) Privacy Policy

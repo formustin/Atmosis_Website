@@ -1,0 +1,134 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Hover effects'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-39',
+		bgImage: 'bg-hover-effects'
+	})
+
+	// Section hover #1
+	section.section.section-sm.section-first.bg-default
+		.container
+			h3 #1
+			.row.row-30( data-lightgallery='group' )
+				.col-md-6.col-lg-5.col-xl-4
+					+thumbnail-classic({
+						img: 'hover-effects-1-370x303',
+						imgOriginal: 'fullwidth-gallery-2-1200x800-original',
+						number: '1'
+					}).thumbnail-sm
+				.col-md-6.col-lg-5.col-xl-4
+					+thumbnail-classic({
+						img: 'hover-effects-2-370x303',
+						imgOriginal: 'hover-effects-2-1200x800-original',
+						number: '2'
+					}).thumbnail-sm
+				.col-md-6.col-lg-5.col-xl-4
+					+thumbnail-classic({
+						img: 'hover-effects-3-370x303',
+						imgOriginal: 'hover-effects-3-1200x800-original',
+						number: '3'
+					}).thumbnail-sm
+
+
+	// Section hover #2
+	section.section.section-sm.bg-default
+		.container
+			h3 #2
+			.row.row-30( data-lightgallery='group' )
+				.col-md-6.col-lg-4
+					+thumbnail-modern({
+						img: 'grid-gallery-1-370x303',
+						imgOriginal: 'grid-gallery-1-1200x800-original',
+						title: 'Modern loft room',
+						subtitle: '2013, Commercial, Denmark'
+					}).thumbnail-sm
+				.col-md-6.col-lg-4
+					+thumbnail-modern({
+						img: 'grid-gallery-2-370x303',
+						imgOriginal: 'grid-gallery-2-1200x800-original',
+						title: 'Asia inspired living room',
+						subtitle: '2015, Residential Project, Denmark'
+					}).thumbnail-sm
+				.col-md-6.col-lg-4
+					+thumbnail-modern({
+						img: 'grid-gallery-3-370x303',
+						imgOriginal: 'grid-gallery-3-1200x800-original',
+						title: 'Sunny valley hotel',
+						subtitle: '2013, Custom Project, Spain'
+					}).thumbnail-sm
+
+
+	// Section hover #3
+	section.section.section-sm.bg-default
+		.container
+			h3 #3
+			.row.row-30( data-lightgallery='group' )
+				.col-sm-6.col-lg-4
+					+thumbnail-creative({
+						img: 'hover-effects-7-370x303',
+						imgOriginal: 'hover-effects-7-1200x800-original',
+						title: 'White inn',
+						time: {
+							datetime: '2014-06-24',
+							dateText: 'June 24, 2014'
+						}
+					}).thumbnail-sm
+				.col-sm-6.col-lg-4
+					+thumbnail-creative({
+						img: 'hover-effects-8-370x303',
+						imgOriginal: 'hover-effects-8-1200x800-original',
+						title: 'Small kitchen',
+						time: {
+							datetime: '2015-12-05',
+							dateText: 'December 05, 2015'
+						}
+					}).thumbnail-sm
+				.col-sm-6.col-lg-4
+					+thumbnail-creative({
+						img: 'hover-effects-3-370x303',
+						imgOriginal: 'hover-effects-3-1200x800-original',
+						title: 'Smith center',
+						time: {
+							datetime: '2017-05-04',
+							dateText: 'May 04, 2017'
+						}
+					}).thumbnail-sm
+
+
+	// Section hover #4
+	section.section.section-sm.section-last.bg-default
+		.container
+			h3 #4
+			.row.row-30( data-lightgallery='group' )
+				.col-md-6.col-lg-4
+					+thumbnail-mary({
+						img: 'grid-gallery-8-370x303',
+						imgOriginal: 'grid-gallery-8-1200x800-original',
+						number: '1'
+					}).thumbnail-sm
+				.col-md-6.col-lg-4
+					+thumbnail-mary({
+						img: 'grid-gallery-7-370x303',
+						imgOriginal: 'fullwidth-gallery-4-1200x800-original',
+						number: '2'
+					}).thumbnail-sm
+				.col-md-6.col-lg-4
+					+thumbnail-mary({
+						img: 'grid-gallery-9-370x303',
+						imgOriginal: 'grid-gallery-9-1200x800-original',
+						number: '3'
+					}).thumbnail-sm
+
+
+	// Page Footer
+	+footer-classic

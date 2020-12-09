@@ -1,0 +1,58 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-services
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Services 2'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: ['Services #2'],
+		mod: 'bg-overlay-68',
+		bgImage: 'bg-services'
+	})
+
+	// Section-services
+	section.section.section-xl.bg-default
+		.container
+			.row.row-50.justify-content-center.box-ordered
+				.col-md-6.col-lg-5.col-xl-4
+					+services-classic({
+						img: 'services-1-370x297',
+						title: 'Interior design'
+					})
+				.col-md-6.col-lg-5.col-xl-4
+					+services-classic({
+						img: 'services-2-370x297',
+						title: 'Space planning'
+					})
+				.col-md-6.col-lg-5.col-xl-4
+					+services-classic({
+						img: 'services-3-370x297',
+						title: 'Feng shui design'
+					})
+				.col-md-6.col-lg-5.col-xl-4
+					+services-classic({
+						img: 'services-4-370x297',
+						title: 'Consultations'
+					})
+				.col-md-6.col-lg-5.col-xl-4
+					+services-classic({
+						img: 'services-5-370x297',
+						title: 'Decorative services'
+					})
+				.col-md-6.col-lg-5.col-xl-4
+					+services-classic({
+						img: 'services-6-370x297',
+						title: 'Landscape design'
+					})
+
+
+	// Page Footer
+	+footer-classic

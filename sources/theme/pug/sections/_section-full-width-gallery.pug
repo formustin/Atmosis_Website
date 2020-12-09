@@ -1,0 +1,60 @@
+.isotope-filters.isotope-filters-horizontal
+	//- Isotope Filters
+	button.isotope-filters-toggle.button.button-md.button-icon.button-icon-right.button-default-outline.button-wapasha( data-custom-toggle='#isotope-3', data-custom-toggle-hide-on-blur='true', data-custom-toggle-disable-on-blur='true' )
+		span.icon.fa.fa-caret-down
+		| Filter
+	ul#isotope-3.isotope-filters-list
+		li: a.active( href='#', data-isotope-filter='*' ) All
+		li: a( href='#', data-isotope-filter='Type 1' ) Apartments
+		li: a( href='#', data-isotope-filter='Type 2' ) Offices
+		li: a( href='#', data-isotope-filter='Type 3' ) Corporate designs
+.row.row-30.isotope( data-lightgallery='group' )
+	.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 3' )
+		+thumbnail-classic({
+			img: 'fullwidth-gallery-1-420x350',
+			imgOriginal: 'fullwidth-gallery-1-1200x800-original',
+			title: '379 Harvey Rd'
+		}).thumbnail-md
+	.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 2' )
+		+thumbnail-classic({
+			img: 'fullwidth-gallery-2-420x350',
+			imgOriginal: 'fullwidth-gallery-2-1200x800-original',
+			title: '64 James Ave'
+		}).thumbnail-md
+	.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 1' )
+		+thumbnail-classic({
+			img: 'fullwidth-gallery-3-420x350',
+			imgOriginal: 'grid-gallery-1-1200x800-original',
+			title: '861 E. Oklahoma Dr'
+		}).thumbnail-md
+	.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 3' )
+		+thumbnail-classic({
+			img: 'fullwidth-gallery-4-420x350',
+			imgOriginal: 'fullwidth-gallery-4-1200x800-original',
+			title: '14 Pulaski Str'
+		}).thumbnail-md
+	.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 2' )
+		+thumbnail-classic({
+			img: 'fullwidth-gallery-5-420x350',
+			imgOriginal: 'fullwidth-gallery-5-1200x800-original',
+			title: '8381 Peg Shop Str'
+		}).thumbnail-md
+	.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 1' )
+		+thumbnail-classic({
+			img: 'fullwidth-gallery-6-420x350',
+			imgOriginal: 'fullwidth-gallery-6-1200x800-original',
+			title: '830 Bridge Str'
+		}).thumbnail-md
+	.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 3' )
+		+thumbnail-classic({
+			img: 'fullwidth-gallery-7-420x350',
+			imgOriginal: 'fullwidth-gallery-7-1200x800-original',
+			title: '29 Water Ln'
+		}).thumbnail-md
+	.col-sm-6.col-lg-4.col-xxl-3.isotope-item( data-filter='Type 2' )
+		+thumbnail-classic({
+			img: 'fullwidth-gallery-8-420x350',
+			imgOriginal: 'fullwidth-gallery-8-1200x800-original',
+			title: '7262 Blue Spring Dr'
+		}).thumbnail-md
+

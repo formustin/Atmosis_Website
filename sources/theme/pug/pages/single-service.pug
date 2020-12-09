@@ -1,0 +1,154 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-quote
+include ../components/_ui-box-icon
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Single service'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: ['Interior design'],
+		mod: 'bg-overlay-64',
+		bgImage: 'bg-single-service'
+	})
+
+	// Section single service
+	section.section.section-sm.section-first.bg-default
+		.container
+			.row.row-70
+				.col-lg-8
+					.single-service
+						h3 Designing your interior
+						p.text-spacing-100 Powerful interior spaces make a difference in our lives. These spaces are where we come to work, heal, learn and live. Creator is always ready to help you improve their look.
+						+quote-classic({
+							text: 'Our Interior Design services combine creativity, passion, research and expertise to deliver breathtaking spaces.'
+						})
+						p.text-spacing-100 Across every market we serve, our team designs thoughtful interior environments by engaging key stakeholders through proprietary and proven processes to enhance culture and achieve goals. Our work never loses focus on the human experience of space and we are committed to achieving design solutions that enrich lives and empower individuals.
+						.row.row-40.align-items-xl-center
+							.col-md-6.col-xl-5
+								h5.text-spacing-100 key features
+								ul.list-sm.list-marked.list-marked-sm.list-marked-secondary.text-spacing-100
+									li Photorealistic 3D visualisation
+									li Sketches and collages
+									li The final planning decision
+									li Interior substantive content
+								a.button.button-primary.button-pipaluk( href='#' ) Get a free quote
+
+							.col-md-6.col-xl-7.text-lg-right: +jpg('single-service-1-418x289')
+
+				.col-lg-4
+					// Post Sidebar
+					.post-sidebar.post-sidebar-inset
+						.row.row-lg.row-60
+							.col-sm-6.col-lg-12
+								.post-sidebar-item
+									h5 Our services
+									.post-sidebar-item-inset.inset-right-20
+										ul.list.list-categories
+											li: a( href='#' ).active Interior Design
+											li: a( href='#' ) Space Planning
+											li: a( href='#' ) Fengshui Design
+											li: a( href='#' ) Landscape Design
+											li: a( href='#' ) Decorative Services
+											li: a( href='#' ) Consultations
+							.col-sm-6.col-lg-12
+								.post-sidebar-item
+									h5 Get in touch
+									.post-sidebar-item-inset
+										ul.list-contacts
+											li: .unit.unit-spacing-xs
+												.unit-left: span.icon.fa.fa-phone
+												.unit-body: a.link-phone( href='tel:#' ) +1 323-913-4688
+											li: .unit.unit-spacing-xs
+												.unit-left: span.icon.fa.fa-envelope
+												.unit-body: a.link-email( href='mailto:#' ) info@demolink.org
+											li: .unit.unit-spacing-xs
+												.unit-left: span.icon.fa.fa-location-arrow
+												.unit-body: a.link-location( href='#' ) 4730 Crystal Springs Dr, Los Angeles, CA 90027
+
+
+	// How we work
+	section.section.section-sm.bg-default
+		.container
+			h3 How we work
+			.row.row-30.row-sm.justify-content-center.box-ordered
+				.col-sm-6.col-md-5.col-lg-3
+					+box-icon-leah({
+						icon: 'fl-bigmug-line-pin42',
+						title: 'Free consultation',
+						text: 'Everything begins with the initial consultation offered by our designers.'
+					})
+				.col-sm-6.col-md-5.col-lg-3
+					+box-icon-leah({
+						icon: 'fl-bigmug-line-chat55',
+						title: 'Concept creation',
+						text: 'During this stage, our designers create the concept of your interior.'
+					})
+				.col-sm-6.col-md-5.col-lg-3
+					+box-icon-leah({
+						icon: 'fl-bigmug-line-images21',
+						title: '3d modeling',
+						text: 'To demonstrate how the result will look like, we use detailed 3D modeling.'
+					})
+				.col-sm-6.col-md-5.col-lg-3
+					+box-icon-leah({
+						icon: 'fl-bigmug-line-paintbrush9',
+						title: 'Interior Remodeling',
+						text: 'During this stage, we work to transform your interior according to the project.'
+					})
+
+
+	// Latest Projects
+	section.section.section-sm.section-fluid.bg-default
+		.container
+			h3 Latest Projects
+		// Owl Carousel
+		.owl-carousel.owl-classic( data-items='1', data-md-items='2', data-lg-items='3', data-xl-items='4', data-margin='30', data-nav='true', data-dots='true' )
+			+thumbnail-mary({
+				img: 'project-1-420x308',
+				imgOriginal: 'grid-gallery-1-1200x800-original',
+				number: '1'
+			}).thumbnail-md
+			+thumbnail-mary({
+				img: 'project-2-420x308',
+				imgOriginal: 'fullwidth-masonry-gallery-10-1200x800-original',
+				number: '2'
+			}).thumbnail-md
+			+thumbnail-mary({
+				img: 'project-3-420x308',
+				imgOriginal: 'grid-gallery-3-1200x800-original',
+				number: '3'
+			}).thumbnail-md
+			+thumbnail-mary({
+				img: 'project-4-420x308',
+				imgOriginal: 'project-4-1200x800-original',
+				number: '4'
+			}).thumbnail-md
+			+thumbnail-mary({
+				img: 'project-5-420x308',
+				imgOriginal: 'fullwidth-gallery-5-1200x800-original',
+				number: '5'
+			}).thumbnail-md
+			+thumbnail-mary({
+				img: 'project-6-420x308',
+				imgOriginal: 'project-6-1200x800-original',
+				number: '6'
+			}).thumbnail-md
+
+
+	// Pricing list
+	section.section.section-sm.section-last.bg-default
+		.container
+			h3 Pricing list
+			include ../sections/_pricing-list
+
+
+	// Page Footer
+	+footer-classic

@@ -1,0 +1,84 @@
+mixin header-creative(obj)
+	- obj = obj || {};
+
+	header.section.page-header
+		// RD Navbar
+		.rd-navbar-wrap
+			nav.rd-navbar.rd-navbar-creative(
+			data-layout=                'rd-navbar-fixed'
+			data-sm-layout=             'rd-navbar-fixed'
+			data-md-layout=             'rd-navbar-fixed'
+			data-md-device-layout=      'rd-navbar-fixed'
+			data-lg-layout=             'rd-navbar-static'
+			data-lg-device-layout=      'rd-navbar-fixed'
+			data-xl-layout=             'rd-navbar-static'
+			data-xl-device-layout=      'rd-navbar-static'
+			data-xxl-layout=            'rd-navbar-static'
+			data-xxl-device-layout=     'rd-navbar-static'
+			data-lg-stick-up-offset=    '46px'
+			data-xl-stick-up-offset=    '46px'
+			data-xxl-stick-up-offset=   '46px'
+			data-lg-stick-up=           'true'
+			data-xl-stick-up=           'true'
+			data-xxl-stick-up=          'true'
+			)&attributes( attributes )
+				.rd-navbar-collapse-toggle.rd-navbar-fixed-element-1( data-rd-navbar-toggle='.rd-navbar-collapse'): span
+				.rd-navbar-aside-outer: .rd-navbar-aside.rd-navbar-collapse
+					ul.rd-navbar-creative-contacts
+						if(obj.list)
+							each li in obj.list
+								li: .unit.unit-spacing-xxs
+									.unit-left: span.icon( class=li.iconClass)
+									.unit-body
+										if(li.href)
+											a( href=li.href)=li.text
+										else
+											p=li.text
+
+					div: .group-xmd.group-middle.justify-content-start
+						p.text-secondary Follow Us
+						div: +widget-list([], '', 'list-inline-md rd-navbar-creative-list-social')
+
+				.rd-navbar-main-outer: .rd-navbar-main
+					// RD Navbar Panel
+					.rd-navbar-panel
+						// RD Navbar Toggle
+						button.rd-navbar-toggle( data-rd-navbar-toggle='.rd-navbar-nav-wrap' ): span
+
+						// RD Navbar Brand
+						.rd-navbar-brand: a.brand( href='../index.html' ): +png( logo.default )
+
+					.rd-navbar-main-element
+						.rd-navbar-nav-wrap
+							// RD Navbar Basket
+							include ../sections/_header-cart
+							a( href='cart-page.html' ).rd-navbar-basket.rd-navbar-basket-mobile.fl-bigmug-line-shopping198: span 2
+							// RD Navbar Search
+							.rd-navbar-search
+								button.rd-navbar-search-toggle( data-rd-navbar-toggle='.rd-navbar-search' ): span
+								form.rd-search( action='search-results.html', data-search-live='rd-search-results-live', method='GET' )
+									.form-wrap
+										label.form-label( for='rd-navbar-search-form-input' ) Search...
+										input( class='rd-navbar-search-form-input form-input', id='rd-navbar-search-form-input', type='text', name='s', autocomplete="off")
+										#rd-search-results-live.rd-search-results-live
+									button.rd-search-form-submit.fl-bigmug-line-search74( type='submit' )
+
+							+navigation({ owlItemXxl: '2' })
+
+						.rd-navbar-project-hamburger( data-rd-navbar-toggle='.rd-navbar-creative-project')
+							.project-hamburger
+								span.project-hamburger-arrow-top
+								span.project-hamburger-arrow-center
+								span.project-hamburger-arrow-bottom
+							.project-hamburger-3
+								- for (var i = 0; i < 3 ; i++)
+									span.project-hamburger-arrow
+							.project-close
+								span
+								span
+
+					.rd-navbar-creative-project
+						// Owl Carousel
+						.owl-carousel.owl-classic( data-items='1', data-sm-items='2', data-md-items='3', data-lg-items='4', data-xl-items='5', data-xxl-items='6', data-margin='30', data-nav='true', data-dots='true' )
+							if(block)
+								block

@@ -1,0 +1,202 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-icon
+include ../components/_ui-counters
+include ../components/_ui-box-team
+include ../components/_ui-quote
+include ../components/_ui-posts
+
+block variables
+	-
+		var
+			activeCategory = 'home',
+			pageName = 'Feng Shui'
+
+block page
+	// Page Header
+	+header-classic
+
+	include ../sections/_swiper-slider
+
+	// See all services
+	section.section.section-sm.section-first.bg-default.text-center
+		.container
+			.row.row-30.justify-content-center
+				.col-md-7.col-lg-5.col-xl-6.text-lg-left.wow.fadeInUp
+					.figure-classic.figure-classic-left: +jpg('index-1-513x561')
+				.col-lg-7.col-xl-6
+					.row.row-30
+						.col-sm-6.wow.fadeInRight
+							article.box-icon-modern.box-icon-modern-custom: div
+								h3.box-icon-modern-big-title See all services
+								.box-icon-modern-decor
+								a.button.button-md.button-default-outline-2.button-wapasha( href='services.html' ) All services
+						.col-sm-6.wow.fadeInRight( data-wow-delay='.1s' )
+							+box-icon-modern({
+								mod: 'box-icon-modern-2',
+								icon: 'fl-bigmug-line-cropping1',
+								title: 'Space planning',
+								text: 'We create better interior experiences through space planning services.'
+							})
+						.col-sm-6.wow.fadeInRight( data-wow-delay='.2s' )
+							+box-icon-modern({
+								mod: 'box-icon-modern-2',
+								icon: 'fl-bigmug-line-paintbrush9',
+								title: 'Interior design',
+								text: 'We develop and implement better interior design concepts for you.'
+							})
+						.col-sm-6.wow.fadeInRight( data-wow-delay='.3s' )
+							+box-icon-modern({
+								mod: 'box-icon-modern-2',
+								icon: 'fl-bigmug-line-chat55',
+								title: 'Consultations',
+								text: 'Our specialists are ready to consult you on any interior design related topic.'
+							})
+
+
+	// Latest Projects
+	section.section.section-sm.section-fluid.bg-default.text-center
+		.container-fluid.isotope-wrap
+			h3.wow.fadeInLeft Latest Projects
+			p.quote-jean.wow.fadeInRight( data-wow-delay='.1s' ) In our portfolio you can browse the latest interior designs created in various styles and for different purposes. Our qualified design professionals are always ready to design something spectacular for you, even if it’s a residential interior improvement.
+			include ../sections/_section-full-width-gallery
+
+
+	// Years of experience
+	section.section.section-sm.bg-default
+		.container
+			.row.row-50.row-xl-24.justify-content-center.align-items-center.align-items-lg-start.text-left
+				include ../sections/_section-counter-amy
+				.col-lg-6.col-xl-12.align-self-center
+					.row.row-30.justify-content-center
+						.col-sm-6.col-md-5.col-lg-6.col-xl-3.wow.fadeInLeft: a.clients-classic( href='#' ): +png('clients-9-270x117')
+						.col-sm-6.col-md-5.col-lg-6.col-xl-3.wow.fadeInLeft( data-wow-delay='.1s' ): a.clients-classic( href='#' ): +png('clients-10-270x117')
+						.col-sm-6.col-md-5.col-lg-6.col-xl-3.wow.fadeInLeft( data-wow-delay='.2s' ): a.clients-classic( href='#' ): +png('clients-3-270x117')
+						.col-sm-6.col-md-5.col-lg-6.col-xl-3.wow.fadeInLeft( data-wow-delay='.3s' ): a.clients-classic( href='#' ): +png('clients-11-270x117')
+
+
+	// Years of experience
+	section.section.section-sm.section-fluid.bg-default
+		.container-fluid
+			h3 Different people  — one mission
+			.row.row-sm.row-30.justify-content-center
+				.col-md-6.col-lg-5.col-xl-3.wow.fadeInRight
+					+team-classic({
+						mod: 'team-classic-lg',
+						img: 'team-11-420x424',
+						name: 'Ryan Wilson',
+						status: 'Founder, Senior Designer'
+					})
+				.col-md-6.col-lg-5.col-xl-3.wow.fadeInRight( data-wow-delay='.1s' )
+					+team-classic({
+						mod: 'team-classic-lg',
+						img: 'team-12-420x424',
+						name: 'Jill Peterson',
+						status: 'Architect'
+					})
+				.col-md-6.col-lg-5.col-xl-3.wow.fadeInRight( data-wow-delay='.2s' )
+					+team-classic({
+						mod: 'team-classic-lg',
+						img: 'team-13-420x424',
+						name: 'Sam Robinson',
+						status: 'Senior Architect'
+					})
+				.col-md-6.col-lg-5.col-xl-3.wow.fadeInRight( data-wow-delay='.3s' )
+					+team-classic({
+						mod: 'team-classic-lg',
+						img: 'team-14-420x424',
+						name: 'Mary Lee',
+						status: 'Decorator'
+					})
+
+
+	// You dream — we embody
+	section.section.section-sm.bg-default.text-md-left
+		.container
+			.row.row-50.align-items-center.justify-content-center.justify-content-xl-between
+				.col-lg-6.col-xl-5.wow.fadeInLeft
+					h3 You dream — we embody
+					// Bootstrap tabs
+					#tabs-6.tabs-custom.tabs-horizontal.tabs-line.tabs-line-big.text-center.text-md-left
+						// Nav tabs
+						ul.nav.nav-tabs
+							li.nav-item( role='presentation' ): a.nav-link.nav-link-big.active( href='#tabs-6-1', data-toggle='tab' ) 01
+							li.nav-item( role='presentation' ): a.nav-link.nav-link-big( href='#tabs-6-2', data-toggle='tab' ) 02
+							li.nav-item( role='presentation' ): a.nav-link.nav-link-big( href='#tabs-6-3', data-toggle='tab' ) 03
+							li.nav-item( role='presentation' ): a.nav-link.nav-link-big( href='#tabs-6-4', data-toggle='tab' ) 04
+
+						// Tab panes
+						.tab-content
+							div#tabs-6-1.tab-pane.fade.show.active
+								h5.font-weight-normal Starting with the right idea
+								p Every project we create starts with an idea, which eventually grows into a great design. But before it does, our team proposes several variants to choose from.
+								.group-md.group-middle
+									a.button.button-secondary.button-pipaluk( href='#' ) Get in touch
+									a.button.button-default-outline.button-wapasha( href='#' ) Download presentation
+
+							div#tabs-6-2.tab-pane.fade
+								h5.font-weight-normal Developing the initial concept
+								p After choosing the right design idea, our team members cooperate with you to create the initial concept, which will be a prototype of your final interior design.
+								.group-md.group-middle
+									a.button.button-secondary.button-pipaluk( href='#' ) Get in touch
+									a.button.button-default-outline.button-wapasha( href='#' ) Download presentation
+
+							div#tabs-6-3.tab-pane.fade
+								h5.font-weight-normal Working on interior design implementation
+								p After completion of the previous stage, we move on to implementing our project and creating a better interior design for your home or office.
+								.group-md.group-middle
+									a.button.button-secondary.button-pipaluk( href='#' ) Get in touch
+									a.button.button-default-outline.button-wapasha( href='#' ) Download presentation
+
+							div#tabs-6-4.tab-pane.fade
+								h5.font-weight-normal Achieving the final result
+								p Finally, we discuss what you like and don’t like in your new interior and try to make sure everything is done the way it should be so that you could enjoy your space.
+								.group-md.group-middle
+									a.button.button-secondary.button-pipaluk( href='#' ) Get in touch
+									a.button.button-default-outline.button-wapasha( href='#' ) Download presentation
+
+				.col-lg-6.text-center.wow.fadeInUp( data-wow-delay='.1s' )
+					.figure-classic.figure-classic-right: +jpg('index-2-556x434')
+
+
+	// What people Say
+	section.section.section-sm.section-bottom-70.section-fluid.bg-default
+		.container-fluid
+			h3 What people Say
+			.row.row-50.row-sm
+				.col-md-6.col-xl-4.wow.fadeInRight
+					+quote-modern({
+						mod: 'quote-modern-custom',
+						img: 'user-11-75x75',
+						author: 'Catherine Williams',
+						status: 'Local shop owner',
+						text: 'I chose Creator because of their knowledge, experience and attention to detail that has proven invaluable to me in creating a superior finished project, which attracts more clients to my shop.'
+					})
+				.col-md-6.col-xl-4.wow.fadeInRight( data-wow-delay='.1s' )
+					+quote-modern({
+						mod: 'quote-modern-custom',
+						img: 'user-12-75x75',
+						author: 'Rupert Wood',
+						status: 'House owner',
+						text: 'This agency was highly recommended to me. The sensitivity, knowledge, vision and ultimate execution this firm brought to the table was tremendous. Thank you for the amazing interior!'
+					})
+				.col-md-6.col-xl-4.wow.fadeInRight( data-wow-delay='.2s' )
+					+quote-modern({
+						mod: 'quote-modern-custom',
+						img: 'user-20-75x75',
+						author: 'Samantha Brown',
+						status: 'Freelancer',
+						text: 'Your professional guidance gave me results that far exceeded my expectations. My clients thoroughly enjoy the fun, relaxing ambience that the interior design creates. Thank you!'
+					})
+
+
+	// Latest blog posts
+	section.section.section-sm.section-last.bg-default
+		.container
+			h3 Latest blog posts
+			.row.row-60.row-sm
+				include ../sections/_section-grid-blog
+
+	// Page Footer
+	+footer-classic

@@ -1,0 +1,204 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-icon
+
+block variables
+  - var activeCategory = 'home'
+  - var pageName = 'Creator'
+
+block page
+  // Page Header
+  include ../sections/_header-classic
+
+  section.section.section-xxl.box-position-wrap.context-dark.text-center
+    .container: .row.justify-content-center: .col-lg-9
+      h1.text-spacing-50.font-weight-bold 7 Unique Templates
+      p.lead.text-spacing-50 For Different Design Areas
+      span.arrow-down
+    .box-position(style='background-image: url(images/landing-1-2070x1050.jpg);')
+  ='\n'
+
+  section.section.section-custom.bg-gray-4
+    // Owl Carousel
+    .owl-carousel.owl-style-1(data-items='1', data-stage-padding='0', data-loop='true', data-margin='30', data-mouse-drag="true", data-dots='true', data-autoplay='true')
+      article.thumbnail-layout
+        a.thumbnail-layout-figure(href='theme/interior-design.html'): +jpg('layout-1-870x608')
+        .thumbnail-layout-caption: h5.thumbnail-layout-title: a(href='theme/interior-design.html') Interior Design
+      article.thumbnail-layout
+        a.thumbnail-layout-figure(href='theme/decor.html'): +jpg('layout-2-870x608')
+        .thumbnail-layout-caption: h5.thumbnail-layout-title: a(href='theme/decor.html') Decor
+      article.thumbnail-layout
+        a.thumbnail-layout-figure(href='theme/index.html'): +jpg('layout-3-870x608')
+        .thumbnail-layout-caption: h5.thumbnail-layout-title: a(href='theme/index.html') Feng Shui
+      article.thumbnail-layout
+        a.thumbnail-layout-figure(href='theme/landscaping.html'): +jpg('layout-4-870x608')
+        .thumbnail-layout-caption: h5.thumbnail-layout-title: a(href='theme/landscaping.html') Landscaping
+      article.thumbnail-layout
+        a.thumbnail-layout-figure(href='theme/flooring.html'): +jpg('layout-5-870x608')
+        .thumbnail-layout-caption: h5.thumbnail-layout-title: a(href='theme/flooring.html') Flooring
+      article.thumbnail-layout
+        a.thumbnail-layout-figure(href='theme/furniture.html'): +jpg('layout-6-870x608')
+        .thumbnail-layout-caption: h5.thumbnail-layout-title: a(href='theme/furniture.html') Furniture
+      article.thumbnail-layout
+        a.thumbnail-layout-figure(href='theme/windows-and-doors.html'): +jpg('layout-7-870x608')
+        .thumbnail-layout-caption: h5.thumbnail-layout-title: a(href='theme/windows-and-doors.html') Windows & Doors
+  ='\n'
+
+  section.section.section-xl.section-fluid.bg-default.text-center
+    .container-fluid
+      h1 New life
+      h4 For your portfolio
+      p.title-classic-text.text-width-medium Various portfolio layouts, such as grid or tiles, and each of them can be additionally customized.
+      .row.row-30.isotope(data-isotope-layout='masonry' data-column-class='.col-2.col-xl-3')
+        .col-2.col-xl-3
+        .col-md-6.col-sm-6.col-lg-4.col-xl-3.isotope-item
+          a.thumbnail-pages(href='theme/full-width-masonry-gallery.html')
+            .thumbnail-pages-figure: +jpg('pages-1-440x362')
+            .thumbnail-pages-caption
+              h5.thumbnail-pages-title Full-width masonry gallery
+        .col-md-6.col-sm-6.col-lg-4.col-xl-3.isotope-item
+          a.thumbnail-pages(href='theme/about-us.html')
+            .thumbnail-pages-figure: +jpg('pages-2-440x754')
+            .thumbnail-pages-caption
+              h5.thumbnail-pages-title About Us
+        .col-md-6.col-sm-6.col-lg-4.col-xl-3.isotope-item
+          a.thumbnail-pages(href='theme/masonry-gallery.html')
+            .thumbnail-pages-figure: +jpg('pages-3-440x362')
+            .thumbnail-pages-caption
+              h5.thumbnail-pages-title Masonry gallery
+        .col-md-6.col-sm-6.col-lg-4.col-xl-3.isotope-item
+          a.thumbnail-pages(href='theme/grid-gallery.html')
+            .thumbnail-pages-figure: +jpg('pages-4-440x362')
+            .thumbnail-pages-caption
+              h5.thumbnail-pages-title Grid gallery
+        .col-md-6.col-sm-6.col-lg-4.col-xl-3.isotope-item
+          a.thumbnail-pages(href='theme/full-width-gallery.html')
+            .thumbnail-pages-figure: +jpg('pages-5-440x362')
+            .thumbnail-pages-caption
+              h5.thumbnail-pages-title Full-width gallery
+        .col-lg-6.isotope-item
+          a.thumbnail-pages.thumbnail-lg(href='theme/single-project.html')
+            .thumbnail-pages-figure: +jpg('pages-6-910x362')
+            .thumbnail-pages-caption
+              h5.thumbnail-pages-title Single project
+        .col-lg-6.isotope-item
+          a.thumbnail-pages.thumbnail-lg(href='theme/single-project-3.html')
+            .thumbnail-pages-figure: +jpg('pages-7-910x362')
+            .thumbnail-pages-caption
+              h5.thumbnail-pages-title Single project 3
+        .col-md-6.col-xl-3.isotope-item
+          a.thumbnail-pages(href='theme/single-project-2.html')
+            .thumbnail-pages-figure: +jpg('pages-8-440x362')
+            .thumbnail-pages-caption
+              h5.thumbnail-pages-title Single project 2
+        .col-md-6.col-xl-3.isotope-item
+          a.thumbnail-pages(href='theme/single-project-4.html')
+            .thumbnail-pages-figure: +jpg('pages-9-440x362')
+            .thumbnail-pages-caption
+              h5.thumbnail-pages-title Single project 4
+  ='\n'
+
+  section.section.text-xl-left
+    +parallax({
+      img: 'bg-index-1',
+      innerClass: 'section-xl'
+    })
+      .container
+        .row.row-30
+          .col-sm-6.col-lg-4.col-xl-3.align-self-center
+            h1 What
+            h2 Is inside ?
+            a.button.button-width-200.button-default-outline.button-wapasha(href='https://www.templatemonster.com/website-templates/creator-design-multipurpose-html5-website-template-70411.html', target='_blank') Purchase now
+          .col-sm-6.col-lg-4.col-xl-3
+            +box-icon-modern({
+              mod: 'box-icon-modern-yellow',
+              icon: 'fl-bigmug-line-cube29',
+              title: '7 Different Layouts',
+              text: 'We have prepared for you 7 amazing homepage layouts to help you build a great website.'
+            })
+          .col-sm-6.col-lg-4.col-xl-3
+            +box-icon-modern({
+              mod: 'box-icon-modern-pink',
+              icon: 'fl-bigmug-line-paintbrush9',
+              title: 'Free Images Included',
+              text: 'Creator comes with lots of premium stock images besides all other great features.'
+            })
+          .col-sm-6.col-lg-4.col-xl-3
+            +box-icon-modern({
+              mod: 'box-icon-modern-blue',
+              icon: 'fl-bigmug-line-two316',
+              title: 'Free Updates',
+              text: 'Once you purchase this template, you get free lifetime updates for Creator.'
+            })
+          .col-sm-6.col-lg-4.col-xl-3
+            +box-icon-modern({
+              mod: 'box-icon-modern-orange',
+              icon: 'fl-bigmug-line-cellphone55',
+              title: '100% Responsive',
+              text: 'Creator is 100% responsive and can be opened on any device.'
+            })
+          .col-sm-6.col-lg-4.col-xl-3
+            +box-icon-modern({
+              mod: 'box-icon-modern-blue-sky',
+              icon: 'fl-bigmug-line-chat55',
+              title: 'Free 24/7 Support',
+              text: 'We are always ready to help you solve any issue you may have with Creator.'
+            })
+          .col-sm-6.col-lg-4.col-xl-3
+            +box-icon-modern({
+              mod: 'box-icon-modern-lemon-chiffon',
+              icon: 'fl-bigmug-line-shopping202',
+              title: 'Ecommerce Ready',
+              text: 'This template allows you to build your own online store in no time.'
+            })
+          .col-sm-6.col-lg-4.col-xl-3
+            +box-icon-modern({
+              mod: 'box-icon-modern-blue-light',
+              icon: 'fl-bigmug-line-two323',
+              title: 'Smooth Hover Effects',
+              text: 'Our team provided Creator with a variety of impressive hover effects.'
+            })
+  ='\n'
+
+  section.section.section-xl.bg-default.text-center.parallax-scene-js
+    .container.container-scene
+      h1 Do more
+      p.title-classic-text Use various options, which you can combine in any desirable manner.
+      p.title-classic-text Fonts, colors, icons, headers, menu, content can all be changed.
+      .row.row-30.align-items-center.align-items-lg-end
+        .col-md-4: .figure-classic.figure-classic-1.text-xl-right: a(href='theme/single-product.html'): +png('landing-2-313x445')
+        .col-md-8: .figure-classic.figure-classic-2: a(href='theme/shop.html'): +png('landing-3-868x494')
+      .layer-1: .layer(data-depth="0.2"): +png('landing-4-159x521')
+      .layer-2: .layer(data-depth="0.5"): +png('landing-5-537x477')
+  ='\n'
+
+  section.section.text-lg-left
+    +parallax({
+      img: 'bg-index-2',
+      innerClass: 'section-xl context-dark'
+    })
+      .container
+        .row.row-30.align-items-center.justify-content-lg-between.justify-content-xl-around.justify-content-xxl-between
+          .col-lg-7.col-xl-6
+            h3.font-weight-sbold.text-spacing-25 Professional Support
+            p.text-white-80 Our Support Service is always available 24 hours a day,
+            p.text-white-80 7 days a week to help you create your own business solution.
+          .col-lg-4.col-xl-3.text-lg-right
+            a.button.button-lg.button-white-outline.button-wapasha(href='https://www.templatemonster.com/website-templates/creator-design-multipurpose-html5-website-template-70411.html', target='_blank') Try template now
+  ='\n'
+
+  section.section.section-xl.section-bottom-0.section-fluid.bg-default.text-center
+    .container-fluid
+      h1 Blog pages
+      p.title-classic-text Creator is packed with a collection of practical predesigned blog pages for various uses.
+      .figure-modern-wrap
+        a.figure-modern(href='theme/grid-blog.html'): +jpg('pages-14-630x435')
+        a.figure-modern(href='theme/blog-post.html'): +jpg('pages-12-630x435')
+        a.figure-modern.figure-modern-center(href='theme/grid-blog-2.html'): +jpg('pages-10-630x435')
+        a.figure-modern(href='theme/classic-blog.html'): +jpg('pages-11-630x435')
+        a.figure-modern(href='theme/grid-blog-3.html'): +jpg('pages-13-630x435')
+  ='\n'
+
+  // Page Footer
+  include ../sections/_footer-classic

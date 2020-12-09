@@ -1,0 +1,494 @@
+extends  ../_skeleton
+
+//- Includes
+include ../sections/_header-corporate
+include ../components/_ui-box-services
+include ../components/_ui-posts
+include ../components/_ui-box-icon
+include ../components/_ui-box-team
+include ../components/_ui-counters
+include ../components/_ui-card
+include ../components/_ui-quote
+
+block variables
+	-
+		var
+			activeCategory = 'home',
+			pageName = 'Windows & Doors',
+			style = '5';
+
+		logo = {
+			default: 'logo-default-window-190x43',
+			inverse: 'logo-inverse-190x43',
+			name: 'Creator'
+		};
+
+block page
+	// Page Header
+	+header-corporate({
+		button: {
+			class: 'button-default-outline',
+			href: '#',
+			text: 'Cost calculator'
+		}
+	})
+
+	include ../sections/_swiper-slider-6
+
+	// What we offer
+	section.section.section-xl.bg-default
+		.container
+			+heading-panel({
+				subtitle: 'What we offer',
+				title: 'Services',
+				owlNav: '1'
+			})
+			// Owl Carousel
+			.owl-carousel.owl-services-2( data-items='1', data-sm-items='2', data-md-items='3', data-lg-items='4', data-margin='30', data-animation-in='fadeIn', data-animation-out='fadeOut', data-navigation-class='#owl-custom-nav-1' data-autoplay='false' )
+				+services-modern({
+					img: 'services-7-270x415',
+					title: 'Standard Windows',
+					counter: '01'
+				})
+				+services-modern({
+					img: 'services-8-270x415',
+					title: 'Panoramic windows',
+					counter: '02'
+				})
+				+services-modern({
+					img: 'services-9-270x415',
+					title: 'Sliding doors',
+					counter: '03'
+				})
+				+services-modern({
+					img: 'services-10-270x415',
+					title: 'Home doors',
+					counter: '04'
+				})
+				+services-modern({
+					img: 'services-11-270x415',
+					title: 'Garage Doors',
+					counter: '05'
+				})
+
+
+	// Why choose us?
+	section.section.section-xl.bg-gray-4
+		.container
+			+heading-panel({
+				subtitle: 'Why choose us?',
+				title: 'Benefits'
+			})
+			.row.row-30
+				.col-sm-6.col-lg-4
+					+box-icon-classic({
+						mod: 'box-icon-classic-3',
+						align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+						icon: 'fl-bigmug-line-favourites5',
+						title: 'Premium Service',
+						text: 'Creator provides high-quality service to everyone who needs reliable windows and doors.'
+					}).wow.fadeInDown( data-wow-delay='.2s' )
+				.col-sm-6.col-lg-4
+					+box-icon-classic({
+						mod: 'box-icon-classic-3',
+						align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+						icon: 'fl-bigmug-line-big104',
+						title: 'Delivery on time',
+						text: 'Our experts can deliver your windows on time no matter what your location is.'
+					}).wow.fadeInDown( data-wow-delay='.1s' )
+				.col-sm-6.col-lg-4
+					+box-icon-classic({
+						mod: 'box-icon-classic-3',
+						align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+						icon: 'fl-bigmug-line-sun81',
+						title: 'Friendly managers',
+						text: 'Our friendly and knowledgeable managers will gladly discuss your order with you.'
+					}).wow.fadeInDown
+				.col-sm-6.col-lg-4
+					+box-icon-classic({
+						mod: 'box-icon-classic-3',
+						align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+						icon: 'fl-bigmug-line-cube29',
+						title: 'Quality components',
+						text: 'All our windows are built using the top-notch quality components in all their parts.'
+					}).wow.fadeInUp
+				.col-sm-6.col-lg-4
+					+box-icon-classic({
+						mod: 'box-icon-classic-3',
+						align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+						icon: 'fl-bigmug-line-wallet26',
+						title: 'Adequate price',
+						text: 'All our offers are affordably priced to provide more people with high-quality windows.'
+					}).wow.fadeInUp( data-wow-delay='.1s' )
+				.col-sm-6.col-lg-4
+					+box-icon-classic({
+						mod: 'box-icon-classic-3',
+						align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+						icon: 'fl-bigmug-line-giftbox54',
+						title: 'Gifts for all clients',
+						text: 'Everyone who purchases windows or doors at Creator is guaranteed to get a free gift.'
+					}).wow.fadeInUp( data-wow-delay='.2s' )
+
+
+	// Get a Free Quote
+	section.section.bg-default.text-center
+		+parallax({
+			img: 'bg-forms-3',
+			innerClass: 'section-xl section-lg-0'
+		})
+			.container: .row.justify-content-center.justify-content-md-end.justify-content-lg-between.align-items-lg-end
+				.col-lg-5.col-xl-6: .d-none.d-lg-block.wow.fadeInRight: +png('team-19-426x688')
+				.col-sm-8.col-md-6.col-lg-5: .section-inset-custom-6: .oh-desktop
+					.box-form.wow.slideInLeft
+						h4.box-form-title Get a Free Quote
+						form.rd-form.rd-mailform( data-form-output='form-output-global', data-form-type='contact', method='post', action='bat/rd-mailform.php' )
+							.form-wrap
+								input#contact-name-8.form-input( type='text', name='name', data-constraints='@Required' )
+								label.form-label( for='contact-name-8') Name
+							.form-wrap
+								input#contact-phone-8.form-input( type='text', name='phone', data-constraints='@Numeric' )
+								label.form-label( for='contact-phone-8') Phone
+							.form-wrap
+								input#contact-email-8.form-input( type='email', name='email', data-constraints='@Email @Required' )
+								label.form-label( for='contact-email-8') E-mail
+							.form-wrap
+								label.form-label( for='contact-message-8') Message
+								textarea#contact-message-8.form-input.textarea-lg(name='message', data-constraints='@Required' )
+							button.button.button-block.button-gray-11.button-ujarak( type='submit' ) Send Message
+
+
+	// Latest projects
+	section.section.section-lg.bg-default
+		.container
+			+heading-panel({
+				subtitle: 'Latest projects',
+				title: 'Gallery'
+			})
+			.row.row-sm.row-30( data-lightgallery='group' )
+				.col-sm-6.col-lg-4: .oh-desktop
+					+thumbnail-creative({
+						img: 'hover-effects-8-370x303',
+						imgOriginal: 'hover-effects-8-1200x800-original',
+						title: 'Small kitchen',
+						time: {
+							datetime: '2015-12-05',
+							dateText: 'December 05, 2015'
+						}
+					}).thumbnail-sm.wow.slideInRight
+				.col-sm-6.col-lg-4: .oh-desktop
+					+thumbnail-creative({
+						img: 'hover-effects-7-370x303',
+						imgOriginal: 'hover-effects-7-1200x800-original',
+						title: 'White inn',
+						time: {
+							datetime: '2014-06-24',
+							dateText: 'June 24, 2014'
+						}
+					}).thumbnail-sm.wow.slideInUp
+				.col-sm-6.col-lg-4: .oh-desktop
+					+thumbnail-creative({
+						img: 'grid-gallery-1-370x303',
+						imgOriginal: 'grid-gallery-1-1200x800-original',
+						title: 'Smith center',
+						time: {
+							datetime: '2017-05-04',
+							dateText: 'May 04, 2017'
+						}
+					}).thumbnail-sm.wow.slideInDown
+				.col-sm-6.col-lg-4: .oh-desktop
+					+thumbnail-creative({
+						img: 'hover-effects-9-370x303',
+						imgOriginal: 'fullwidth-masonry-gallery-5-1200x800-original',
+						title: 'MCR Hotel',
+						time: {
+							datetime: '2015-12-05',
+							dateText: 'December 05, 2015'
+						}
+					}).thumbnail-sm.wow.slideInUp
+				.col-sm-6.col-lg-4: .oh-desktop
+					+thumbnail-creative({
+						img: 'hover-effects-2-370x303',
+						imgOriginal: 'hover-effects-2-1200x800-original',
+						title: 'Ecomotel',
+						time: {
+							datetime: '2014-06-24',
+							dateText: 'June 24, 2014'
+						}
+					}).thumbnail-sm.wow.slideInDown
+				.col-sm-6.col-lg-4: .oh-desktop
+					+thumbnail-creative({
+						img: 'hover-effects-3-370x303',
+						imgOriginal: 'hover-effects-3-1200x800-original',
+						title: 'Art Podium',
+						time: {
+							datetime: '2017-05-04',
+							dateText: 'May 04, 2017'
+						}
+					}).thumbnail-sm.wow.slideInLeft
+
+
+	// How we work for you
+	section.section.section-xl.bg-gray-4
+		.container
+			+heading-panel({
+				subtitle: 'How we work for you',
+				title: '4 easy steps'
+			})
+			.row.row-30.justify-content-center.box-ordered
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInLeft
+					+box-icon-leah({
+						mod: 'box-icon-leah-2',
+						icon: 'fl-bigmug-line-pin42',
+						title: 'Free consultation',
+						text: 'Everything starts with a free consultation and initial project discussion.'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInLeft( data-wow-delay='.1s' )
+					+box-icon-leah({
+						mod: 'box-icon-leah-2',
+						icon: 'fl-bigmug-line-cropping1',
+						title: 'Measurements',
+						text: 'After consulting, we will measure your current windows and/or doors.'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInLeft( data-wow-delay='.2s' )
+					+box-icon-leah({
+						mod: 'box-icon-leah-2',
+						icon: 'fl-bigmug-line-two323',
+						title: 'Choosing windows ',
+						text: 'When everything has been measured, you can choose what windows you prefer.'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInLeft( data-wow-delay='.3s' )
+					+box-icon-leah({
+						mod: 'box-icon-leah-2',
+						icon: 'fl-bigmug-line-wrench66',
+						title: 'Installation',
+						text: 'When we manufacture and deliver your windows, our experts will install them.'
+					})
+
+
+	// Cost calculator
+	section.section.bg-default.text-center
+		+parallax({
+			img: 'bg-forms-4',
+			innerClass: 'section-xl section-lg-0'
+		})
+			.container: .row.justify-content-center.justify-content-lg-around.justify-content-xl-between.align-items-center
+				.col-md-6.col-lg-5.col-xl-7: .d-none.d-md-block.wow.fadeInLeft: +png('product-19-440x540' )
+				.col-sm-8.col-md-6.col-lg-5: .section-inset-custom-6: .oh-desktop
+					.box-form.wow.slideInRight
+						h4.box-form-title Cost calculator
+						p.box-form-text Using this simple calculator, you can find out the cost of any window.
+						form.rd-form.rd-mailform
+							.row.row-10.gutters-10
+								.col-12: .form-wrap
+									select.form-input.select-filter( data-minimum-results-for-search='Infinity', data-constraints='@Required' )
+										option( value='1' ) Window Type
+										option( value='2' ) Single Hung
+										option( value='3' ) Double Hung
+										option( value='4' ) Slider
+								.col-sm-6: .form-wrap
+									input#calculator-width-1.form-input( type='text', name='phone', data-constraints='@Required' )
+									label.form-label( for='calculator-width-1' ) Width #[span (cm)]
+								.col-sm-6: .form-wrap
+									input#calculator-height-2.form-input( type='email', name='email', data-constraints='@Required' )
+									label.form-label( for='calculator-height-2' ) Height #[span (cm)]
+								.col-12: .form-wrap
+									input#calculator-price-1.form-input.form-input-price.form-input-disabled( type='text', name='text', disabled)
+									label.form-label.form-label-disabled( for='calculator-price-1' ) Price
+							button.button.button-block.button-gray-11.button-ujarak( type='button' ) Calculate
+
+
+	// Professionals
+	section.section.section-xl.bg-default
+		.container
+			+heading-panel({
+				subtitle: 'Professionals',
+				title: 'Our team'
+			})
+			.row.row-sm.row-20.justify-content-center.justify-content-lg-start
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInRight
+					+team-modern({
+						mod: 'team-modern-2',
+						img: 'user-7-118x118',
+						name: 'Sam Robinson',
+						status: 'Founder, CEO'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInRight( data-wow-delay='.1s' )
+					+team-modern({
+						mod: 'team-modern-2',
+						img: 'user-8-118x118',
+						name: 'Sam Claflin',
+						status: 'Window Installer'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInRight( data-wow-delay='.2s' )
+					+team-modern({
+						mod: 'team-modern-2',
+						img: 'user-9-118x118',
+						name: 'Jill Peterson',
+						status: 'Customer Care Manager'
+					})
+				.col-sm-6.col-md-5.col-lg-3.wow.fadeInRight( data-wow-delay='.3s' )
+					+team-modern({
+						mod: 'team-modern-2',
+						img: 'user-10-118x118',
+						name: 'James Smith',
+						status: 'Window Installer'
+					})
+
+
+	// Years of experience
+	section.section.section-xl.context-dark.bg-gray-36
+		.container
+			.row.row-50.row-xl-24.justify-content-center.align-items-center.align-items-lg-start.text-left
+				// Counter Amy
+				.col-md-6.col-lg-5.col-xl-4.text-center
+					a( href='about-us.html' ).text-img: span.counter 18
+				.col-sm-8.col-md-6.col-lg-5.col-xl-4
+					.text-width-extra-small.offset-top-lg-24.wow.fadeInUp
+						h3.title-decoration-lines-left Years of experience
+						p.text-gray-500 Creator is a renowned window and door manufacturer established in 1999. Our products provide the highest comfort.
+						a.button.button-secondary.button-ujarak( href='#' ) Get in touch
+				.col-sm-10.col-md-8.col-lg-6.col-xl-4.wow.fadeInRight( data-wow-delay='.1s' )
+					.row.justify-content-center.border-2-column.offset-top-xl-26
+						.col-9.col-sm-6
+							+counter-amy({
+								number: '20',
+								symbol: 'k',
+								title: 'Windows installed'
+							})
+						.col-9.col-sm-6
+							+counter-amy({
+								number: '24',
+								symbol: 'k',
+								title: 'Consultations'
+							})
+						.col-9.col-sm-6
+							+counter-amy({
+								number: '15',
+								title: 'Awards won'
+							})
+						.col-9.col-sm-6
+							+counter-amy({
+								number: '26',
+								title: 'Team members'
+							})
+				.col-lg-6.col-xl-12.align-self-center
+					.row.row-30.justify-content-center
+						.col-sm-6.col-md-5.col-lg-6.col-xl-3.wow.fadeInLeft: a.clients-classic( href='#' ): +png('clients-12-270x117')
+						.col-sm-6.col-md-5.col-lg-6.col-xl-3.wow.fadeInLeft( data-wow-delay='.1s' ): a.clients-classic( href='#' ): +png('clients-13-270x117')
+						.col-sm-6.col-md-5.col-lg-6.col-xl-3.wow.fadeInLeft( data-wow-delay='.2s' ): a.clients-classic( href='#' ): +png('clients-14-270x117')
+						.col-sm-6.col-md-5.col-lg-6.col-xl-3.wow.fadeInLeft( data-wow-delay='.3s' ): a.clients-classic( href='#' ): +png('clients-15-270x117')
+
+
+	// Popular questions
+	section.section.section-xl.bg-default
+		.container
+			+heading-panel({
+				subtitle: 'Popular questions',
+				title: 'Support'
+			})
+			.row.row-lg.row-30.flex-lg-row-reverse
+				.col-lg-5.col-xl-6.wow.fadeInRight
+					.video-classic
+						+jpg('video-3-570x418')
+						a.video-classic-play( data-lightgallery='item', href='https://www.youtube.com/embed/e_TCFkRDmls' ): span
+				.col-lg-7.col-xl-6.wow.fadeInUp
+					.card-group-custom.card-group-corporate( id='accordion3' role='tablist' aria-multiselectable='false')
+						+card({
+							show: true,
+							cardClass: 'card-corporate card-corporate-2',
+							parentId: 'accordion3',
+							number: '1',
+							header: 'Will installation require altering the wall?'
+						})
+							p In most cases, no. Our windows will be installed in the existing window opening. However, special circumstances may require some alteration. Feel free to contact us directly to know more.
+
+						+card({
+							cardClass: 'card-corporate card-corporate-2',
+							parentId: 'accordion3',
+							number: '2',
+							header: 'How long does it take to install windows?'
+						})
+							p The majority of projects will be completed in one day, although some more complex projects can take longer.
+
+						+card({
+							cardClass: 'card-corporate card-corporate-2',
+							parentId: 'accordion3',
+							number: '3',
+							header: 'Do you clean up after the installation?'
+						})
+							p Certainly. Unfortunately, construction work is a disruption and can create a mess. We will do our best to minimize any disturbance, and we will clean up once the work is completed.
+
+
+	// What people say
+	section.section.section-xl.bg-gray-4
+		.container
+			+heading-panel({
+				subtitle: 'What people say',
+				title: 'Clients',
+				owlNav: '2'
+			})
+			// Owl Carousel
+			.owl-carousel.owl-quote-2( data-items='1', data-md-items='2', data-margin='30', data-animation-in='fadeIn', data-animation-out='fadeOut', data-navigation-class='#owl-custom-nav-2' )
+				+quote-modern({
+					mod: 'quote-modern-2 quote-modern-custom',
+					img: 'user-11-75x75',
+					author: 'Catherine Williams',
+					status: 'Local shop owner',
+					text: 'Thank you for the fantastic service, very competitive price and excellent quality windows and workmanship. Your fitters were extremely polite and carried out the work to a high standard.'
+				})
+				+quote-modern({
+					mod: 'quote-modern-2 quote-modern-custom',
+					img: 'user-12-75x75',
+					author: 'Rupert Wood',
+					status: 'House owner',
+					text: 'I’d like to express my sincere thanks for your excellent service during the recent difficulties with the fascia boards at my property. I was most impressed with your prompt response.'
+				})
+				+quote-modern({
+					mod: 'quote-modern-2 quote-modern-custom',
+					img: 'user-20-75x75',
+					author: 'Samantha Brown',
+					status: 'Freelancer',
+					text: 'I had new windows installed in October 2016, and a replacement pane last week (May 2017). I just want to let you know how delighted I am with the products and the service received.'
+				})
+
+
+	// Popular news
+	section.section.section-xl.bg-default
+		.container
+			+heading-panel({
+				subtitle: 'Popular news',
+				title: 'Our blog'
+			})
+			.row.row-md.row-30
+				.col-md-6: .oh-desktop
+					+post-ruth({
+						img: 'post-30-222x210',
+						time: { datetime: '2019-05-17', dateText: 'May 04, 2019' },
+						badge: { mod: 'badge-secondary post-ruth-badge', text: 'Guide' },
+						title: 'Preparing Your windows for the winter season'
+					}).post-ruth-1.wow.slideInDown
+				.col-md-6: .oh-desktop
+					+post-ruth({
+						img: 'post-31-222x210',
+						time: { datetime: '2019-05-17', dateText: 'May 04, 2019' },
+						badge: { mod: 'badge-primary post-ruth-badge', text: 'Windows' },
+						title: 'Panoramic windows: pros and cons'
+					}).post-ruth-1.wow.slideInUp
+				.col-md-6: .oh-desktop
+					+post-ruth({
+						img: 'post-28-222x210',
+						time: { datetime: '2019-05-17', dateText: 'May 04, 2019' },
+						badge: { mod: 'badge-primary post-ruth-badge', text: 'Windows' },
+						title: 'Accessories for your new windows'
+					}).post-ruth-1.wow.slideInUp
+				.col-md-6: .oh-desktop
+					+post-ruth({
+						img: 'post-32-222x210',
+						time: { datetime: '2019-05-17', dateText: 'May 04, 2019' },
+						badge: { mod: 'badge-yellow-3 post-ruth-badge', text: 'Tips' },
+						title: 'How to choose the best doors for your house'
+					}).post-ruth-1.wow.slideInDown
+
+
+	// Page Footer
+	include ../sections/_footer-corporate-2

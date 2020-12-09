@@ -1,0 +1,88 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-posts
+include ../components/_ui-pagination
+include ../components/_ui-quote
+include ../components/_ui-box-comment
+include ../components/_form-comments
+
+block variables
+	- var activeCategory = 'blog'
+	- var pageName = 'Blog post'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-39',
+		bgImage: 'bg-shop'
+	})
+
+	// Blog Post
+	section.section.section-xl.bg-default.text-left
+		.container: .row.row-70
+			.col-lg-8
+				.blog-post
+					+post-classic({
+						blogPost: true,
+						title: 'Home Décor trends 2017: Popular or not?',
+						badge: { mod: 'badge-secondary', text: 'Interior design' },
+						time: { datetime: '2019-11-30', dateText: 'Nov 30, 2019' },
+						text: 'Trends are hard to keep up with. Ever-changing, contradictory, and sometimes seemingly senseless, no one can stay perfectly up to date with what’s “in” and what’s “out.” Besides trends, we believe that free thought and personal style should lead the way when designing your space.',
+						img: 'post-1-770x430'
+					})
+					+quote-classic({
+						mod: 'quote-classic-big',
+						text: 'Interiors are moving away from all white and gray. Instead, people are embracing warm, rich shades of brown, black, green, and blush.'
+					})
+
+					p Moreover, the leaves outside may be changing, but inside, things are going green—especially kitchen cabinets, like in this room designed by Erin Napier on HGTV's Home Town. Combined with rich natural wood and leather and accented with brass and cream, the cozy color is a perfect fit for fall and winter. Still, no trend can prevent you from making your house look the way you want it to be. Have any thoughts on the topic? Feel free to share them with us in the comments!
+					.blog-post-bottom-panel.group-md.group-justify
+						.blog-post-tags
+							a( href='#' ) Interior design
+							a( href='#' ) Décor
+							a( href='#' ) Furniture
+						div: .group-md.group-middle
+							span.social-title Share
+							div: +widget-list([], '', 'list-inline-sm social-list' )
+
+				.blog-post-comments
+					h5.text-spacing-100.font-weight-normal 3 Comments
+					+box-comment({
+						postComment: true,
+						img: 'user-1-119x119',
+						author: 'John Doe',
+						text: 'Thank you for this amazingly informative article! I knew my thoughts were right when I decided to paint my studio into something more colorful than black and white. I think that more natural materials might be a good idea.',
+						datetime: '2019-11-30',
+						time: 'Nov 30, 2019'
+					})
+						+box-comment({
+							postComment: true,
+							img: 'user-2-119x119',
+							author: 'Jessica Brown',
+							text: 'I am not sure about natural materials but paintings and some small furniture will be  a perfect option for any interior.',
+							datetime: '2019-11-30',
+							time: 'Nov 30, 2019'
+						})
+					+box-comment({
+						postComment: true,
+						img: 'user-3-119x119',
+						author: 'Nick Stevens',
+						text: 'Wow, such a useful article! I always knew that you guys know what you write about. Your blog is a true source of great ideas, tips, and tricks for me since I first hired you in 2012. Keep doing great job!',
+						datetime: '2019-11-30',
+						time: 'Nov 30, 2019'
+					})
+
+				.blog-post-comments
+					+form-comments({ customUnique: '5' })
+
+			.col-lg-4
+				include ../sections/_post-sidebar
+
+
+	// Page Footer
+	+footer-classic

@@ -1,0 +1,72 @@
+/*
+*
+* Text styling
+*/
+
+// Text styles
+.text-italic {
+	font-style: italic;
+}
+
+.text-normal {
+	font-style: normal;
+}
+
+// Text decoration
+.text-underline {
+	text-decoration: underline;
+}
+
+.text-strike {
+	text-decoration: line-through;
+}
+
+// Text weight
+.font-weight-thin {
+	font-weight: 100;
+}
+
+.font-weight-light {
+	font-weight: 300;
+}
+
+.font-weight-regular {
+	font-weight: 400;
+}
+
+.font-weight-medium {
+	font-weight: 500;
+}
+
+.font-weight-sbold {
+	font-weight: 600;
+}
+
+.font-weight-ubold {
+	font-weight: 900;
+}
+
+// Text spacing
+.text-spacing-0 { letter-spacing: 0; }
+.text-spacing-25 { letter-spacing: .025em; }
+.text-spacing-50 { letter-spacing: .05em; }
+.text-spacing-75 { letter-spacing: .075em; }
+.text-spacing-100 { letter-spacing: .1em; }
+
+// Text width
+[class*='text-width-'] {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.text-width-medium { max-width: 440px }
+.text-width-large { max-width: 550px }
+
+
+.text-primary {
+	color: $primary !important;
+}
+
+.text-white-80 {
+	color: rgba($white, .8);
+}

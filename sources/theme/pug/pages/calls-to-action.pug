@@ -1,0 +1,29 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Calls to action'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-37',
+		bgImage: 'bg-cta'
+	})
+
+	// Section CTA
+	section.section.section-sm.section-first.section-fluid.bg-default.text-md-left
+		include ../sections/_section-call-to-action
+
+
+	// Section CTA 2
+	section.section.section-sm.section-last.section-fluid.bg-default.text-center
+		include ../sections/_section-call-to-action-2
+
+
+	// Page Footer
+	+footer-classic

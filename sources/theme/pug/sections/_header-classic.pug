@@ -1,0 +1,100 @@
+mixin header-classic(obj)
+	- obj = obj || {};
+
+	header.section.page-header
+		// RD Navbar
+		.rd-navbar-wrap
+			nav.rd-navbar.rd-navbar-classic(
+			data-layout=                'rd-navbar-fixed'
+			data-sm-layout=             'rd-navbar-fixed'
+			data-md-layout=             'rd-navbar-fixed'
+			data-md-device-layout=      'rd-navbar-fixed'
+			data-lg-layout=             'rd-navbar-static'
+			data-lg-device-layout=      'rd-navbar-fixed'
+			data-xl-layout=             'rd-navbar-static'
+			data-xl-device-layout=      'rd-navbar-static'
+			data-xxl-layout=            'rd-navbar-static'
+			data-xxl-device-layout=     'rd-navbar-static'
+			data-lg-stick-up-offset=    '46px'
+			data-xl-stick-up-offset=    '46px'
+			data-xxl-stick-up-offset=   '46px'
+			data-lg-stick-up=           'true'
+			data-xl-stick-up=           'true'
+			data-xxl-stick-up=          'true'
+			)&attributes( attributes )
+				.rd-navbar-main-outer
+					.rd-navbar-main
+						// RD Navbar Panel
+						.rd-navbar-panel
+							// RD Navbar Toggle
+							button.rd-navbar-toggle( data-rd-navbar-toggle='.rd-navbar-nav-wrap' ): span
+
+							// RD Navbar Brand
+							.rd-navbar-brand: a.brand( href='../index.html' ): +png( logo.default )
+
+						.rd-navbar-main-element
+							.rd-navbar-nav-wrap
+								// RD Navbar Basket
+								include ../sections/_header-cart
+								// RD Navbar Search
+								.rd-navbar-search
+									button.rd-navbar-search-toggle( data-rd-navbar-toggle='.rd-navbar-search' ): span
+									form.rd-search( action='search-results.html', data-search-live='rd-search-results-live', method='GET' )
+										.form-wrap
+											label.form-label( for='rd-navbar-search-form-input' ) Search...
+											input( class='rd-navbar-search-form-input form-input', id='rd-navbar-search-form-input', type='text', name='s', autocomplete="off")
+											#rd-search-results-live.rd-search-results-live
+										button.rd-search-form-submit.fl-bigmug-line-search74( type='submit' )
+								// RD Navbar Share
+								.rd-navbar-share.fl-bigmug-line-share27( data-rd-navbar-toggle='.rd-navbar-share-list' )
+									ul.list-inline.rd-navbar-share-list
+										li.rd-navbar-share-list-item: a( href='#', class='icon fa fa-facebook' )
+										li.rd-navbar-share-list-item: a( href='#', class='icon fa fa-twitter' )
+										li.rd-navbar-share-list-item: a( href='#', class='icon fa fa-google-plus' )
+										li.rd-navbar-share-list-item: a( href='#', class='icon fa fa-instagram' )
+									a( href='cart-page.html' ).rd-navbar-basket.rd-navbar-basket-mobile.fl-bigmug-line-shopping198: span 2
+
+								+navigation({ owlItemXxl: '3' })
+
+							.rd-navbar-project-hamburger( data-rd-navbar-toggle='.rd-navbar-main' )
+								.project-hamburger
+									span.project-hamburger-arrow-top
+									span.project-hamburger-arrow-center
+									span.project-hamburger-arrow-bottom
+								.project-close
+									span
+									span
+
+						.rd-navbar-project.rd-navbar-classic-project
+							h4.text-spacing-50 Our Works
+							.rd-navbar-project-content.rd-navbar-classic-project-content: .row( data-lightgallery='group' )
+								.col-12
+									+thumbnail-mary({
+										titleNone: true,
+										img: 'gallery-image-1-330x240',
+										imgOriginal: 'grid-gallery-4-1200x800-original'
+									})
+								.col-12
+									+thumbnail-mary({
+										titleNone: true,
+										img: 'gallery-image-2-330x240',
+										imgOriginal: 'fullwidth-masonry-gallery-10-1200x800-original'
+									})
+								.col-12
+									+thumbnail-mary({
+										titleNone: true,
+										img: 'gallery-image-3-330x240',
+										imgOriginal: 'fullwidth-gallery-4-1200x800-original'
+									})
+								.col-12
+									+thumbnail-mary({
+										titleNone: true,
+										img: 'gallery-image-4-330x240',
+										imgOriginal: 'masonry-gallery-4-1200x800-original'
+									})
+								.col-12
+									+thumbnail-mary({
+										titleNone: true,
+										img: 'gallery-image-5-330x240',
+										imgOriginal: 'fullwidth-masonry-gallery-6-1200x800-original'
+									})

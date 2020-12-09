@@ -1,0 +1,57 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-posts
+include ../components/_ui-pagination
+
+block variables
+	- var activeCategory = 'blog'
+	- var pageName = 'Grid blog'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-39',
+		bgImage: 'bg-blog'
+	})
+
+	// Grid blog
+	section.section.section-xl.bg-default.text-md-left
+		.container
+			.row.row-60
+				include ../sections/_section-grid-blog
+
+				.col-sm-6.col-lg-4
+					+post-modern({
+						img: 'post-13-370x307',
+						time: { datetime: '2019-07-04', dateNumber: '04', dateMonth: 'July' },
+						title: 'The Unexpected Color We love',
+						text: 'If you haven’t realized by now, Pantone has a lot of power when it comes to color. After they declare the Color of the Year, it shows up...'
+					})
+
+				.col-sm-6.col-lg-4
+					+post-modern({
+						img: 'post-14-370x307',
+						time: { datetime: '2019-07-17', dateNumber: '17', dateMonth: 'July' },
+						title: 'Top 10 kitchen design ideas',
+						text: 'Kitchen is one of the main parts of any house or apartment and it goes without saying that this place should be designed properly.'
+					})
+
+				.col-sm-6.col-lg-4
+					+post-modern({
+						img: 'post-15-370x307',
+						time: { datetime: '2019-07-22', dateNumber: '22', dateMonth: 'July' },
+						title: 'How color can transform your house',
+						text: 'If you ask the average person how they want their home to feel, they’ll probably use words like bright, welcoming, and cozy. But since...'
+					})
+
+			.pagination-wrap
+				+pagination-bootstrap(null, 1, 4)
+
+
+	// Page Footer
+	+footer-classic

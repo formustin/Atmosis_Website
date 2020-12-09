@@ -1,0 +1,106 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-box-icon
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Icons with Text'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-43',
+		bgImage: 'bg-icons'
+	})
+
+	// Icons #1
+	section.section.section-sm.section-first.bg-default
+		.container
+			h3 #1
+			.row.row-40.box-ordered
+				.col-sm-6.col-lg-3
+					+box-icon-creative({
+						icon: 'fl-bigmug-line-circular224',
+						title: 'Focus on our clients',
+						text: 'We create all our projects with client in mind and adhere to their preferences and needs.'
+					})
+				.col-sm-6.col-lg-3
+					+box-icon-creative({
+						icon: 'fl-bigmug-line-paintbrush9',
+						title: 'Intuitive and easy',
+						text: 'Our team focuses on designing exciting interiors that are intuitively organized.'
+					})
+				.col-sm-6.col-lg-3
+					+box-icon-creative({
+						icon: 'fl-bigmug-line-hot67',
+						title: 'Non-trivial ideas',
+						text: 'At Creator, we use the latest trends combined with innovations that give us great ideas.'
+					})
+				.col-sm-6.col-lg-3
+					+box-icon-creative({
+						icon: 'fl-bigmug-line-chat55',
+						title: 'Full project support',
+						text: 'From the beginning to project completion, our team provides full support on all levels.'
+					})
+
+
+	// Icons #2
+	section.section.section-sm.bg-default
+		.container
+			h3 #2
+			.row.row-40
+				.col-md-6.col-lg-4
+					+box-icon-modern({
+						icon: 'fl-bigmug-line-paintbrush9',
+						title: 'Interior design',
+						text: 'We develop and implement better interior design concepts for you so that you and all your guests could enjoy the unique atmosphere of your home.'
+					})
+				.col-md-6.col-lg-4
+					+box-icon-modern({
+						icon: 'fl-bigmug-line-cropping1',
+						title: 'Space planning',
+						text: 'We create better interior experiences through space planning services. They are vital for a successful interior design project of your home or office.'
+					})
+				.col-md-6.col-lg-4
+					+box-icon-modern({
+						icon: 'fl-bigmug-line-chat55',
+						title: 'Consultations',
+						text: 'Our specialists are ready to consult you on any interior design related topic. All you have to do is to contact us and we will organize a free consultation.'
+					})
+
+
+	// Icons #3
+	section.section.section-sm.section-last.bg-default
+		.container
+			h3 #3
+			.row.row-40
+				.col-sm-6.col-lg-4
+					+box-icon-classic({
+						align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+						icon: 'fl-bigmug-line-airplane86',
+						title: 'Worldwide delivery',
+						text: 'Our shop provides free worldwide delivery of all products you may need for your interior.'
+					})
+				.col-sm-6.col-lg-4
+					+box-icon-classic({
+						align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+						icon: 'fl-bigmug-line-giftbox54',
+						title: 'Nice Gifts for every client',
+						text: 'We regularly conduct special sales and have discounts for our clients with free gifts.'
+					})
+				.col-sm-6.col-lg-4
+					+box-icon-classic({
+						align: 'flex-column flex-md-row text-md-left flex-lg-column text-lg-center flex-xl-row text-xl-left',
+						icon: 'fl-bigmug-line-hot67',
+						title: '-20% for the 1st purchase',
+						text: 'If you are our first client, you will instantly get 20% off your purchase at our store.'
+					})
+
+
+	// Page Footer
+	+footer-classic

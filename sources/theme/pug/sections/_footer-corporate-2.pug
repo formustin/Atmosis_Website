@@ -1,0 +1,43 @@
+footer.section.footer-corporate.footer-corporate-2.context-dark
+	.footer-corporate-inset: .container: .row.row-40.justify-content-lg-between
+		.col-sm-6.col-md-12.col-lg-3.col-xl-4: .oh-desktop: .wow.slideInRight( data-wow-delay='0s' )
+			h5.text-spacing-100 Contact us
+			ul.footer-contacts.d-inline-block.d-sm-block
+				li: .unit
+					.unit-left: span.icon.fa.fa-phone
+					.unit-body: a.link-phone( href='tel:#' ) +1 323-913-4688
+				li: .unit
+					.unit-left: span.icon.fa.fa-envelope
+					.unit-body: a.link-aemail( href='mailto:#' ) info@demolink.org
+				li: .unit
+					.unit-left: span.icon.fa.fa-location-arrow
+					.unit-body: a.link-location( href='#' ) 4730 Crystal Springs Dr, Los Angeles, CA 90027
+
+		.col-sm-6.col-md-5.col-lg-3.col-xl-4: .oh-desktop: .wow.slideInDown( data-wow-delay='0s' )
+			h5.text-spacing-100 Popular news
+			+post-minimal-2({
+				title: 'Choosing Windows for Your Apartment',
+				time: { datetime: '2019-05-04', dateText: 'May 04, 2019' }
+			})
+			+post-minimal-2({
+				title: 'Which Window Material is Better: Wood or Vinyl?',
+				time: { datetime: '2019-05-04', dateText: 'May 04, 2019' }
+			})
+		.col-sm-11.col-md-7.col-lg-5.col-xl-4: .oh-desktop: .wow.slideInLeft( data-wow-delay='0s' )
+			h5.text-spacing-100 Quick links
+			ul.row-6.list-0.list-marked.list-marked-md.list-marked-primary.list-custom-2
+				li: a( href='#' ) Installation
+				li: a( href='#' ) Wooden Doors
+				li: a( href='#' ) Sliding Doors
+				li: a( href='#' ) Standard Windows
+				li: a( href='#' ) Panoramic Windows
+			.group-md.group-middle.justify-content-sm-start
+				a.button.button-lg.button-gray-31.button-ujarak( href='#' ) Cost calculator
+				a.button.button-lg.button-secondary.button-ujarak( href='#' ) Get in touch
+
+	.footer-corporate-bottom-panel: .container: .row.row-10.align-items-md-center
+		.col-sm-6.col-md-4.text-sm-right.text-md-center: div: +widget-list([], '', 'list-inline-sm footer-social-list-2' )
+		.col-sm-6.col-md-4.order-sm-first
+			+rights-1
+
+		.col-sm-6.col-md-4.text-md-right: p.rights: a( href='privacy-policy.html' ) Privacy Policy

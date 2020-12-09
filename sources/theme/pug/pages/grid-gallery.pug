@@ -1,0 +1,79 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'gallery'
+	- var pageName = 'Grid gallery'
+
+block page 
+	// Page Header
+	+header-classic
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName],
+		mod: 'bg-overlay-48',
+		bgImage: 'bg-gallery'
+	})
+
+	// Grid Gallery
+	section.section.section-xl.bg-default.text-center
+		.container.isotope-wrap
+			.isotope-filters.isotope-filters-horizontal
+				//- Isotope Filters
+				button.isotope-filters-toggle.button.button-md.button-icon.button-icon-right.button-default-outline.button-wapasha( data-custom-toggle='#isotope-1', data-custom-toggle-hide-on-blur='true', data-custom-toggle-disable-on-blur='true' )
+					span.icon.fa.fa-caret-down
+					span Filter
+				ul#isotope-1.isotope-filters-list
+					li: a.active( href='#', data-isotope-filter='*' ) All
+					li: a( href='#', data-isotope-filter='Type 1' ) Apartments
+					li: a( href='#', data-isotope-filter='Type 2' ) Offices
+					li: a( href='#', data-isotope-filter='Type 3' ) Corporate designs
+			.row.row-50.isotope( data-lightgallery='group' )
+				.col-md-6.col-lg-4.isotope-item( data-filter='Type 3' )
+					+thumbnail-modern({
+						img: 'grid-gallery-1-370x303',
+						imgOriginal: 'grid-gallery-1-1200x800-original',
+						title: 'Modern loft room',
+						subtitle: '2013, Commercial, Denmark'
+					}).thumbnail-sm
+				.col-md-6.col-lg-4.isotope-item( data-filter='Type 2' )
+					+thumbnail-modern({
+						img: 'grid-gallery-2-370x303',
+						imgOriginal: 'grid-gallery-2-1200x800-original',
+						title: 'Asia inspired living room',
+						subtitle: '2015, Residential Project, Denmark'
+					}).thumbnail-sm
+				.col-md-6.col-lg-4.isotope-item( data-filter='Type 1' )
+					+thumbnail-modern({
+						img: 'grid-gallery-3-370x303',
+						imgOriginal: 'grid-gallery-3-1200x800-original',
+						title: 'Sunny valley hotel',
+						subtitle: '2013, Custom Project, Spain'
+					}).thumbnail-sm
+				.col-md-6.col-lg-4.isotope-item( data-filter='Type 3' )
+					+thumbnail-modern({
+						img: 'grid-gallery-4-370x303',
+						imgOriginal: 'grid-gallery-4-1200x800-original',
+						title: 'McMillan’s House',
+						subtitle: '2012, Residential Project, Denmark'
+					}).thumbnail-sm
+				.col-md-6.col-lg-4.isotope-item( data-filter='Type 2' )
+					+thumbnail-modern({
+						img: 'grid-gallery-5-370x303',
+						imgOriginal: 'grid-gallery-5-1200x800-original',
+						title: 'Modern luxury hotel',
+						subtitle: '2011, Custom Project, UK'
+					}).thumbnail-sm
+				.col-md-6.col-lg-4.isotope-item( data-filter='Type 1' )
+					+thumbnail-modern({
+						img: 'grid-gallery-6-370x303',
+						imgOriginal: 'grid-gallery-6-1200x800-original',
+						title: 'Weilround entertainment center',
+						subtitle: '2009, Custom Project, Switzerland'
+					}).thumbnail-sm
+
+			.button-wrap: button.button.button-md.button-default-outline.button-wapasha Load More
+
+
+	// Page Footer
+	+footer-classic
